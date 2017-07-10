@@ -1,0 +1,28 @@
+{
+  "name": "skillexchange",
+  "version": "1.0.0",
+  "description": "back to bartering",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JMM2016/skillexchange.git"
+  },
+  "keywords": [
+    "skillexchange"
+  ],
+  "author": "lsdriders",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JMM2016/skillexchange/issues"
+  },
+  "homepage": "https://github.com/JMM2016/skillexchange#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.1"
+  }
+}
