@@ -1,36 +1,47 @@
 // Require our dependencies
 var express = require("express");
-var mongoose = require("mongoose");
-var bodyParser = require("body-parser");
-
-// Set up our port to be either the host's designated port, or 3000
-var PORT = process.env.PORT || 3000;
-
 // Instantiate our Express App
 var app = express();
 
-// Set up an Express Router
-var router = express.Router();
+var mongoose = require("mongoose");
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var db = process.env.MONGODB_URI || "mongodb://localhost/skillexchange";
 
-// // Require our routes file pass our router object
-// require("./config/routes")(router);
+var bodyParser = require("body-parser");
+
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 // Designate our public folder as a static directory
 app.use(express.static(__dirname + "/public"));
 
-// Use bodyParser in our app
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+// Set up our port to be either the host's designated port, or 3000
+var PORT = process.env.PORT || 3000;
 
-// Have every request go through our router middleware
-app.use(router);
+// Require our models
+var User = require('./app/models/user');
 
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var db = process.env.MONGODB_URI || "mongodb://localhost/skillexchange";
+// Set up an Express Router
+var router = express.Router();
+
+// middleware to use for all requests
+router.use(function (req, res, next) {
+    // do logging
+    console.log('Something is happening.');
+    next(); // make sure we go to the next routes and don't stop here
+});
+
+// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
+router.get('/', function (req, res) {
+    res.json({message: 'hooray! welcome to our api!'});
+});
+
+
 
 // Connect mongoose to our database
-mongoose.connect(db, function(error) {
+mongoose.connect(db, function (error) {
     // Log any errors connecting with mongoose
     if (error) {
         console.log(error);
@@ -41,7 +52,9 @@ mongoose.connect(db, function(error) {
     }
 });
 
+
+
 // Listen on the port
-app.listen(PORT, function() {
+app.listen(PORT, function () {
     console.log("Listening on port:" + PORT);
 });

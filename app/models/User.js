@@ -11,30 +11,29 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
     // firstName, a string, must be entered
     firstName: {
-        type: String,
-        required: true,
+        type: String
     },
-    // lastName, a string, must be entered
-    lastName: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    age: {
-        type: Number,
-        min: 18,
-        max: 65 },
-    password: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    interests: {
-        type: [String]
-    },
+    // // lastName, a string, must be entered
+    // lastName: {
+    //     type: String,
+    //     required: true
+    // },
+    // email: {
+    //     type: String,
+    //     required: true
+    // },
+    // age: {
+    //     type: Number,
+    //     min: 18,
+    //     max: 65 },
+    // password: {
+    //     type: String,
+    //     required: true,
+    //     unique: true
+    // },
+    // interests: {
+    //     type: [String]
+    // },
     needs: {
         type: [String]
     },
