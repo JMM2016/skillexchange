@@ -31,9 +31,9 @@ var userSchema = new Schema({
     //     required: true,
     //     unique: true
     // },
-    // interests: {
-    //     type: [String]
-    // },
+    skills: {
+        type: [String]
+    },
     needs: {
         type: [String]
     },

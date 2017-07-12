@@ -20,11 +20,11 @@ app.use(express.static(__dirname + "/public"));
 // Set up our port to be either the host's designated port, or 3000
 var PORT = process.env.PORT || 3000;
 
-// Require our models
-var User = require('./app/models/user');
-
 // Set up an Express Router
 var router = express.Router();
+
+// Require our routes files and pass our router object
+require("./app/config/userRoutes")(router);
 
 // middleware to use for all requests
 router.use(function (req, res, next) {
@@ -38,7 +38,7 @@ router.get('/', function (req, res) {
     res.json({message: 'hooray! welcome to our api!'});
 });
 
-
+app.use('/api', router);
 
 // Connect mongoose to our database
 mongoose.connect(db, function (error) {
@@ -51,8 +51,6 @@ mongoose.connect(db, function (error) {
         console.log("mongoose connection is successful");
     }
 });
-
-
 
 // Listen on the port
 app.listen(PORT, function () {
