@@ -21,8 +21,8 @@ module.exports = function (router) {
         .post(function (req, res) {
             var user = new User();
             user.firstName = req.body.firstname;
-            user.needs = req.body.needs;
             user.skills = req.body.skills;
+            user.needs = req.body.needs;
             // ... and save new user...
             user.save(function (err) {
                 if (err)
