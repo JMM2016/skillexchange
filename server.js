@@ -1,31 +1,47 @@
-var express = require("express");
-var app = express();
-var server = require("http").createServer(app);
-var io = require("socket.io")(server);
+var express = require('express');  
+app = express();  
+var mongoose = require('mongoose'); 
 
-app.get("/", function(req, res, next) {
-	res.sendFile(__dirname + "/public/index.html")
+var bodyParser = require('body-parser');  
+var morgan = require('morgan');  
+var passport = require('passport'); 
+var config = require('./config/main'); 
+
+// var User = require('./app/models/user');  
+// var jwt = require('jsonwebtoken');  
+
+// Use body-parser to get POST requests for API use
+// Use body-parser to get POST requests for API use
+app.use(bodyParser.urlencoded({ extended: false }));  
+app.use(bodyParser.json());
+
+var PORT = process.env.PORT || 5000;
+
+// Log requests to console
+app.use(morgan('dev'));  
+
+mongoose.connect(config.database); 
+
+// // Initialize passport for use
+app.use(passport.initialize());  
+// // And now we can import our JWT passport strategy. Enter this below our mongoose connection:
+
+// Bring in defined Passport Strategy
+require('./config/passport')(passport);  
+
+require('./app/routes')(app);
+
+
+// We will add a quick home page route so I can give a quick demonstration of what morgan does. Add this next.
+// Home route. We'll end up changing this to our main front end index later.
+app.get('/', function(req, res) {  
+  res.send('Relax. We will put the home page here later.');
 });
 
-app.use(express.static("public"));
-
-io.on("connection", function(client) {
-	console.log("Client connect...");
-
-	client.on("join", function(data) {
-		console.log(data);
-	});
-
-	client.on("messages", function(data) {
-		client.emit("thread", data);
-		client.broadcast.emit("thread", data);
-	});
-});
 
 
 
-
-
-server.listen(3000, function(){
-  console.log('listening on *:3000');
-});
+app.listen(PORT, function() {
+	console.log('Your server is running on port ' + PORT + '.');
+});  
+  
