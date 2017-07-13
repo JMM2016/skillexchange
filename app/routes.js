@@ -18,27 +18,43 @@ module.exports = function(app) {
   app.use(passport.initialize());
 
   // Bring in defined Passport Strategy
-  require('../config/passport')(passport);
+  var pport = require('../config/passport');
+  pport(passport);
 
   // Create API group routes
   var apiRoutes = express.Router();
 
   // Register new users
   apiRoutes.post('/signup', function(req, res) {
+
+    console.log("req.body", req.body.id)
+    
     if(!req.body.email || !req.body.password) {
       res.json({ success: false, message: 'Please enter email and password.' });
     } else {
+
       var newUser = new User({
+        // id: _id,
         email: req.body.email,
         password: req.body.password
       });
 
       // Attempt to save the user
       newUser.save(function(err) {
+        
         if (err) {
           return res.json({ success: false, message: 'That email address already exists.'});
         }
-        res.json({ success: true, message: 'Successfully created new user.' });
+
+        console.log('newUser', newUser)
+        
+        res.json({ 
+          success: true, 
+          message: 'Successfully created new user.',
+          id: newUser._id,
+          email: newUser.email,
+          password: newUser.password
+        });
       });
     }
   });
@@ -49,6 +65,8 @@ module.exports = function(app) {
       email: req.body.email
     }, function(err, user) {
       if (err) throw err;
+
+      console.log("user", user)
 
       if (!user) {
         res.send({ success: false, message: 'Authentication failed. User not found.' });
@@ -68,6 +86,14 @@ module.exports = function(app) {
       }
     });
   });
+
+  //
+  // app.post('/profile', passport.authenticate('jwt', { session: true}), function(req, res) {
+  //     console.log("req.user", req.user)
+  //     res.send(req.user.profile);
+  //   }
+  // );
+
 
   // Protect dashboard route with JWT
   // apiRoutes.get('/dashboard', passport.authenticate('jwt', { session: false }), function(req, res) {

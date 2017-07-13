@@ -17,6 +17,8 @@ app.use(bodyParser.json());
 
 var PORT = process.env.PORT || 5000;
 
+app.use(express.static("public"));
+
 // Log requests to console
 app.use(morgan('dev'));  
 
@@ -30,13 +32,21 @@ app.use(passport.initialize());
 require('./config/passport')(passport);  
 
 require('./app/routes')(app);
+// require('./app/routes2')(app);
 
 
 // We will add a quick home page route so I can give a quick demonstration of what morgan does. Add this next.
 // Home route. We'll end up changing this to our main front end index later.
 app.get('/', function(req, res) {  
-  res.send('Relax. We will put the home page here later.');
+  // res.send('Relax. We will put the home page here later.');
+  res.sendFile(__dirname + "/public/index.html")
 });
+
+app.get('/profile', function(req, res) {  
+  // res.send('Relax. We will put the home page here later.');
+  res.sendFile(__dirname + "/public/profile.html")
+});
+
 
 
 
