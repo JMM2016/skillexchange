@@ -2,8 +2,6 @@ $("#signupButton").on("click", function () {
 
     event.preventDefault();
 
-    console.log("fuck")
-
     var email = $("#signup").serializeArray()[0].value;
     var password = $("#signup").serializeArray()[1].value;
     // var first_name = $("#signup").serializeArray()[2].value;
@@ -39,28 +37,28 @@ $("#signupButton").on("click", function () {
 
 $("#signinButton").on("click", function () {
 
-        event.preventDefault();
-        // debugger
-        var email = $("#signin").serializeArray()[0].value;
-        var password = $("#signin").serializeArray()[1].value;
-        var data = {email: email, password: password};
-        var url = 'http://localhost:5000/api/login';
+    event.preventDefault();
+    // debugger
+    var email = $("#signin").serializeArray()[0].value;
+    var password = $("#signin").serializeArray()[1].value;
+    var data = {email: email, password: password};
+    var url = 'http://localhost:5000/api/login';
 
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: data
-        }).done(function (data, textStatus, request) {
-            
-            console.log("signin: ", data)
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    }).done(function (data, textStatus, request) {
+        
+        console.log("signin: ", data)
 
-            if(data.success == true) {
-                window.open("/profile", '_self', false);
-            } else {
-                $("#invalid").html("Wrong username or password")
-            }
+        if(data.success == true) {
+            window.open("/profile", '_self', false);
+        } else {
+            $("#invalidLogin").html("Wrong username or password")
+        }
 
-        });
     });
+});
 
 
