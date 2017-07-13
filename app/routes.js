@@ -34,7 +34,7 @@ module.exports = function(app) {
     } else {
 
       var newUser = new User({
-        // id: _id,
+     
         email: req.body.email,
         password: req.body.password
       });
@@ -46,7 +46,7 @@ module.exports = function(app) {
           return res.json({ success: false, message: 'That email address already exists.'});
         }
 
-        console.log('newUser', newUser)
+        // console.log('newUser', newUser)
         
         res.json({ 
           success: true, 
@@ -69,7 +69,7 @@ module.exports = function(app) {
       console.log("user", user)
 
       if (!user) {
-        res.send({ success: false, message: 'Authentication failed. User not found.' });
+        res.json({ success: false, message: 'Authentication failed. User not found.' });
       } else {
         // Check if password matches
         user.comparePassword(req.body.password, function(err, isMatch) {
@@ -78,21 +78,29 @@ module.exports = function(app) {
             var token = jwt.sign(user, config.secret, {
               expiresIn: 10080 // in seconds
             });
-            res.json({ success: true, token: 'JWT ' + token });
+
+            res.json({ 
+              success: true, 
+              token: 'JWT ' + token,
+              id: user._id 
+            });
           } else {
-            res.send({ success: false, message: 'Authentication failed. Passwords did not match.' });
+            res.json({ success: false, message: 'Authentication failed. Passwords did not match.' });
           }
         });
       }
     });
   });
 
-  //
-  // app.post('/profile', passport.authenticate('jwt', { session: true}), function(req, res) {
-  //     console.log("req.user", req.user)
-  //     res.send(req.user.profile);
-  //   }
-  // );
+  //Display each person's profile page
+  // apiRoutes.get("/profile/:id", function(req, res) {
+
+  //   console.log(req.params)
+
+
+
+
+  // })
 
 
   // Protect dashboard route with JWT

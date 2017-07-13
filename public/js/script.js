@@ -28,14 +28,12 @@ $("#signupButton").on("click", function () {
         //try and send in app.use(express.static(__dirname + '/public/assets'));
         console.log("signup: ", data);
 
-        // window.localStorage.setItem("token", data.token);
-        // document.cookie = `user_token=${data.token}`;
-
-        // window.open(`/profile/${data.user}`, '_self', false);
-
-        //To open up a different html file
-        // window.open("/profile", '_self', false);
-
+        if(data.success == true) {
+            window.open("/profile", '_self', false);
+        } else {
+            $("#invalidSignup").html("Email already used")
+        }
+        
     });
 });
 
@@ -53,23 +51,14 @@ $("#signinButton").on("click", function () {
             url: url,
             data: data
         }).done(function (data, textStatus, request) {
+            
             console.log("signin: ", data)
-            // debugger
-            // if (!user) {
 
-            //     $("#invalid").html("Wrong username or password")
-
-            // } else {
-            //     // console.log("textStatus", textStatus);
-            //     // console.log("data------------", data);
-            //     // window.localStorage.setItem("token", data.token);
-            //     // document.cookie = `user_token=${data.token}`;
-               
-            //     // window.open(`/myprofile/${data.user}`, '_self', false); 
-
-            //     //To open up a different html file
-            //     window.open("/profile", '_self', false);
-            // }
+            if(data.success == true) {
+                window.open("/profile", '_self', false);
+            } else {
+                $("#invalid").html("Wrong username or password")
+            }
 
         });
     });
