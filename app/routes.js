@@ -61,6 +61,7 @@ module.exports = function(app) {
 
   // Authenticate the user and get a JSON Web Token to include in the header of future requests.
   apiRoutes.post('/login', function(req, res) {
+    console.log("yyyyyyyyy")
     User.findOne({
       email: req.body.email
     }, function(err, user) {
@@ -93,9 +94,13 @@ module.exports = function(app) {
   });
 
   //Display each person's profile page
-  // apiRoutes.get("/profile/:id", function(req, res) {
+  // apiRoutes .get("/profile/:id", function(req, res) {
 
-  //   console.log(req.params)
+   
+    //I want to display each user's profile page, based on id
+    // console.log("reqParamsjukhkjhjkh");
+
+    
 
 
 

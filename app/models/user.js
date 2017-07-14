@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 // Schema defines how the user data will be stored in MongoDB
-var UserSchema = new mongoose.Schema({  
+var UserSchema = new mongoose.Schema({
+    
   email: {
     type: String,
     lowercase: true,

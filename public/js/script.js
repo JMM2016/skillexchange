@@ -37,6 +37,8 @@ $("#signupButton").on("click", function () {
 
 $("#signinButton").on("click", function () {
 
+    console.log("fuck")
+    
     event.preventDefault();
     // debugger
     var email = $("#signin").serializeArray()[0].value;
@@ -50,10 +52,11 @@ $("#signinButton").on("click", function () {
         data: data
     }).done(function (data, textStatus, request) {
         
-        console.log("signin: ", data)
+        console.log("signin: ", data.id)
 
         if(data.success == true) {
-            window.open("/profile", '_self', false);
+            window.open(`/api/profile/${data.id}`, '_self', false);
+                // `/myprofile/${data.user}`
         } else {
             $("#invalidLogin").html("Wrong username or password")
         }
