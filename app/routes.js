@@ -93,27 +93,17 @@ module.exports = function(app) {
     });
   });
 
-  //Display each person's profile page
-  // apiRoutes .get("/profile/:id", function(req, res) {
 
-   
-    //I want to display each user's profile page, based on id
-    // console.log("reqParamsjukhkjhjkh");
+  app.get('/logout', function(req, res){
+        req.logout();
+        res.redirect('/');
+    });
 
-    
+  apiRoutes.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  })
 
-
-
-
-  // })
-
-
-  // Protect dashboard route with JWT
-  // apiRoutes.get('/dashboard', passport.authenticate('jwt', { session: false }), function(req, res) {
-  //   res.send('It worked! User id is: ' + req.user._id + '.');
-  // });
-
-  
 
   // Protect chat routes with JWT
   // POST to create a new message from the authenticated user

@@ -27,7 +27,10 @@ $("#signupButton").on("click", function () {
         console.log("signup: ", data);
 
         if(data.success == true) {
-            window.open("/profile", '_self', false);
+          
+            window.open(`/api/profile/${data.id}`, '_self', false);
+
+
         } else {
             $("#invalidSignup").html("Email already used")
         }
@@ -37,7 +40,7 @@ $("#signupButton").on("click", function () {
 
 $("#signinButton").on("click", function () {
 
-    console.log("fuck")
+    // console.log("hahahhaha")
     
     event.preventDefault();
     // debugger
@@ -56,12 +59,16 @@ $("#signinButton").on("click", function () {
 
         if(data.success == true) {
             window.open(`/api/profile/${data.id}`, '_self', false);
-                // `/myprofile/${data.user}`
+            
         } else {
             $("#invalidLogin").html("Wrong username or password")
         }
 
     });
 });
+
+// $("#logoutBtn").on("click", function() {
+    
+// })
 
 
