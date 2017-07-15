@@ -1,11 +1,12 @@
-// Include the Main React Dependencies
-var React = require("react");
-var ReactDOM = require("react-dom");
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, Switch } from 'react-router';
 
-// Include the main Main Component
-var Main = require("./components/Main");
+import Main from '..components/Main';
 
-import {browserHistory, Router, Route, Redirect} from 'react-router';
+
+
+import {Router, Route, Redirect} from 'react-router';
 import Layout from './layout/layout.js';
 import PageOne from './pages/pageone';
 import PageTwo from './pages/pagetwo';
