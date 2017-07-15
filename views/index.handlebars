@@ -1,0 +1,16 @@
+<form action="/api/user" method="post">
+    <input type="text" name="firstname" placeholder="first name">
+    <input type="text" name="skills" placeholder="skills">
+    <input type="text" name="needs" placeholder="needs">
+    <input type="submit">
+</form>
+
+<br>
+<form action="/api/user/need" method="GET">
+    <input id="needSearch" type="text" name="user_need" placeholder="needs search">
+    <input type="submit">
+</form>
+<form action="/api/user/needs/{{user_need}}" method="get">
+    <input type="text" name="skills" placeholder="skills search">
+    <input type="submit">
+</form>
