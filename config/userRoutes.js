@@ -27,11 +27,10 @@ module.exports = function (router) {
     });
 
 
-
     // USER ROUTES
     router.route('/user')
 
-    // Create a new user...
+    // Create a new user...this is just a test
         .post(function (req, res) {
             var user = new User();
             user.firstName = req.body.firstname;
