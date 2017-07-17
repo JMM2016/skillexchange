@@ -8,6 +8,8 @@ mongoose.Promise = Promise;
 // Initialize Express
 var app = express();
 
+const port = process.env.PORT || 4001;
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.text())
@@ -34,7 +36,7 @@ db.once("open", function() {
 require("./controllers/html-controller.js")(app);
 require("./controllers/api-controller.js")(app);
 
-// Listen on port 4000
-app.listen(4000, function() {
-  console.log("App running on port 4000!");
+// Listen on port 4001
+app.listen(port, function() {
+  console.log(`App running on port ${port}!`);
 });

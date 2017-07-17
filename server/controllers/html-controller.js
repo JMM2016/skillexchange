@@ -6,7 +6,8 @@ module.exports = function(app) {
   const router = express.Router();
 
   router.get("/", (req, res) => {
-    res.send("Hello World..")
+    //res.send("Hello World..")
+    res.sendFile(__dirname,'../../public/index')
   });
 
   router.get("/ratings", (req, res) => {
