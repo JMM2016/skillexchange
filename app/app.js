@@ -1,35 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, Route, Switch } from 'react-router';
+// Include the Main React Dependencies
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Main from '..components/Main';
+// import {Router, Route, Redirect} from 'react-router';
+
+
+// import Layout from './layout/layout';
+
+// // Import pages
+import LandingPage from "./pages/landing";
+// import MainPage from "./pages/main";
+// import LogInPage from "./pages/login";
+
+// const app = (
+// 	<Router>
+//     <Redirect from="/" to="/main" />
+//     <Route path="/" component={Layout}>
+//       <Route path="main" component={MainPage} />
+//       <Route path="login" component={MainPage} />
+//       <Route path="landing" component={MainPage} />
+//     </Route>
+//   </Router>
+
+// 	)
 
 
 
-import {Router, Route, Redirect} from 'react-router';
-import Layout from './layout/layout.js';
-import PageOne from './pages/pageone';
-import PageTwo from './pages/pagetwo';
-import PageThree from './pages/pagethree';
-
-const app = (
-	<Router history={browserHistory}>
-		{// Redirect will take 2 props
-		}
-		<Redirect from="/" to="/home"/>
-		<Route path='/' component={Layout} />
-			<Route path='pageone' component={PageOne} />
-			<Route path='pagetwo' component={PageTwo} />
-			<Route path='pagethree' component={PageThree} />
-
-	</Router>
-)
-
-// This code here allows us to render our main component (in this case Main)
+// This code here allows us to render our main component (in this case "Main")
 ReactDOM.render(
-	<Main />,
- 	document.getElementById("app"),
- 	function() {
- 		console.timeEnd('react-app')
- 	}
- 	);
+	// <MainPage />,
+	// <LogInPage />,
+	<LandingPage />,
+	// app,
+	document.getElementById("app"),
+	() => {
+		console.timeEnd('react-app')
+	}
+);
