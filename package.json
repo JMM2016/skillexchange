@@ -18,13 +18,15 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
+    "nodemon": "^1.11.0",
     "webpack": "^1.13.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "build": "webpack -w",
-    "dev": "webpack & node server.js"
+    "watch": "webpack -w",
+    "dev": "./node_modules/.bin/nodemon server"
   },
   "author": "",
   "license": "ISC"

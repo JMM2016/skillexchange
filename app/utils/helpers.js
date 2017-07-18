@@ -16,11 +16,11 @@ var helpers = {
                 return results.data.response;
             });
     },
-    // This will return any saved articles from our database
+    // This will return all users from our database
     getUsers: function () {
         return axios.get("/api/user/")
             .then(function (results) {
-                console.log("axios results", results);
+                console.log("user results", results);
                 return results;
             });
     },

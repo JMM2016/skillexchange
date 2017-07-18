@@ -10,50 +10,36 @@ var Results = React.createClass({
   // Here we will save states for the contents we save
   getInitialState: function() {
     return {
-      title: "",
-      url: "",
-      pubdate: ""
+      name: ""
     };
-  },
-
-  // This code handles the sending of the search terms to the parent Search component
-  handleClick: function(item) {
-    console.log("CLICKED");
-    console.log(item);
-
-    helpers.postSaved(item.headline.main, item.pub_date, item.web_url).then(function() {
-      console.log(item.web_url);
-    });
   },
 
   // A helper method for mapping through our articles and outputting some HTML
   renderArticles: function() {
-    return this.props.results.map(function(article, index) {
-// console.log(this)
-//         console.log("pushed")
+    console.log(this.props.results, "results")
+    return this.props.results.docs.data.map(function(users) {
+
       // Each article thus reperesents a list group item with a known index
       return (
           <div>
             <p>test</p>
-        <div key={index}>
+        <div key={users.firstName}>
           <li className="list-group-item">
             <h3>
               <span>
-                <em>{article.name}</em>
+                <em>{users.firstName}</em>
               </span>
               <span className="btn-group pull-right">
-                <a href={article.web_url} rel="noopener noreferrer" target="_blank">
-                  <button className="btn btn-default ">View Article</button>
-                </a>
+
 
                 {/*
                   By using an arrow function callback to wrap this.handleClick,
                   we can pass in an article as an argument
                 */}
-                <button className="btn btn-primary" onClick={() => this.handleClick(article)}>Save</button>
+                {/*<button className="btn btn-primary" onClick={() => this.handleClick(article)}>Save</button>*/}
               </span>
             </h3>
-            <p>Date Published: {article.pub_date}</p>
+            {/*<p>Date Published: {article.pub_date}</p>*/}
 
           </li>
 
@@ -93,7 +79,7 @@ var Results = React.createClass({
   },
   render: function() {
     // If we have no articles, render this HTML
-
+      if (!this.props.results.docs) {
       return (
         <li className="list-group-item">
           <h3>
@@ -103,9 +89,9 @@ var Results = React.createClass({
           </h3>
         </li>
       );
-
+      }
     // If we have articles, return this.renderContainer() which in turn, returns all the articles
-    // return this.renderContainer();
+    return this.renderContainer();
   }
 });
 
