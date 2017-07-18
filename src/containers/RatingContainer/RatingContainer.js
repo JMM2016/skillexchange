@@ -7,25 +7,28 @@ import React, { Component } from 'react';
 import './RatingContainer.css';
 import axios from 'axios';
 
-//<script src="https://code.jquery.com/jquery.js"></script>
-
 class RatingContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {selectedOption: '0'};
 
     this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
-  //
-  // handleChange(event) {
-  //   this.setState({value: event.target.value});
-  // }
 
   handleOptionChange(changeEvent) {
     this.setState({
       selectedOption: changeEvent.target.value
     });
-    console.log( Object.values(this.state.toString()));
+  }
+
+  handleClick(event) {
+    // hard coding a user id as 5
+    //axios.post(`/api/ratings/5`).then(res => console.log(res))
+  }
+
+  componentDidUpdate() {
+    console.log("compDidUpdate: " + this.state.selectedOption)
   }
 
   render() {
@@ -36,8 +39,11 @@ class RatingContainer extends Component {
           <fieldset className="rating text-center">
             Select Rating <br/>
             <input type="radio" id="star5" name="rating" value="5"
+                   //checked={this.handleClick}
                    checked={this.state.selectedOption === '5'}
-                   onChange={this.handleOptionChange}/>
+                   onClick={this.handleClick}
+                   onChange={this.handleOptionChange}
+                   />
             <label className = "full" htmlFor="star5" title="Awesome - 5 stars"/>
             {/*<input type="radio" id="star4half" name="rating" value="4.5" />*/}
             {/*<label className="half" htmlFor="star4half" title="Pretty good - 4.5 stars"/>*/}
@@ -72,11 +78,10 @@ class RatingContainer extends Component {
     );
     }
 
-    componentDidMount() {
+    //componentDidMount() {
       //axios.post(`http://exmaple.com/blog/${this.props.id}`)
-      axios.post(`/`)
       //.then(response => this.setState(response.data))
-    }
+    //}
 }
 
 export default RatingContainer;
