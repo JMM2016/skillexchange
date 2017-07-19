@@ -1,13 +1,13 @@
 // Import dependencies
 var passport = require('passport');  
 var express = require('express');  
-var config = require('../config/main');  
+var config = require('./passportSecret');  
 var jwt = require('jsonwebtoken');
 
 
 // Load models
-var User = require('./models/user');  
-var Chat = require('./models/chat'); 
+var User = require('../models/user');  
+// var Chat = require('./models/chat'); 
 // Right below this, we will use module.exports to export our routes for our server.js file to use. At the same time, we are going to cut our existing route code and passport configuration from our server.js file and paste it into our routes.js file.
 
 // Export the routes for our app to use
@@ -18,7 +18,7 @@ module.exports = function(app) {
   app.use(passport.initialize());
 
   // Bring in defined Passport Strategy
-  var pport = require('../config/passport');
+  var pport = require('./passport');
   pport(passport);
 
   // Create API group routes
@@ -70,7 +70,7 @@ module.exports = function(app) {
       console.log("user", user)
 
       if (!user) {
-        res.json({ success: false, message: 'Authentication failed. User not found.' });
+        res.json({ success: false, message: 'Authentication failed. Please try again. ' });
       } else {
         // Check if password matches
         user.comparePassword(req.body.password, function(err, isMatch) {
@@ -81,12 +81,13 @@ module.exports = function(app) {
             });
 
             res.json({ 
+              message: "Welcome back " + user.email,
               success: true, 
               token: 'JWT ' + token,
               id: user._id 
             });
           } else {
-            res.json({ success: false, message: 'Authentication failed. Passwords did not match.' });
+            res.json({ success: false, message: 'Authentication failed. Please try again.' });
           }
         });
       }
@@ -94,56 +95,56 @@ module.exports = function(app) {
   });
 
 
-  app.get('/logout', function(req, res){
-        req.logout();
-        res.redirect('/');
-    });
+  
 
-  apiRoutes.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
-  })
+  // apiRoutes.get("/logout", function(req, res) {
+  //   req.logout();
+  //   res.redirect("/");
+  // })
 
 
   // Protect chat routes with JWT
   // POST to create a new message from the authenticated user
-  apiRoutes.post('/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
-    console.log("xxxx", req.body)
-    var chat = new Chat();
-        chat.from = req.user._id;
-        chat.to = req.body.to;
-        chat.message_body = req.body.message_body;
+  // apiRoutes.post('/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
+  //   console.log("xxxx", req.body)
+  //   var chat = new Chat();
+  //       chat.from = req.user._id;
+  //       chat.to = req.body.to;
+  //       chat.message_body = req.body.message_body;
 
-        // Save the chat message if there are no errors
-        chat.save(function(err) {
-            if (err)
-                res.send(err);
+  //       // Save the chat message if there are no errors
+  //       chat.save(function(err) {
+  //           if (err)
+  //               res.send(err);
 
-            res.json({ message: 'Message sent!' });
-        });
-  });
+  //           console.log("message", req.body.message_body);
+  //           res.json({ 
+
+  //             message: req.body.message_body });
+  //       });
+  // });
 
 
 
   // GET messages for authenticated user
-  apiRoutes.get('/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
-    Chat.find({$or : [{'to': req.user._id}, {'from': req.user._id}]}, function(err, messages) {
-      if (err)
-        res.send(err);
+  // apiRoutes.get('/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
+  //   Chat.find({$or : [{'to': req.user._id}, {'from': req.user._id}]}, function(err, messages) {
+  //     if (err)
+  //       res.send(err);
 
-      res.json(messages);
-    });
-  });
+  //     res.json(messages);
+  //   });
+  // });
 
-  // DELETE a message
-  apiRoutes.delete('/chat/:message_id', passport.authenticate('jwt', { session: false }), function(req, res) {
-    Chat.findOneAndRemove({$and : [{'_id': req.params.message_id}, {'from': req.user._id}]}, function(err) {
-      if (err)
-        res.send(err);
+  // // DELETE a message
+  // apiRoutes.delete('/chat/:message_id', passport.authenticate('jwt', { session: false }), function(req, res) {
+  //   Chat.findOneAndRemove({$and : [{'_id': req.params.message_id}, {'from': req.user._id}]}, function(err) {
+  //     if (err)
+  //       res.send(err);
 
-      res.json({ message: 'Message removed!' });
-    });
-  });
+  //     res.json({ message: 'Message removed!' });
+  //   });
+  // });
   
 
   // PUT to update a message the authenticated user sent
@@ -163,16 +164,6 @@ module.exports = function(app) {
   //     });
   //   });
   // });
-
-
-  
-
-
-
-
-
-
-
 
 
 // Set url for API group routes

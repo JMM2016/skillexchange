@@ -67,8 +67,16 @@ $("#signinButton").on("click", function () {
     });
 });
 
-// $("#logoutBtn").on("click", function() {
-    
-// })
 
+
+// $("#sendMsg").on("Click", function() {
+
+//     event.preventDefault();
+//     var chatSender;
+//     var chatReceiver = $("#msgReceiver").trim().val()
+//     console.log(chatReceiver)
+
+
+
+// })
 

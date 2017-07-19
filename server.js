@@ -1,58 +1,81 @@
-var express = require('express');  
-app = express();  
-var mongoose = require('mongoose'); 
+// Include Server Dependencies
+var express = require("express");
+var bodyParser = require("body-parser");
+var logger = require("morgan");
+var mongoose = require("mongoose");
 
-var bodyParser = require('body-parser');  
-var morgan = require('morgan');  
 var passport = require('passport'); 
-var config = require('./config/main'); 
+var config = require('./app/config/passportSecret'); 
 
-// var User = require('./app/models/user');  
-// var jwt = require('jsonwebtoken');  
 
-// Use body-parser to get POST requests for API use
-// Use body-parser to get POST requests for API use
-app.use(bodyParser.urlencoded({ extended: false }));  
+// Create Instance of Express
+var app = express();
+// Set up an Express Router
+var router = express.Router();
+var PORT = process.env.PORT || 3000; // Sets an initial port. We'll use this later in our listener
+
+// Run Morgan for Logging
+app.use(logger("dev"));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({type: "application/vnd.api+json"}));
 
-var PORT = process.env.PORT || 5000;
+// app.use(router)
 
-app.use(express.static("public"));
+app.use(express.static("./public"));
 
-// Log requests to console
-app.use(morgan('dev'));  
+// Require our routes files and pass our router object
+// require("./config/userRoutes")(router);
 
-mongoose.connect(config.database); 
+// app.use('/api', router);
 
-// // Initialize passport for use
-app.use(passport.initialize());  
-// // And now we can import our JWT passport strategy. Enter this below our mongoose connection:
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var db = process.env.MONGODB_URI || "mongodb://localhost/saastest";
 
-// Bring in defined Passport Strategy
-require('./config/passport')(passport);  
-
-require('./app/routes')(app);
-// require('./app/routes2')(app);
-
-
-// We will add a quick home page route so I can give a quick demonstration of what morgan does. Add this next.
-// Home route. We'll end up changing this to our main front end index later.
-app.get('/', function(req, res) {  
-  // res.send('Relax. We will put the home page here later.');
-  res.sendFile(__dirname + "/public/index.html")
+// Connect mongoose to our database
+mongoose.connect(db, function (error) {
+    // Log any errors connecting with mongoose
+    if (error) {
+        console.log(error);
+    }
+    // Or log a success message
+    else {
+        console.log("mongoose connection is successful");
+    }
 });
 
-app.get('/api/profile/:id', function(req, res) {
+app.use(passport.initialize());  
+
+require('./app/config/passport')(passport);  
+
+//Do i still need to require the apiRoutes? 
+// Or does react w/ helpers.js will do the job instead?
+require('./app/config/apiRoutes')(app);
+
+
+// -------------------------------------------------
+// ROUTES
+// -------------------------------------------------
+
+
+app.get("/", function(req, res) {
+    res.sendFile(__dirname + "/public/index.html");
+});
+
+app.get('/profile/:id', function(req, res) {
+// app.get('/api/profile/:id', function(req, res) {
   console.log("id here")  
-  // res.send('Relax. We will put the home page here later.');
+
   res.sendFile(__dirname + "/public/profile.html")
 });
 
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
 
-
-
-
-app.listen(PORT, function() {
-	console.log('Your server is running on port ' + PORT + '.');
-});  
-  
+// Listen on the port
+app.listen(PORT, function () {
+    console.log("Listening on port:" + PORT);
+});

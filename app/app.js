@@ -1,6 +1,11 @@
-const React = require("react");
-const ReactDom = require("react-dom");
+// Include the Main React Dependencies
+var React = require("react");
+var ReactDOM = require("react-dom");
 
-const Parent = require("./components/Parent");
+// Grabs the Routes
+var routes = require("./config/reactRoutes");
 
-ReactDom.render(<Parent />, document.getElementById("app"));
+// Renders the contents according to the route page
+// Displays the contents in the div app of index.html
+// Note how ReactDOM takes in two parameters (the contents and the location)
+ReactDOM.render(routes, document.getElementById("app"));

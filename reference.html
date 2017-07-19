@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Skill Exchange</title>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+</head>
+<body>
+{{{ body }}}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</body>
+</HTML>
+
+<form action="/api/user" method="post">
+    <input type="text" name="firstname" placeholder="first name">
+    <input type="text" name="skills" placeholder="skills">
+    <input type="text" name="needs" placeholder="needs">
+    <input type="submit">
+</form>
+
+<br>
+<form action="/api/user/need" method="GET">
+    <input id="needSearch" type="text" name="user_need" placeholder="needs search">
+    <input type="submit">
+</form>
+<form action="/api/user/needs/{{user_need}}" method="get">
+    <input type="text" name="skills" placeholder="skills search">
+    <input type="submit">
+</form>

@@ -1,75 +1,30 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Skill Trade</title>
- 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="./css/style.css" /> -->
-  </head>
-  <body>
-    <div class="container">
-      <div class="jumbotron">
-        <h1 class="text-center">Trader Login/SignUp</h1>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <form id="signup" name="signup">
-                <div class="row">
-                    <h2>Sign Up</h2>
-                    <h2 id="invalidSignup" style="color: red"></h2>
-                    <h6>* Require Entries</h6>
-                </div>
-                <div class="row">
-                  <label for="email">Email Address *</label><br>
-                  <input class="text" name="email" type="email"/>
-                </div>
-                <div class="row">
-                    <label for="password">Password *</label><br>
-                    <input name="password" type="password" class="text"/>
-                </div>
-                <!-- <div class="row">
-                  <label for="first_name">First Name *</label><br>
-                  <input class="text" name="first_name" type="text"/>
-                </div>
-                <div class="row">
-                  <label for="last_name">Last Name *</label><br>
-                  <input class="text" name="last_name" type="text"/>
-                </div> -->
-                
-                <br>
-                <div class="row">
-                  <input id="signupButton" class="btn" type="submit" value="Sign Up"/>
-                </div>
-              </form>
-        </div>
+    <title>React Routes</title>
 
-        <div class="col-md-6">
-            <form id="signin">
-              <div class="row">
-                <h2>Sign In</h2>
-                <h2 id="invalidLogin" style="color: red"></h2>
-              </div>
-              <div class="row">
-                <label for="email">Email Address</label>
-                <input class="text" name="email" type="text" />
-              </div>
-              <div class="row">
-                <label for="password">Password</label>
-                <input name="password" type="password" />
-              </div>
-              <div class="row">
-                <input id="signinButton" class="btn" type="submit" value="Sign In" />
-              </div>
-            </form>
-          </div>
-      </div>
-    </div>
+    <!-- Bootswatch -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<!-- This is where React will deploy the contents it generates -->
+<div id="app"></div>
+
+<!-- All of our JS code will be transpiled into this bundle.js file -->
+<script src="bundle.js"></script>
+
+</body>
 </html>
-
-
-
