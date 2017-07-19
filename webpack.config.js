@@ -1,11 +1,17 @@
+const path = require('path');
+const webpack = require('webpack');
+
 module.exports = {
 
+  context:__dirname + "/app",
+
   // This is the entry point or start of our react applicaton
-  entry: "./app/app.js",
+  entry: "./app.js",
 
   // The plain compiled JavaScript will be output into this file
   output: {
-    filename: "public/bundle.js"
+    path: __dirname + "/public",
+    filename: "bundle.js"
   },
 
   // This section desribes the transformations we will perform
@@ -18,10 +24,39 @@ module.exports = {
         // node modules and server files unnecessarily
         include: /app/,
         loader: "babel-loader",
+        exclude: /node_modules/,
         query: {
           // These are the specific transformations we'll be using.
           presets: ["react", "es2015"]
         }
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      },
+      { 
+        test: /\.png$/, 
+        loader: "url-loader?limit=100000" 
+      },
+      { 
+        test: /\.jpg$/, 
+        loader: "file-loader" 
+      },
+       {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'file-loader'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
       }
     ]
   },

@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 
 export default class LogInPage extends React.Component {
 	render () {

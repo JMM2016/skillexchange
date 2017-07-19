@@ -1,6 +1,12 @@
 // Include the Main React Dependencies
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+
+
+
+
+
 
 // import {Router, Route, Redirect} from 'react-router';
 
