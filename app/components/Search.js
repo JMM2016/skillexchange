@@ -23,8 +23,8 @@ var Search = React.createClass({
   // This function will be passed down into child components so they can change the "parent"
   // i.e we will pass this method to the query component that way it can change the main component
   // to perform a new search
-  setQuery: function() {
-    helpers.getUsers().then(function(data) {
+  setQuery: function(newQuery) {
+    helpers.needSearch(newQuery).then(function(data) {
       this.setState({ results: { docs: data } });
     }.bind(this));
     console.log("lala", data)

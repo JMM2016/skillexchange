@@ -17,7 +17,7 @@ var Router = router.Router;
 // https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#browserhistory
 var browserHistory = router.browserHistory;
 
-// Reference the high-level components
+// Reference the high-l3evel components
 var Main = require("../components/Main");
 var Search = require("../components/Search");
 var Saved = require("../components/Saved");
