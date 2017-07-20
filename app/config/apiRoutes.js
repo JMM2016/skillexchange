@@ -85,7 +85,7 @@ module.exports = function(app) {
             });
 
             res.json({ 
-              message: "Welcome back " + user.email,
+              message: "Welcome back " + user.firstName,
               success: true, 
               token: 'JWT ' + token,
               id: user._id 
@@ -118,9 +118,14 @@ module.exports = function(app) {
           firstName: user.firstName,
           lastName: user.lastName
         });
-
     })
+  });
 
+
+  apiRoutes.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+    console.log("You here??")
   });
 
 

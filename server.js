@@ -31,7 +31,7 @@ app.use(express.static("./public"));
 // app.use('/api', router);
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var db = process.env.MONGODB_URI || "mongodb://localhost/saastest";
+var db = process.env.MONGODB_URI || "mongodb://localhost/skillexchange";
 
 // Connect mongoose to our database
 mongoose.connect(db, function (error) {

@@ -17,14 +17,8 @@ var Main = React.createClass({
         return (
             <div className="container">
                 <div className="jumbotron">
-                    <h2><strong>Skill Exchange</strong></h2>
-                    <p><em></em></p>
-                    <hr />
-                    <p>
-                        <Link to="/Signup"><button className="btn btn-primary btn-lg">Sign Up</button></Link>
-                        <Link to="/Login"><button className="btn btn-danger btn-lg">Login</button></Link>
-                        <Link to="/Profile"><button className="btn btn-success btn-lg">Profile</button></Link>
-                    </p>
+                    <h2 className="text-center"><strong>Bartering is BACK!</strong></h2>
+                    <h3 className="text-center">Money holds no sway</h3>
                 </div>
                 <div className="row">
 

@@ -19,8 +19,9 @@ var browserHistory = router.browserHistory;
 
 // Reference the high-level components
 var Main = require("../components/Main");
-var Signup = require("../components/children/Signup");
-var Login = require("../components/children/Login");
+var Account = require("../components/children/Account");
+var Signup = require("../components/children/grandchildren/Signup");
+var Login = require("../components/children/grandchildren/Login");
 var Profile = require("../components/children/Profile");
 
 // Export the Routes
@@ -29,14 +30,14 @@ module.exports = (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
 
-      <Route path="/Signup" component={Signup} />
-
-      <Route path="/Login" component={Login} />
-      
-      <Route path="/Profile/:id" component={Profile} />
-
+      <Route path="Account" component={Account}>
+        <Route path="Signup" component={Signup} />
+        <Route path="Login" component={Login} />
+      </Route>
+      <Route path="Profile/:id" component={Profile} />
+  
       {/* If user selects any other path... we get the Home Route */}
-      <IndexRoute component={Signup} />
+      <IndexRoute component={Account} />
 
     </Route>
   </Router>

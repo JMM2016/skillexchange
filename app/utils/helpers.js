@@ -43,7 +43,15 @@ var helpers = {
                 console.log("verifyProfile data", data)
                 return data
             });
-    }
+    },
+
+    logout: function() {
+        return axios.get("/api/logout")
+            .then(function() {
+                return console.log("helpers logout")
+        });
+
+    },
 
     
    
