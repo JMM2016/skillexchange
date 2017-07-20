@@ -59,21 +59,21 @@ require('./app/config/apiRoutes')(app);
 // -------------------------------------------------
 
 
-app.get("/", function(req, res) {
+app.get("*", function(req, res) {
     res.sendFile(__dirname + "/public/index.html");
 });
 
-app.get('/profile/:id', function(req, res) {
-// app.get('/api/profile/:id', function(req, res) {
-  console.log("id here")  
+// app.get('/profile/:id', function(req, res) {
+// // app.get('/api/profile/:id', function(req, res) {
+//   console.log("id here")  
 
-  res.sendFile(__dirname + "/public/profile.html")
-});
+//   res.sendFile(__dirname + "/public/profile.html")
+// });
 
-app.get('/logout', function(req, res){
-    req.logout();
-    res.redirect('/');
-});
+// app.get('/logout', function(req, res){
+//     req.logout();
+//     res.redirect('/');
+// });
 
 // Listen on the port
 app.listen(PORT, function () {

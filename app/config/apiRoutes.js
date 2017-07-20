@@ -61,7 +61,7 @@ module.exports = function(app) {
 
   // Authenticate the user and get a JSON Web Token to include in the header of future requests.
   apiRoutes.post('/login', function(req, res) {
-    console.log("yyyyyyyyy")
+    // console.log("yyyyyyyyy")
     User.findOne({
       email: req.body.email
     }, function(err, user) {
@@ -92,6 +92,35 @@ module.exports = function(app) {
         });
       }
     });
+  });
+
+  apiRoutes.get("/profile/:id", function(req, res) {
+    
+
+    console.log("profile id", req.params.id);
+
+
+    User.findOne({
+      _id: req.params.id
+    }, function(err, user) {
+
+        if(err) throw err;
+
+        console.log("profile user", user)
+
+        res.json({
+          message: "Hello world",
+          email: user.email
+
+        });
+
+    
+ 
+
+
+      
+    })
+
   });
 
 

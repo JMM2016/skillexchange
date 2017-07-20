@@ -1,5 +1,9 @@
 var React = require("react");
 
+// import { browserHistory } from 'react-router'
+
+var browserHistory = require("react-router").browserHistory;
+
 var helpers = require("../../utils/helpers");
 
 
@@ -15,13 +19,23 @@ var Login = React.createClass({
   getLogin: function(email, password) {
 
     helpers.login(email, password).then(function(data) {
-      console.log("getLogin: ", data.data)
+      console.log("getLogin ID: ", data.data.success)
 
       this.setState({
-        email: data.email,
-        password: data.password
+        email: "",
+        password: ""
       });
-      alert(data.data.message);
+
+      var userId = data.data.id;
+
+      // alert(data.data.message);
+      if(data.data.success === true) {
+        browserHistory.push(`/Profile/${userId}`);
+      } else {
+        alert(data.data.message)
+      };
+      
+      
     }.bind(this));
   },
 

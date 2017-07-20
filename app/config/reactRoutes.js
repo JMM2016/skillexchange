@@ -33,7 +33,7 @@ module.exports = (
 
       <Route path="/Login" component={Login} />
       
-      <Route path="/Profile" component={Profile} />
+      <Route path="/Profile/:id" component={Profile} />
 
       {/* If user selects any other path... we get the Home Route */}
       <IndexRoute component={Signup} />

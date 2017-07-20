@@ -27,12 +27,21 @@ var helpers = {
                 password: password
         };
 
-        return axios.post("api/login", newLogin)
+        return axios.post("/api/login", newLogin)
             .then(function(data) {
                 console.log("login data", data)
                 return data
             });
     },
+
+    verifyProfile: function(id) {
+     
+        return axios.get(`/api/profile/${id}`)
+            .then(function(data) {
+                console.log("verifyProfile data", data)
+                return data
+            });
+    }
 
     
    
