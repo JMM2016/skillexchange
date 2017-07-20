@@ -20,7 +20,7 @@ var helpers = {
             .then(function (data) {
                 console.log("signup data", data)
                 return data;
-            });
+        });
     },
     
     login: function(email, password) {
@@ -33,7 +33,7 @@ var helpers = {
             .then(function(data) {
                 console.log("login data", data)
                 return data
-            });
+        });
     },
 
     verifyProfile: function(id) {
@@ -42,19 +42,15 @@ var helpers = {
             .then(function(data) {
                 console.log("verifyProfile data", data)
                 return data
-            });
+        });
     },
 
     logout: function() {
         return axios.get("/api/logout")
             .then(function() {
-                return console.log("helpers logout")
+                console.log("helpers logout")
         });
-
     },
-
-    
-   
 };
 
 

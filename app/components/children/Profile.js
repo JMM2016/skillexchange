@@ -48,7 +48,7 @@ var Profile = React.createClass({
         <div>
          <Link to="/"><button onClick={this.handleLogout} className="btn btn-danger btn-lg">Logout</button></Link>
          <hr/>
-          <p>Hello {this.state.firstName} {this.state.lastName}!</p>        
+          <h2>Hello {this.state.firstName} {this.state.lastName}!</h2>        
         </div>
     );
   }

@@ -100,24 +100,22 @@ module.exports = function(app) {
 
   apiRoutes.get("/profile/:id", function(req, res) {
     
-
     console.log("profile id", req.params.id);
-
 
     User.findOne({
       _id: req.params.id
     }, function(err, user) {
 
-        if(err) throw err;
+      if(err) throw err;
 
-        console.log("profile user", user)
+      console.log("profile user", user)
 
-        res.json({
-          message: "Hello world",
-          email: user.email,
-          firstName: user.firstName,
-          lastName: user.lastName
-        });
+      res.json({
+        message: "Hello world",
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName
+      });
     })
   });
 
@@ -127,9 +125,6 @@ module.exports = function(app) {
     res.redirect('/');
     console.log("You here??")
   });
-
-
-  
 
   // apiRoutes.get("/logout", function(req, res) {
   //   req.logout();
@@ -157,7 +152,6 @@ module.exports = function(app) {
   //             message: req.body.message_body });
   //       });
   // });
-
 
 
   // GET messages for authenticated user
