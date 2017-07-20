@@ -8,10 +8,12 @@ var axios = require("axios");
 var helpers = {
 
     // New users sign up
-    signUp: function (email, password) {
+    signUp: function (email, password, firstName, lastName) {
         var newUser = {
                 email: email,
-                password: password
+                password: password,
+                firstName: firstName,
+                lastName: lastName
             };
 
         return axios.post("/api/signup", newUser)

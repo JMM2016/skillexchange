@@ -25,7 +25,7 @@ var Profile = React.createClass({
     // If we have no articles, we will return this.renderEmpty() which in turn returns some HTML
     return (
       <div>
-        <p>fuck you</p>
+        <p>Hello World!</p>
       </div>
   )}
 });

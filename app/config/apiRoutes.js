@@ -27,16 +27,18 @@ module.exports = function(app) {
   // Register new users
   apiRoutes.post('/signup', function(req, res) {
 
-    console.log("req.body", req.body.id)
+    console.log("req.body", req.body)
     
-    if(!req.body.email || !req.body.password) {
-      res.json({ success: false, message: 'Please enter email and password.' });
+    if(!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName) {
+      res.json({ success: false, message: 'Please fill in all fields' });
     } else {
 
       var newUser = new User({
      
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName
       });
 
       // Attempt to save the user
@@ -52,6 +54,8 @@ module.exports = function(app) {
           success: true, 
           message: 'Successfully created new user.',
           id: newUser._id,
+          firstName: newUser.firstName,
+          lastName: newUser.lastName,
           email: newUser.email,
           password: newUser.password
         });
@@ -110,15 +114,11 @@ module.exports = function(app) {
 
         res.json({
           message: "Hello world",
-          email: user.email
-
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName
         });
 
-    
- 
-
-
-      
     })
 
   });
