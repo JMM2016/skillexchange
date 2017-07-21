@@ -8,7 +8,8 @@ var Profile = React.createClass({
 
   getInitialState: function() {
     return {
-      firstName: ""
+      firstName: "",
+
     }
   },
 
@@ -19,15 +20,18 @@ var Profile = React.createClass({
 
     helpers.verifyProfile(profileId).then(function(data) {
       
-      console.log("Profile didMount firstName", data.data.firstName);
+      // console.log("Profile didMount firstName", data.data.firstName);
       
       //I can get all the profile data back, including firstName
       var profileFirstName = data.data.firstName;
       var profileLastName = data.data.lastName;
+      // var profileId = data
 
       this.setState({
         firstName: profileFirstName,
-        lastName: profileLastName
+        lastName: profileLastName,
+
+
       });
 
       console.log("ffffff", this.state.firstName);
@@ -42,13 +46,19 @@ var Profile = React.createClass({
 
 
 
+
+
   render: function() {
 
     return (
         <div>
          <Link to="/"><button onClick={this.handleLogout} className="btn btn-danger btn-lg">Logout</button></Link>
          <hr/>
-          <h2>Hello {this.state.firstName} {this.state.lastName}!</h2>        
+          <h2>Hello {this.state.firstName} {this.state.lastName}!</h2> 
+          <hr/>
+          <Link to={`/Profile/${this.props.params.id}/Chat`}><button  className="btn btn-primary btn-lg">Chat</button></Link>
+
+          {this.props.children}
         </div>
     );
   }

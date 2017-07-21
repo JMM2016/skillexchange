@@ -23,6 +23,7 @@ var Account = require("../components/children/Account");
 var Signup = require("../components/children/grandchildren/Signup");
 var Login = require("../components/children/grandchildren/Login");
 var Profile = require("../components/children/Profile");
+var Chat = require("../components/children/grandchildren/Chat");
 
 // Export the Routes
 module.exports = (
@@ -34,8 +35,9 @@ module.exports = (
         <Route path="Signup" component={Signup} />
         <Route path="Login" component={Login} />
       </Route>
-      <Route path="Profile/:id" component={Profile} />
-  
+      <Route path="Profile/:id" component={Profile} >
+        <Route path="Chat" component={Chat} />
+      </Route>
       {/* If user selects any other path... we get the Home Route */}
       <IndexRoute component={Account} />
 

@@ -51,6 +51,26 @@ var helpers = {
                 console.log("helpers logout")
         });
     },
+
+    postChat: function(sender, recevier, msg) {
+
+        var newChat = {
+            from: sender,
+            to: recevier,
+            message_body: msg
+        };
+
+        return axios.post("api/chat", newChat)
+            .then(function(data) {
+                console.log("post chat data", data);
+                return data
+            });
+    }
+
+
+
+
+
 };
 
 
