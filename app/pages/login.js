@@ -16,7 +16,6 @@ export default class LogInPage extends React.Component {
 	handleSubmit(event) {
     event.preventDefault();
     console.log("CLICK");
-    this.button('reset')
   }
 
 	render () {
