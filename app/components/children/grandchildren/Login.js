@@ -12,30 +12,36 @@ var Login = React.createClass({
   getInitialState: function() {
     return {
       email: "",
-      password: ""
+      password: "",
+      token: ""
     }
   },
 
   getLogin: function(email, password) {
-
     helpers.login(email, password).then(function(data) {
-      console.log("getLogin ID: ", data.data.success)
 
+      //Clear out the input fields
       this.setState({
         email: "",
         password: ""
       });
-
+     
       var userId = data.data.id;
+      var userToken = data.data.token;
+      console.log("userToken", userToken);
+      
+
+   
+      // debugger
 
       // alert(data.data.message);
       if(data.data.success === true) {
-        browserHistory.push(`/Profile/${userId}`);
+        browserHistory.push(`Profile/${userId}`);
       } else {
         alert(data.data.message)
       };
-      
-      
+       
+
     }.bind(this));
   },
 

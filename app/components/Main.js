@@ -4,10 +4,12 @@ var React = require("react");
 // https://github.com/ReactTraining/react-router/blob/master/docs/API.md#link
 var Link = require("react-router").Link;
 
-// import Results from "./Search/Results"
+var Account = require("./children/Account.js");
+
 
 // Create the Main component
 var Main = React.createClass({
+
 
     render: function () {
 
@@ -24,6 +26,8 @@ var Main = React.createClass({
 
                   {/* This code will dump the correct Child Component */}
                   {this.props.children}
+                
+
                 </div>
             </div>
         );

@@ -26,12 +26,13 @@ var helpers = {
     login: function(email, password) {
         var newLogin = {
                 email: email,
-                password: password
+                password: password,
+            
         };
 
         return axios.post("/api/login", newLogin)
             .then(function(data) {
-                console.log("login data", data)
+                console.log("Helpers: login data", data)
                 return data
         });
     },
@@ -52,19 +53,19 @@ var helpers = {
         });
     },
 
-    postChat: function(sender, recevier, msg) {
+    postChat: function(recevier, msg) {
 
         var newChat = {
-            from: sender,
+        
             to: recevier,
             message_body: msg
         };
-
+       
         return axios.post("api/chat", newChat)
             .then(function(data) {
                 console.log("post chat data", data);
                 return data
-            });
+        });
     }
 
 

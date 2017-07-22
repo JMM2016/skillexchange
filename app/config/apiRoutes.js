@@ -113,7 +113,8 @@ module.exports = function(app) {
         message: "Hello world",
         email: user.email,
         firstName: user.firstName,
-        lastName: user.lastName
+        lastName: user.lastName,
+        token: "JWT " + user.token
       });
     })
   });
@@ -130,7 +131,9 @@ module.exports = function(app) {
   // Protect chat routes with JWT
   // POST to create a new message from the authenticated user
   apiRoutes.post('/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
+
     console.log("xxxx", req.body)
+    
     var chat = new Chat();
         chat.from = req.user._id;
         chat.to = req.body.to;
@@ -144,13 +147,15 @@ module.exports = function(app) {
             console.log("message", req.body.message_body);
             res.json({ 
 
-              message: req.body.message_body });
+              message: req.body.message_body 
+            });
         });
   });
 
 
   // GET messages for authenticated user
   apiRoutes.get('/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
+    
     Chat.find({$or : [{'to': req.user._id}, {'from': req.user._id}]}, function(err, messages) {
       if (err)
         res.send(err);

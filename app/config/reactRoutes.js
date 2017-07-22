@@ -36,7 +36,7 @@ module.exports = (
         <Route path="Login" component={Login} />
       </Route>
       <Route path="Profile/:id" component={Profile} >
-        <Route path="Chat" component={Chat} />
+          <Route path="Chat" component={Chat} />
       </Route>
       {/* If user selects any other path... we get the Home Route */}
       <IndexRoute component={Account} />

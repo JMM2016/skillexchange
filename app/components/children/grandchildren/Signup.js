@@ -31,7 +31,7 @@ var Signup = React.createClass({
       var userId = data.data.id;
 
       if(data.data.success === true) {
-        browserHistory.push(`/Profile/${userId}`);
+        browserHistory.push(`Profile/${userId}`);
       } else {
         alert(data.data.message)
       };

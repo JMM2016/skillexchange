@@ -3,20 +3,23 @@ var helpers = require("../../utils/helpers");
 var Link = require("react-router").Link;
 
 
-
 var Profile = React.createClass({
 
   getInitialState: function() {
     return {
       firstName: "",
-
     }
   },
 
+
+
   componentDidMount: function() {
-    console.log('this.props.params.id', this.props.params.id)
+    // console.log('this.props.params.id', this.props.params.id)
 
     var profileId = this.props.params.id;
+    // var profileToken = this.props;
+
+    // console.log("profileToken", profileToken);
 
     helpers.verifyProfile(profileId).then(function(data) {
       
@@ -30,7 +33,6 @@ var Profile = React.createClass({
       this.setState({
         firstName: profileFirstName,
         lastName: profileLastName,
-
 
       });
 
