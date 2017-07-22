@@ -1,7 +1,8 @@
 // Include the Main React Dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import $ from 'jquery';
+// import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
 
 
@@ -14,9 +15,9 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 // import Layout from './layout/layout';
 
 // // Import pages
-import LandingPage from "./pages/landing";
+// import LandingPage from "./pages/landing";
 // import MainPage from "./pages/main";
-// import LogInPage from "./pages/login";
+import LogInPage from "./pages/login";
 
 // const app = (
 // 	<Router>
@@ -35,8 +36,8 @@ import LandingPage from "./pages/landing";
 // This code here allows us to render our main component (in this case "Main")
 ReactDOM.render(
 	// <MainPage />,
-	// <LogInPage />,
-	<LandingPage />,
+	<LogInPage />,
+	// <LandingPage />,
 	// app,
 	document.getElementById("app"),
 	() => {
