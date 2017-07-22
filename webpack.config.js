@@ -9,10 +9,11 @@ module.exports = {
     // This is the entry point or start of our react applicaton
     entry:
 
-        ['bootstrap',
-            'bootstrap/dist/css/bootstrap.css',
-            'bootstrap/dist/css/bootstrap-theme.css',
-            "./app.js"
+        [
+        'bootstrap',
+        'bootstrap/dist/css/bootstrap.css',
+        'bootstrap/dist/css/bootstrap-theme.css',
+        './app.js'
         ],
 
     // The plain compiled JavaScript will be output into this file
@@ -47,26 +48,40 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader"
+                loader: 'style-loader!css-loader'
             },
+
             {
-                test: /\.png$/,
+                test: /\.(jpe?g|png|gif|svg|ico)$/i,
+                // include: /..\/client\/img/,
                 use: [{
-                    loader: "url-loader?limit=100000",
-                    // query: {
-                    //     name: 'img/[name].[ext]'
-                    // }
-                }]
-            },
-            {
-                test: /\.jpg$/,
-                use: [{
-                    loader: "url-loader",
+                    loader: 'url-loader',
                     query: {
+                        limit: 10000,
                         name: 'img/[name].[ext]'
                     }
+                }, {
+                    loader: 'image-webpack-loader'
                 }]
             },
+            // {
+            //     test: /\.png$/,
+            //     use: [{
+            //         loader: "url-loader?limit=100000",
+            //         // query: {
+            //         //     name: 'img/[name].[ext]'
+            //         // }
+            //     }]
+            // },
+            // {
+            //     test: /\.jpg$/,
+            //     use: [{
+            //         loader: "url-loader",
+            //         query: {
+            //             name: 'img/[name].[ext]'
+            //         }
+            //     }]
+            // },
             {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{
@@ -80,16 +95,57 @@ module.exports = {
             },
             {
                 test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
+                // loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
+                use: [{
+                    loader: 'url-loader',
+                    query: {
+                        limit: 10000,
+                        mimetype: 'application/octet-stream',
+                        name: 'fonts/[name].[ext]'
+                    }
+                }]
             },
             {
-                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file-loader'
+                test: /\.otf(\?v=\d+\.\d+\.\d+)?$/,
+                include: /(src\/fonts|node_modules)/,
+                use: [{
+                    loader: 'url-loader',
+                    query: {
+                        limit: 10000,
+                        mimetype: 'application/octet-stream',
+                        name: 'fonts/[name].[ext]'
+                    }
+                }]
             },
+            {
+                test: /\.eot/,
+                 loader: 'url-loader?mimetype=application/vnd.ms-fontobject'
+                // test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                // // include: /(src\/fonts|node_modules)/,
+                // // use: [{
+                // //     loader: 'file-loader'
+                // //     query: {
+                // //         name: 'fonts/[name].[ext]'
+                // //     }
+                // // }]
+                // loader: 'file-loder'
+            },
+            // {
+            //     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+            //     loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
+            // },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
-            },
+                include: /(src\/fonts|node_modules)/,
+                use: [{
+                    loader: 'file-loader',
+                    query: {
+                        limit: 1000,
+                        mimetype: 'image/svg+xml',
+                        name: 'img/[name].[ext]'
+                    }
+                }]
+            }
             // {
             //     test: /\.(jpe?g|png|gif|svg|ico)$/i,
             //     include: /..\/client\/img/,
