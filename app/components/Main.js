@@ -4,7 +4,6 @@ var React = require("react");
 // https://github.com/ReactTraining/react-router/blob/master/docs/API.md#link
 var Link = require("react-router").Link;
 
-import Results from "./Search/Results"
 
 // Create the Main component
 var Main = React.createClass({
@@ -16,35 +15,18 @@ var Main = React.createClass({
 
         return (
             <div>
+
                 <div className="jumbotron">
                     <h2 className="text-center"><strong>Bartering is BACK!</strong></h2>
                     <h3 className="text-center">Money holds no sway</h3>
                 </div>
+                <Link to="Search" className="btn btn-danger">Search</Link>
+                <Link to="User" className="btn btn-danger">Profile</Link>
+                <p></p>
                 {this.props.children}
-                <Link to="search" className="btn btn-danger">Search</Link>
-                <Link to="saved" className="btn btn-danger">Saved</Link>
-
-                <form action="/api/user" method="post">
-                    {/*<label>*/}
-                        {/*Name:*/}
-                        <input type="text" name="firstName" placeholder="first name"/>
-                        <input type="text" name="skills" placeholder="skills"/>
-                        <input type="text" name="needs" placeholder="needs"/>
-                    {/*</label>*/}
-                    <input type="submit" value="Submit"/>
-                </form>
-                <br/>
-                <form>
-                    <input id="needSearched" type="text" name="user_need" placeholder="needs search"/>
-                    <input type="submit"/>
-                </form>
-                <br/>
-                <form action="/api/user/needs/{{user_need}}" method="get">
-                    <input type="text" name="skills" placeholder="skills search"/>
-                    <input type="submit"/>
-                </form>
 
             </div>
+
         )
     }
 });
