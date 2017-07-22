@@ -30,13 +30,13 @@ var Login = React.createClass({
       var userToken = data.data.token;
       console.log("userToken", userToken);
       
-
+      localStorage.setItem("userToken", userToken);
    
       // debugger
 
       // alert(data.data.message);
       if(data.data.success === true) {
-        browserHistory.push(`Profile/${userId}`);
+        browserHistory.push(`/Profile/${userId}`);
       } else {
         alert(data.data.message)
       };

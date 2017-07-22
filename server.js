@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
+
 var passport = require('passport'); 
 var config = require('./app/config/passportSecret'); 
 
@@ -37,6 +38,7 @@ mongoose.connect(db, function (error) {
         console.log("mongoose connection is successful");
     }
 });
+
 
 app.use(passport.initialize());  
 

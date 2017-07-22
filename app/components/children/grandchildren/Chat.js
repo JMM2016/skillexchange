@@ -9,13 +9,31 @@ var Chat = React.createClass({
 	getInitialState: function() {
 
 		console.log('Chat this.props.params.id', this.props.params.id);
+		console.log("profileToken", localStorage.getItem('userToken'));
+  
+    	var userToken = localStorage.getItem('userToken');
+    	console.log("chatToken", userToken);
+		
 		var chatProfileId = this.props.params.id;
+
 		return {
 			from: chatProfileId,
 			to: "",
 			message_body: ""
 		};
 	},
+
+	sendAuth: function() {
+
+		console.log("profileToken", localStorage.getItem('userToken'));
+  
+    	var userToken = localStorage.getItem('userToken');
+    	console.log("chatToken", userToken)
+
+		let config = {"Authorization": userToken}
+
+	},
+
 
 	handleChangeReceiver(data) {
 		console.log("receiver", data.target.value)
@@ -31,12 +49,17 @@ var Chat = React.createClass({
 		});
 	},
 
-	handleSubmitMessage: function(receiver, msg) {
+	handleSubmitMessage: function(sender, receiver, msg) {
 		event.preventDefault();
 		console.log("receiver", this.state.receiver);
 		console.log("message", this.state.message);
 
-		helpers.postChat(receiver, msg).then(function(data) {
+		var sender = this.props.firstName;
+		console.log("message sender", sender)
+		var receiver = this.state.receiver;
+		var msg = this.state.message
+		debugger
+		helpers.postChat(sender, receiver, msg).then(function(data) {
 			
 			return console.log("submitMessage", data)
 

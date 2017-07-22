@@ -53,10 +53,10 @@ var helpers = {
         });
     },
 
-    postChat: function(recevier, msg) {
+    postChat: function(sender, recevier, msg) {
 
         var newChat = {
-        
+            from: sender,
             to: recevier,
             message_body: msg
         };

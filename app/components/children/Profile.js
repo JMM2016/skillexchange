@@ -6,25 +6,24 @@ var Link = require("react-router").Link;
 var Profile = React.createClass({
 
   getInitialState: function() {
+
+    // console.log("profileToken", localStorage.getItem('userToken'));
+    
     return {
       firstName: "",
     }
   },
 
 
-
   componentDidMount: function() {
     // console.log('this.props.params.id', this.props.params.id)
 
     var profileId = this.props.params.id;
-    // var profileToken = this.props;
-
-    // console.log("profileToken", profileToken);
-
+  
     helpers.verifyProfile(profileId).then(function(data) {
       
-      // console.log("Profile didMount firstName", data.data.firstName);
-      
+      var userToken = localStorage.getItem('userToken');
+
       //I can get all the profile data back, including firstName
       var profileFirstName = data.data.firstName;
       var profileLastName = data.data.lastName;
@@ -33,21 +32,21 @@ var Profile = React.createClass({
       this.setState({
         firstName: profileFirstName,
         lastName: profileLastName,
+        token: userToken
 
       });
 
       console.log("ffffff", this.state.firstName);
 
     }.bind(this));
+
+
   },
 
   handleLogout: function() {
     helpers.logout();
     console.log("Did you logout?")
   },
-
-
-
 
 
   render: function() {

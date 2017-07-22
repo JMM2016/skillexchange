@@ -2,9 +2,6 @@ var React = require("react");
 // Include the Helper (for the saved recall)
 var helpers = require("../../utils/helpers");
 
-var Login = require("./grandchildren/Login.js");
-
-
 
 var browserHistory = require("react-router").browserHistory;
 var Link = require("react-router").Link;

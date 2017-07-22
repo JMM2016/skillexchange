@@ -114,7 +114,6 @@ module.exports = function(app) {
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
-        token: "JWT " + user.token
       });
     })
   });
@@ -125,7 +124,6 @@ module.exports = function(app) {
     res.redirect('/');
     console.log("You here??")
   });
-
 
 
   // Protect chat routes with JWT
@@ -164,7 +162,7 @@ module.exports = function(app) {
     });
   });
 
-  // // DELETE a message
+  // DELETE a message
   apiRoutes.delete('/chat/:message_id', passport.authenticate('jwt', { session: false }), function(req, res) {
     Chat.findOneAndRemove({$and : [{'_id': req.params.message_id}, {'from': req.user._id}]}, function(err) {
       if (err)
