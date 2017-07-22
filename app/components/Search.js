@@ -11,50 +11,40 @@ var helpers = require("../utils/helpers");
 // Create the Search component
 var Search = React.createClass({
 
-    // Here we set the initial state variables
-    // (this allows us to propagate the variables for maniuplation by the children components
-    // Also note the "results" state. This will be where we hold the data from our results
     getInitialState: function () {
         return {
-            results: {}
+            need_results: {},
+            have_results: {},
+            need_query: "",
+            have_query: ""
         };
     },
 
     setQuery: function (newQuery, isNeed) {
-        console.log("222222222222222222")
         if(isNeed) {
             helpers.needSearch(newQuery).then(function (data) {
-                this.setState({results: {docs: data}});
+                this.setState({need_query: newQuery});
+                this.setState({need_results: {docs: data}});
             }.bind(this));
-            console.log("lala", data)
         } else {
             helpers.haveSearch(newQuery).then(function (data) {
-                this.setState({results: {docs: data}});
+                this.setState({have_query: newQuery});
+                this.setState({have_results: {docs: data}});
             }.bind(this));
-            console.log('other api call')
         }
-    },
-    // This function will be passed down into child components so they can change the "parent"
-    // i.e we will pass this method to the query component that way it can change the main component
-    // to perform a new search
-    setNeed: function (newQuery) {
-        helpers.needSearch(newQuery).then(function (data) {
-            this.setState({results: {docs: data}});
-        }.bind(this));
-        console.log("lala", data)
     },
 
     // Render the component. Note how we deploy both the Query and the Results Components
     render: function () {
-        console.log("Render Results", this.state.results);
+        console.log("COMPONENT RENDERED");
 
         return (
             <div className="main-container">
 
                 {/* Note how we pass the setQuery function to enable Query to perform searches */}
-                <Query updateSearch={this.setQuery} />
+                <Query updateQuery={this.setQuery} />
                 {/* Note how we pass in the results into this component */}
-                <Results results={this.state.results}/>
+                <Results need_results={this.state.need_results} have_results={this.state.have_results} need_query={this.state.need_query} have_query={this.state.have_query}/>
             </div>
         );
     }

@@ -63,10 +63,11 @@ router.use(function (req, res, next) {
 // -------------------------------------------------
 // Create a new user
 app.post('/api/user', function (req, res) {
+
     var user = new User();
     user.firstName = req.body.firstname;
-    user.skills = req.body.skills;
-    user.needs = req.body.needs;
+    user.have = req.body.have;
+    user.need = req.body.need;
     // ... and save new user...
     user.save(function (err) {
         if (err)
@@ -98,7 +99,7 @@ app.get(function (req, res) {
 // NEED SEARCH ROUTE
 
 app.get("/api/need/:need_searched", function (req, res) {
-    User.find({needs: req.params.need_searched}, function (err, user) {
+    User.find({need: req.params.need_searched}, function (err, user) {
         if (err)
             res.send(err);
         console.log(err);
@@ -107,9 +108,8 @@ app.get("/api/need/:need_searched", function (req, res) {
     });
 });
 
-// SKILL SEARCH ROUTE
-app.get(function (req, res) {
-    User.find({skills: req.params.user_skill}, function (err, user) {
+app.get("/api/have/:have_searched", function (req, res) {
+    User.find({have: req.params.have_searched}, function (err, user) {
         if (err)
             res.send(err);
         console.log(err);

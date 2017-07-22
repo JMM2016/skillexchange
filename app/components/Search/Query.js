@@ -41,28 +41,20 @@ var Query = React.createClass({
             }
             ;
         },
+        handleNeedSubmit: function (event) {
 
-// This code handles the sending of the search terms to the parent Search component
-        handleSubmit: function (event) {
-            console.log("CLICKEoooo", event);
+            console.log("handleneedsubmit clicked")
+            event.preventDefault();
+            console.log("CLICKED2", console.log(event.target.id));
+            this.props.updateQuery(this.state.need, true);
+        },
 
-            console.log("handlesubmit clicked")
-            // if (isNeed) {
-                event.preventDefault();
-                console.log("CLICKED", console.log(event.target.id));
-                this.props.updateSearch(this.state.need);
-                // }
-                // else {
-                //     event.preventDefault();
-                //     console.log("CLICKED");
-                //     this.props.updateNeed(this.state.have, false);
-                // }
-            // }
+        handleHaveSubmit: function (event) {
 
-            // handleSubmit: function(event) {
-            //     event.preventDefault();
-            //     console.log("CLICKED");
-            //     this.props.updateSearch(this.state.search, this.state.start, this.state.end);
+            console.log("handlehavesubmit clicked")
+            event.preventDefault();
+            console.log("CLICKED2", console.log(event.target.id));
+            this.props.updateQuery(this.state.have, false);
         },
 
 // Here we render the Query component
@@ -88,7 +80,7 @@ var Query = React.createClass({
                                     {/*className="btn btn-danger">Get all users*/}
                                     {/*</button>*/}
                                     {/* Note how we associate the text-box inputs with the state values */}
-                                    <form onSubmit={this.handleSubmit.bind(this)}>
+                                    <form onSubmit={this.handleNeedSubmit}>
                                         <div className="form-group">
                                             <h4 className=""><strong>Need</strong></h4>
                                             <input
@@ -114,7 +106,7 @@ var Query = React.createClass({
                                         </div>
                                     </form>
 
-                                    <form onSubmit={this.handleSubmit}>
+                                    <form onSubmit={this.handleHaveSubmit}>
                                         <div className="form-group">
                                             <h4 className=""><strong>Have</strong></h4>
                                             <input

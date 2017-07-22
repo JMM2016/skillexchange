@@ -8,7 +8,7 @@ var helpers = require("../utils/helpers");
 var User = React.createClass({
 
     getInitialState: function () {
-        return {savedArticles: ""};
+        return {};
     },
 
     // Our render method. Utilizing a few helper methods to keep this logic clean
@@ -18,9 +18,9 @@ var User = React.createClass({
                 <form action="/api/user" method="post">
                     {/*<label>*/}
                     {/*Name:*/}
-                    <input type="text" name="firstName" placeholder="first name"/>
-                    <input type="text" name="skills" placeholder="skills"/>
-                    <input type="text" name="needs" placeholder="needs"/>
+                    <input type="text" name="firstname" placeholder="first name"/>
+                    <input type="text" name="have" placeholder="have"/>
+                    <input type="text" name="need" placeholder="need"/>
                     {/*</label>*/}
                     <input type="submit" value="Submit"/>
                 </form>

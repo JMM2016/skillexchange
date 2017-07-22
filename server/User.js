@@ -31,10 +31,10 @@ var userSchema = new Schema({
     //     required: true,
     //     unique: true
     // },
-    skills: {
+    have: {
         type: [String]
     },
-    needs: {
+    need: {
         type: [String]
     },
     updated: { type: Date, default: Date.now }
