@@ -27,16 +27,18 @@ var Profile = React.createClass({
       //I can get all the profile data back, including firstName
       var profileFirstName = data.data.firstName;
       var profileLastName = data.data.lastName;
-      // var profileId = data
+      var profileUserName = data.data.userName;
+      console.log("ffffff", this.state.userName);
 
       this.setState({
         firstName: profileFirstName,
         lastName: profileLastName,
+        userName: profileUserName,
         token: userToken
 
       });
 
-      console.log("ffffff", this.state.firstName);
+   
 
     }.bind(this));
 
@@ -60,8 +62,8 @@ var Profile = React.createClass({
           <Link to={`/Profile/${this.props.params.id}/Chat`}><button  className="btn btn-warning">Chat</button></Link>
           <Link to="/"><button onClick={this.handleLogout} className="btn btn-danger">Logout</button></Link>
             
-         <hr/>
-          <h2>Hello {this.state.firstName} {this.state.lastName}!</h2> 
+          <hr/>
+          <h2>Hello {this.state.userName}!</h2> 
           <hr/>
           {this.props.children}
           <hr/>

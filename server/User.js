@@ -26,6 +26,11 @@ var UserSchema = new mongoose.Schema({
         required: true
     },
 
+    userName: {
+        type: String,
+        required: true
+    },
+
     have: {
         type: [String]
     },

@@ -37,7 +37,8 @@ module.exports = function(app) {
         email: req.body.email,
         password: req.body.password,
         firstName: req.body.firstName,
-        lastName: req.body.lastName
+        lastName: req.body.lastName,
+        userName: req.body.userName
       });
 
       // Attempt to save the user
@@ -56,7 +57,8 @@ module.exports = function(app) {
           firstName: newUser.firstName,
           lastName: newUser.lastName,
           email: newUser.email,
-          password: newUser.password
+          password: newUser.password,
+          userName: newUser.userName
         });
       });
     }
@@ -114,6 +116,7 @@ module.exports = function(app) {
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
+        userName: user.userName
       });
     })
   });

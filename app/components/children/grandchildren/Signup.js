@@ -16,16 +16,17 @@ var Signup = React.createClass({
     };
   },
 
-  setSignUp: function(email, password, firstName, lastName) {
+  setSignUp: function(email, password, firstName, lastName, userName) {
 
-    helpers.signUp(email, password, firstName, lastName).then(function(data) {
+    helpers.signUp(email, password, firstName, lastName, userName ).then(function(data) {
       console.log("getSignUp: ", data.data)
 
       this.setState({
         email: "",
         password: "",
         firstName: "",
-        lastName: ""
+        lastName: "",
+        userName: ""
       });
       
       var userId = data.data.id;
@@ -61,6 +62,11 @@ var Signup = React.createClass({
     this.setState({lastName: data.target.value});
   },
 
+  handleChangeUserName(data) {
+    // console.log("handleChangePassword", data.target.value)
+    this.setState({userName: data.target.value});
+  },
+
 
   handleSignUp: function (event) {
         event.preventDefault();
@@ -68,13 +74,15 @@ var Signup = React.createClass({
         console.log("password submitted", this.state.password);
         console.log("firstName submitted", this.state.firstName);
         console.log("lastName submitted", this.state.lastName);
+        console.log("userName submitted", this.state.userName);
         
         var email = this.state.email;
         var password = this.state.password;
         var firstName = this.state.firstName;
         var lastName = this.state.lastName;
+        var userName = this.state.userName;
 
-        this.setSignUp(email, password, firstName, lastName);
+        this.setSignUp(email, password, firstName, lastName, userName);
 
   },
 
@@ -100,6 +108,10 @@ var Signup = React.createClass({
                 <div className="row">
                   <label>Last Name *</label>
                   <input className="text" name="lastName" type="lastName" value={this.state.lastName} onChange={this.handleChangeLastName} />
+                </div>
+                <div className="row">
+                    <label>Username *</label>
+                    <input name="userName" type="userName" className="text" value={this.state.userName} onChange={this.handleChangeUserName} />
                 </div>
                 <div className="row">
                     <label>Password *</label>

@@ -33,12 +33,13 @@ const helpers = {
     },
 
     // New users sign up
-    signUp: function (email, password, firstName, lastName) {
+    signUp: function (email, password, firstName, lastName, userName) {
         var newUser = {
                 email: email,
                 password: password,
                 firstName: firstName,
-                lastName: lastName
+                lastName: lastName,
+                userName: userName
             };
 
         return axios.post("/api/signup", newUser)
