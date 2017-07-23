@@ -3,7 +3,7 @@ import React from 'react';
 import NavLink from './NavLink';
 const Link = require("react-router").Link;
 
-import ControlledCarousel from '../Components/CarouselControlled'
+// import ControlledCarousel from '../Components/CarouselControlled'
 
 
 export default class Main extends React.Component {
@@ -13,6 +13,9 @@ export default class Main extends React.Component {
   }
 
 	render () {
+
+  const now = new Date();
+
 		return (
 			<div>
 
@@ -35,7 +38,7 @@ export default class Main extends React.Component {
             </div>
           </div>
         </nav>
-        <ControlledCarousel />
+        <p> Current time: {now.toTimeString()} </p>
         {this.props.children}
 			</div>
 

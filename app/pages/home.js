@@ -9,8 +9,14 @@ export default class Home extends React.Component {
 
 	render () {
 		return (
-			<div className="container">
-				<h1 className="jumbotron">We're in the HOME page</h1>
+			<div className="container-fluid">
+				<h1 className="jumbotron">SkillShare</h1>
+				<div className="row">
+					<div className="col-md-10">
+						<h1 className= "mainScreen"> PIC GOES HERE</h1>
+						<img src="./img/friend.png" />
+					</div>
+				</div>
 			</div>
 		)
 	}
