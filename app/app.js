@@ -7,7 +7,7 @@ import $ from 'jquery';
 
 // Grabs the Routes
 // const routes = require ('./config/routes');
-import routes from './config/routes';
+// import routes from './config/routes';
 
 
 
@@ -17,6 +17,7 @@ import routes from './config/routes';
 // import Layout from './layout/layout';
 
 // // Import pages
+import Home from './pages/home'
 // import LandingPage from "./pages/landing";
 // import MainPage from "./pages/main";
 // import LogInPage from "./pages/login";
@@ -40,8 +41,9 @@ ReactDOM.render(
 	// <MainPage />,
 	// <LogInPage />,
 	// <LandingPage />,
+	<Home/>,
 	// app,
-	{routes},
+	// {routes},
 	document.getElementById("app"),
 	() => {
 		console.timeEnd('react-app')

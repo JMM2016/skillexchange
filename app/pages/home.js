@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-export default class LandingPage extends React.Component {
+export default class Home extends React.Component {
 	render () {
 		return (
 			<div className="container">
