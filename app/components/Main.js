@@ -13,8 +13,8 @@ export default React.createClass({
     render() {
 
         return (
-            <div>
 
+            <div className="container">
                 <div className="jumbotron">
                     <h2 className="text-center"><strong>Bartering is BACK!</strong></h2>
                     <h3 className="text-center">Money holds no sway</h3>
@@ -30,3 +30,7 @@ export default React.createClass({
         )
     }
 });
+
+
+// Export the module back to the route
+module.exports = Main;

@@ -3,5 +3,14 @@
 /.idea
 .env
 .DS_Store
-
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+benchmarks/*.png
+coverage
+dist
 
