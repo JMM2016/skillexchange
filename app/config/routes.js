@@ -18,9 +18,10 @@ var Router = router.Router;
 var browserHistory = router.browserHistory;
 
 // Reference the high-l3evel components
-var Main = require("../components/Main");
+import Main from "../components/Main";
 var Search = require("../components/Search");
 var User = require("../components/User");
+var Map = require("../components/Map");
 
 
 // Export the Routes
