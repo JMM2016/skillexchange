@@ -32,6 +32,8 @@ module.exports = (
       {/* If user selects Search or Saved show the appropriate component */}
       <Route path="Search" component={Search} />
       <Route path="User" component={User} />
+      <Route path="Map" component={Map} />
+
 
       {/* If user selects any other path... we get the Home Route */}
       <IndexRoute component={Search} />

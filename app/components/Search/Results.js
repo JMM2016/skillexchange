@@ -7,14 +7,12 @@ var helpers = require("../../utils/helpers");
 // Results Component Declaration
 var Results = React.createClass({
 
-    // Here we will save states for the contents we save
     getInitialState: function () {
         return {
             name: ""
         };
     },
 
-    // A helper method for mapping through our articles and outputting some HTML
     renderNeed: function () {
         console.log("RENDER NEED")
         var needSearched = this.props.need_query
@@ -25,7 +23,7 @@ var Results = React.createClass({
             )
         } else {
             if (!this.props.need_results.docs.data[0]) {
-                console.log("you did it!")
+                console.log("you did it!");
                 return (
 
                     <div>
@@ -33,12 +31,10 @@ var Results = React.createClass({
                     </div>
                 )
             }
-            // console.log(this.props.need_results.docs.data, "TEST")
 
             return this.props.need_results.docs.data.map(function (users, index) {
                 console.log(users.firstName, "HEYHEYHEYHEYHEY")
 
-                // Each article thus represents a list group item with a known index
                 return (
                     <div>
                         <div>{needSearched}</div>
@@ -71,20 +67,27 @@ var Results = React.createClass({
         }
     },
 
-    // A helper method for mapping through our articles and outputting some HTML
     renderHave: function () {
 
-        var haveSearched = this.props.have_query
+        var haveSearched = this.props.have_query;
 
         if (!this.props.have_results.docs) {
             return (
                 <div>Search for people who need what you got!</div>
             )
         } else {
+            if (!this.props.have_results.docs.data[0]) {
+                console.log("you did it!");
+                return (
+
+                    <div>
+                        <div>Nobody has {haveSearched} to offer :(</div>
+                    </div>
+                )
+            }
 
             return this.props.have_results.docs.data.map(function (users, index) {
 
-                // Each article thus reperesents a list group item with a known index
                 return (
                     <div>
                         <div>{haveSearched}</div>
@@ -120,49 +123,8 @@ var Results = React.createClass({
         }
     },
 
-    // A helper method for rendering a container to hold all of our articles
-    renderContainer: function () {
-        return (
-            <div className="main-container">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="panel panel-primary">
-                            <div className="panel-heading">
-                                <h1 className="panel-title">
-                                    <strong>
-                                        <i className="fa fa-list-alt"></i>
-                                        Need Results
-                                    </strong>
-                                </h1>
-                            </div>
-                            <div className="panel-body">
-                                <ul className="list-group">
-                                    {this.renderNeed()}
-                                </ul>
-                            </div>
-                            <div className="panel-heading">
-                                <h1 className="panel-title">
-                                    <strong>
-                                        <i className="fa fa-list-alt"></i>
-                                        Have Results
-                                    </strong>
-                                </h1>
-                            </div>
-                            <div className="panel-body">
-                                <ul className="list-group">
-                                    {/*{this.renderHave()}*/}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-    ,
     render: function () {
-        // If we have no articles, render this HTML
-        // if (!this.props.need_results.docs) {
+
         return (
             <div className="main-container">
                 <div className="row">
@@ -199,9 +161,6 @@ var Results = React.createClass({
                 </div>
             </div>
         );
-        // }
-        // If we have articles, return this.renderContainer() which in turn, returns all the articles
-        // return this.renderContainer();
     }
 });
 

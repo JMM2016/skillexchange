@@ -68,6 +68,9 @@ app.post('/api/user', function (req, res) {
     user.firstName = req.body.firstname;
     user.have = req.body.have;
     user.need = req.body.need;
+    user.street = req.body.street;
+    user.city = req.body.city;
+    user.state = req.body.state;
     // ... and save new user...
     user.save(function (err) {
         if (err)
@@ -86,7 +89,7 @@ app.get('/api/user', function (req, res) {
 })
 
 // Find specific user
-app.get(function (req, res) {
+app.get('/api/user/:user_id',function (req, res) {
     User.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);

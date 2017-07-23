@@ -3,6 +3,7 @@ var React = require("react");
 
 // Include the helpers for making API calls
 var helpers = require("../../utils/helpers");
+var geocodeHelper = require("../../utils/geocodeHelper");
 
 // Query Component Declaration
 var Query = React.createClass({

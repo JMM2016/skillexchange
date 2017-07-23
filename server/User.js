@@ -37,6 +37,15 @@ var userSchema = new Schema({
     need: {
         type: [String]
     },
+    street: {
+        type: [String]
+    },
+    city: {
+        type: [String]
+    },
+    state: {
+        type: [String]
+    },
     updated: { type: Date, default: Date.now }
 });
 

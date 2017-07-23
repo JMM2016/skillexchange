@@ -21,6 +21,10 @@ var User = React.createClass({
                     <input type="text" name="firstname" placeholder="first name"/>
                     <input type="text" name="have" placeholder="have"/>
                     <input type="text" name="need" placeholder="need"/>
+                    <div></div>
+                    <input type="text" name="street" placeholder="Street"/>
+                    <input type="text" name="city" placeholder="City"/>
+                    <input type="text" name="state" placeholder="State"/>
                     {/*</label>*/}
                     <input type="submit" value="Submit"/>
                 </form>

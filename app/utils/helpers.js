@@ -8,8 +8,8 @@ var APIKey = "9b3adf57854f4a19b7b5782cdd6e427a";
 var helpers = {
 
     // This will return all users from our database
-    allUserSearch: function () {
-        return axios.get("/api/user/")
+    findUser: function (userID) {
+        return axios.get("/api/user/" + userID)
             .then(function (results) {
                 console.log("user results", results);
                 return results;

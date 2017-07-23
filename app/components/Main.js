@@ -22,6 +22,7 @@ var Main = React.createClass({
                 </div>
                 <Link to="Search" className="btn btn-danger">Search</Link>
                 <Link to="User" className="btn btn-danger">Profile</Link>
+                <Link to="Map" className="btn btn-danger">Map</Link>
                 <p></p>
                 {this.props.children}
 
