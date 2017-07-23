@@ -73,8 +73,6 @@ var Chat = React.createClass({
 		return(
 			<div className="container">
 				<div className="row">
-					<hr/>
-					<h2>Let's chat!</h2>
 					<form name="chatBox" onSubmit={this.handleSubmitMessage}>
 						<div className="row">
 							<div className="col-md-1">
