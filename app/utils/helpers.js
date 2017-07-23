@@ -1,11 +1,36 @@
 // Include the Axios library for HTTP requests
-var axios = require("axios");
-
-// NYT API Key (Replace with your own API Key)
-// var APIKey = "9b3adf57854f4a19b7b5782cdd6e427a";
+import axios from 'axios';
 
 // Helper Functions
-var helpers = {
+const helpers = {
+
+    // This will return all users from our database
+    findUser: function (userID) {
+        return axios.get("/api/user/" + userID)
+            .then(function (results) {
+                console.log("user results", results);
+                return results;
+            });
+    },
+
+    // This will return all users from our database
+    haveSearch: function (newQuery) {
+        return axios.get("/api/need/" + newQuery)
+            .then(function (results) {
+                console.log("have results", results);
+                return results;
+            });
+    },
+
+    // This will return all users from our database
+    needSearch: function (newQuery) {
+        console.log("helper need clicked")
+        return axios.get("/api/have/" + newQuery)
+            .then(function (results) {
+                console.log("need results", results);
+                return results;
+            });
+    },
 
     // New users sign up
     signUp: function (email, password, firstName, lastName) {
@@ -61,19 +86,12 @@ var helpers = {
             message_body: msg
         };
        
-        return axios.post("/api/chat", newChat)
+        return axios.post("api/chat", newChat)
             .then(function(data) {
                 console.log("post chat data", data);
                 return data
         });
     }
-
-
-
-
-
 };
-
-
 // We export the helpers function
 module.exports = helpers;

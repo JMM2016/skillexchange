@@ -1,36 +1,32 @@
 // Include React as a dependency
-var React = require("react");
+import React from 'react';
 // Including the Link component from React Router to navigate within our application without full page reloads
 // https://github.com/ReactTraining/react-router/blob/master/docs/API.md#link
-var Link = require("react-router").Link;
-
+// import Link from 'react-router';
+import { Link } from 'react-router'
 
 // Create the Main component
-var Main = React.createClass({
+export default React.createClass({
 
-  
-
-    render: function () {
-
-        // var needSearched = $('#needSearched').val()
-        // console.log(needSearched)
+    render() {
 
         return (
+
             <div className="container">
                 <div className="jumbotron">
                     <h2 className="text-center"><strong>Bartering is BACK!</strong></h2>
                     <h3 className="text-center">Money holds no sway</h3>
                 </div>
-                <div className="row">
 
-                    {/* This code will dump the correct Child Component */}
-                    {this.props.children}
-                   
-                </div>
+                    <Link to="/search" className="btn btn-danger">Search</Link>
+                    <Link to="/user" className="btn btn-danger">Profile</Link>
+                    <Link to="/map" className="btn btn-danger">Map</Link>
+
+                <p></p>
+                {this.props.children}
             </div>
-        );
+        )
     }
 });
 
-// Export the module back to the route
-module.exports = Main;
+

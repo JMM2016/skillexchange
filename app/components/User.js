@@ -15,7 +15,7 @@ export default React.createClass({
                 <form action="/api/user" method="post">
                     {/*<label>*/}
                     {/*Name:*/}
-                   
+                    <input type="text" name="firstname" placeholder="first name"/>
                     <input type="text" name="have" placeholder="have"/>
                     <input type="text" name="need" placeholder="need"/>
                     <div></div>

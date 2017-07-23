@@ -6,7 +6,7 @@ var jwt = require('jsonwebtoken');
 
 
 // Load models
-var User = require('../models/user');  
+var User = require('../../server/User');
 var Chat = require('../models/chat'); 
 
 // Export the routes for our app to use
@@ -124,45 +124,6 @@ module.exports = function(app) {
     res.redirect('/');
     console.log("You here??")
   });
-
-
-  apiRoutes.post('/user', function (req, res) {
-
-    var user = new User();
-    
-    user.have = req.body.have;
-    user.need = req.body.need;
-    user.street = req.body.street;
-    user.city = req.body.city;
-    user.state = req.body.state;
-    // ... and save new user...
-    user.save(function (err) {
-        if (err)
-            res.send(err);
-        res.json({message: 'User created!'});
-    });
-  });
-
-//   apiRoutes.get("need/:need_searched", function(req, res) {
-//     User.find({need: req.params.need_searched}, function (err, user) {
-//         if (err)
-//             res.send(err);
-//         console.log(err);
-//         res.json(user);
-//         console.log(user);
-//     });
-//   });
-
-//   apiRoutes.get("/have/:have_searched", function (req, res) {
-//     User.find({have: req.params.have_searched}, function (err, user) {
-//         if (err)
-//             res.send(err);
-//         console.log(err);
-//         res.json(user);
-//         console.log(user);
-//     });
-// });
-
 
 
   // Protect chat routes with JWT
