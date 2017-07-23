@@ -24,6 +24,7 @@ var Profile = React.createClass({
       
       var userToken = localStorage.getItem('userToken');
 
+      
       //I can get all the profile data back, including firstName
       var profileFirstName = data.data.firstName;
       var profileLastName = data.data.lastName;
