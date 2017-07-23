@@ -5,7 +5,9 @@ import $ from 'jquery';
 // import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
 
-
+// Grabs the Routes
+// const routes = require ('./config/routes');
+import routes from './config/routes';
 
 
 
@@ -17,7 +19,7 @@ import $ from 'jquery';
 // // Import pages
 // import LandingPage from "./pages/landing";
 // import MainPage from "./pages/main";
-import LogInPage from "./pages/login";
+// import LogInPage from "./pages/login";
 
 // const app = (
 // 	<Router>
@@ -36,9 +38,10 @@ import LogInPage from "./pages/login";
 // This code here allows us to render our main component (in this case "Main")
 ReactDOM.render(
 	// <MainPage />,
-	<LogInPage />,
+	// <LogInPage />,
 	// <LandingPage />,
 	// app,
+	{routes},
 	document.getElementById("app"),
 	() => {
 		console.timeEnd('react-app')
