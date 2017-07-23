@@ -59,6 +59,7 @@ var Profile = React.createClass({
           <Link to={`/Profile/${this.props.params.id}/Search`}><button className="btn btn-primary">Search</button></Link>
           <Link to={`/Profile/${this.props.params.id}/User`}><button className="btn btn-success">Profile</button></Link>
           <Link to={`/Profile/${this.props.params.id}/Map`}><button className="btn btn-info">Map</button></Link>
+          <Link><button className="btn btn-default">Contract</button></Link>
           <Link to={`/Profile/${this.props.params.id}/Chat`}><button  className="btn btn-warning">Chat</button></Link>
           <Link to="/"><button onClick={this.handleLogout} className="btn btn-danger">Logout</button></Link>
             
