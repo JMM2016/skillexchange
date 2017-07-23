@@ -1,36 +1,31 @@
-// User model
-// ==============
+var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
 
-// Require mongoose
-var mongoose = require("mongoose");
+// Schema defines how the user data will be stored in MongoDB
+var UserSchema = new mongoose.Schema({
 
-// Create a schema class using mongoose's schema method
-var Schema = mongoose.Schema;
-
-// Create the headlineSchema with our schema class
-var userSchema = new Schema({
-    // firstName, a string, must be entered
-    firstName: {
-        type: String
+    email: {
+        type: String,
+        lowercase: true,
+        unique: true,
+        required: true
     },
-    // // lastName, a string, must be entered
-    // lastName: {
-    //     type: String,
-    //     required: true
-    // },
-    // email: {
-    //     type: String,
-    //     required: true
-    // },
-    // age: {
-    //     type: Number,
-    //     min: 18,
-    //     max: 65 },
-    // password: {
-    //     type: String,
-    //     required: true,
-    //     unique: true
-    // },
+    password: {
+        type: String,
+        required: true
+
+    },
+
+    firstName: {
+        type: String,
+        required: true
+    },
+
+    lastName: {
+        type: String,
+        required: true
+    },
+
     have: {
         type: [String]
     },
@@ -46,11 +41,42 @@ var userSchema = new Schema({
     state: {
         type: [String]
     },
-    updated: { type: Date, default: Date.now }
+    updated: {type: Date, default: Date.now}
+
+    // token: {
+    //   type: String
+    // }
 });
 
-// Create the User model using the userSchema
-var User = mongoose.model("User", userSchema);
+// Saves the user's password hashed (plain text password storage is not good)
+UserSchema.pre('save', function (next) {
+    var user = this;
+    if (this.isModified('password') || this.isNew) {
+        bcrypt.genSalt(10, function (err, salt) {
+            if (err) {
+                return next(err);
+            }
+            bcrypt.hash(user.password, salt, function (err, hash) {
+                if (err) {
+                    return next(err);
+                }
+                user.password = hash;
+                next();
+            });
+        });
+    } else {
+        return next();
+    }
+});
 
-// Export the User model
-module.exports = User;
+// Create method to compare password input to password saved in database
+UserSchema.methods.comparePassword = function (pw, cb) {
+    bcrypt.compare(pw, this.password, function (err, isMatch) {
+        if (err) {
+            return cb(err);
+        }
+        cb(null, isMatch);
+    });
+};
+
+module.exports = mongoose.model('User', UserSchema);  

@@ -8,7 +8,7 @@ var Profile = React.createClass({
   getInitialState: function() {
 
     // console.log("profileToken", localStorage.getItem('userToken'));
-    
+
     return {
       firstName: "",
     }
@@ -19,9 +19,9 @@ var Profile = React.createClass({
     // console.log('this.props.params.id', this.props.params.id)
 
     var profileId = this.props.params.id;
-  
+
     helpers.verifyProfile(profileId).then(function(data) {
-      
+
       var userToken = localStorage.getItem('userToken');
 
       //I can get all the profile data back, including firstName

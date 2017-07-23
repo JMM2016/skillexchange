@@ -4,13 +4,7 @@ import React from 'react';
 import {render} from 'react-dom';
 
 // Include the react-router module
-import {Router, Route, hashHistory} from 'react-router';
-
-// Include the Router component
-import Router from 'router.Router'
-
-//  Include the IndexRoute (catch-all route)
-const IndexRoute = router.IndexRoute;
+import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 
 // Reference the high-level components
 import Main from "../components/Main";

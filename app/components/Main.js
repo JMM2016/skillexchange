@@ -5,8 +5,6 @@ import React from 'react';
 // import Link from 'react-router';
 import { Link } from 'react-router'
 
-// var Link = require("react-router").Link;
-
 // Create the Main component
 export default React.createClass({
 
@@ -32,5 +30,3 @@ export default React.createClass({
 });
 
 
-// Export the module back to the route
-module.exports = Main;

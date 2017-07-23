@@ -6,7 +6,7 @@ var jwt = require('jsonwebtoken');
 
 
 // Load models
-var User = require('../models/user');  
+var User = require('../../server/User');
 var Chat = require('../models/chat'); 
 
 // Export the routes for our app to use
