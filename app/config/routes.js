@@ -1,15 +1,19 @@
 // Include the React library
-import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route, hashHistory } from 'react-router'
 import Main from '../pages/main';
 import Home from '../pages/home';
-import Login from '../pages/login';
+import LogIn from '../pages/login';
 
 
 // Export the Routes
 module.exports = (
-  <Route path="/" component={Home}>
-  <IndexRoute component={Login}/>
-  <Route path="/login" component={Login}
-    <Route path=""
+	<Router history={hashHistory}>
+    <Route path="/" component={Home}>
+      <Route path="/main" component={Main}/>
+      <Route path="/home" component={Home}/>
+      <Route path="/login" component={LogIn}/>
+    </Route>
+  </Router>
 );
