@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Helper Functions
-export const helpers = {
+const helpers = {
 
     // This will return all users from our database
     findUser: function (userID) {
@@ -24,11 +24,14 @@ export const helpers = {
 
     // This will return all users from our database
     needSearch: function (newQuery) {
+        console.log("helper need clicked")
         return axios.get("/api/have/" + newQuery)
             .then(function (results) {
                 console.log("need results", results);
                 return results;
             });
     },
-};
+}
+
+module.exports=helpers;
 

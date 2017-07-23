@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import GMap from './MapFiles/GMap';
 
-let Map = React.createClass({
+class Map extends React.Component{
   get basicSettings() {
     return {
       initialCenter: {
@@ -11,13 +11,13 @@ let Map = React.createClass({
       },
       initialZoom: 12,
     }
-  },
+  }
 
   get autocenterSettings() {
     let settings = this.basicSettings;
     settings.snapToUserLocation = true;
     return settings;
-  },
+  }
 
   get brandedWithMarkerSettings() {
     let settings = this.basicSettings;
@@ -49,7 +49,7 @@ let Map = React.createClass({
       }
     ]
     return settings;
-  },
+  }
 
   get multipleMarkersSettings() {
     let settings = this.basicSettings;
@@ -78,7 +78,7 @@ let Map = React.createClass({
       }
     ]
     return settings;
-  },
+  }
 
   get mapWithLegendSettings() {
     let settings = this.multipleMarkersSettings;
@@ -101,7 +101,7 @@ let Map = React.createClass({
     settings.markers[2].icon = 'smile';
     settings.legend = true;
     return settings;
-  },
+  }
 
   render () {
     return (
@@ -130,8 +130,8 @@ let Map = React.createClass({
       </div>
     )
   }
-});
+};
 
-module.exports = Map;
+module.exports = Map
 
 // render(<Map />, document.getElementById('ReactGMapsApp'));
