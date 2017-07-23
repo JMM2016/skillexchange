@@ -1,44 +1,37 @@
 // Include the React library
-var React = require("react");
+import React from 'react';
+
+import { render } from 'react-dom';
 
 // Include the react-router module
-var router = require("react-router");
+import { Router, Route, hashHistory } from 'react-router';
 
-// Include the Route component
-var Route = router.Route;
 
 //  Include the IndexRoute (catch-all route)
-var IndexRoute = router.IndexRoute;
+// const IndexRoute = router.IndexRoute;
 
-// Include the Router component
-var Router = router.Router;
-
-// Include the browserHistory prop to configure client side routing
-// https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#browserhistory
-var browserHistory = router.browserHistory;
-
-// Reference the high-l3evel components
+// Reference the high-level components
 import Main from "../components/Main";
-var Search = require("../components/Search");
-var User = require("../components/User");
-var Map = require("../components/Map");
+import Search from "../components/Search";
+import User from "../components/User";
+import Map from "../components/Map";
 
 
 // Export the Routes
-module.exports = (
+render((
   // High level component is the Router component.
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={Main}>
 
       {/* If user selects Search or Saved show the appropriate component */}
-      <Route path="Search" component={Search} />
-      <Route path="User" component={User} />
-      <Route path="Map" component={Map} />
+      <Route path="/search" component={Search} />
+      <Route path="/user" component={User} />
+      <Route path="/map" component={Map} />
 
 
       {/* If user selects any other path... we get the Home Route */}
-      <IndexRoute component={Search} />
+      {/*<IndexRoute component={Search} />*/}
 
     </Route>
-  </Router>
+  </Router>), document.getElementById('app')
 );

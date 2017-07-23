@@ -1,18 +1,15 @@
 // Include React as a dependency
-var React = require("react");
-
-// Include the Helper (for the saved recall)
-var helpers = require("../utils/helpers");
+import React from 'react';
 
 // Create the Main component
-var User = React.createClass({
+export default React.createClass({
 
-    getInitialState: function () {
+    getInitialState() {
         return {};
     },
 
     // Our render method. Utilizing a few helper methods to keep this logic clean
-    render: function () {
+    render() {
         return (
             <div>
                 <form action="/api/user" method="post">
@@ -32,5 +29,4 @@ var User = React.createClass({
         )
     }
 });
-// Export the module back to the route
-module.exports = User;
+

@@ -3,11 +3,11 @@ var path = require('path');
 var DotenvPlugin = require('webpack-dotenv-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'public');
-var APP_DIR = path.resolve(__dirname, 'app');
+var APP_DIR = path.resolve(__dirname, 'app/config');
 
 var config = {
     context: path.join(__dirname, 'skillexchange'),
-    entry: APP_DIR + '/app.js',
+    entry: APP_DIR + '/routes.js',
     output: {
         path: BUILD_DIR,
         filename: 'bundle.js'

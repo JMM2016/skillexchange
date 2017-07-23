@@ -3,6 +3,15 @@
   "version": "1.0.0",
   "description": "bartering application",
   "main": "server.js",
+  "scripts": {
+    "scripts": {
+      "dev": "node_modules/.bin/webpack-dev-server --output-public-path=/public/",
+      "build": "node_modules/.bin/webpack -p",
+      "test": "mocha test/Gmap.test.js --opts test/mocha.opts",
+      "start": "node server.js",
+      "watch": "webpack -w"
+    }
+  },
   "dependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
@@ -40,15 +49,7 @@
     "nodemon": "^1.11.0",
     "webpack": "^2.7.0"
   },
-  "scripts": {
-    "scripts": {
-      "dev": "node_modules/.bin/webpack-dev-server --output-public-path=/public/",
-      "build": "node_modules/.bin/webpack -p",
-      "test": "mocha test/Gmap.test.js --opts test/mocha.opts",
-      "start": "node server.js",
-      "watch": "webpack -w"
-    }
-  },
+
   "author": "",
   "license": "ISC"
 }

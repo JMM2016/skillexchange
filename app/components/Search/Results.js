@@ -1,19 +1,16 @@
 // Include React as a dependency
-var React = require("react");
-
-// Include our helpers for API calls
-var helpers = require("../../utils/helpers");
+import React from 'react';
 
 // Results Component Declaration
-var Results = React.createClass({
+export default React.createClass({
 
-    getInitialState: function () {
+    getInitialState() {
         return {
             name: ""
         };
     },
 
-    renderNeed: function () {
+    renderNeed() {
         console.log("RENDER NEED")
         var needSearched = this.props.need_query
 
@@ -67,7 +64,7 @@ var Results = React.createClass({
         }
     },
 
-    renderHave: function () {
+    renderHave() {
 
         var haveSearched = this.props.have_query;
 
@@ -123,7 +120,7 @@ var Results = React.createClass({
         }
     },
 
-    render: function () {
+    render() {
 
         return (
             <div className="main-container">
@@ -164,5 +161,3 @@ var Results = React.createClass({
     }
 });
 
-// Export the module back to the route
-module.exports = Results;

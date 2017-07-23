@@ -185,7 +185,7 @@ export default class GMap extends React.Component {
         return (
             <div className="GMap">
               <Script
-                  url="http://maps.googleapis.com/maps/api/js?key=AIzaSyCJQWaVatRNfq9rCnOzTDSLGNki7Z4MGQk"
+                  url={url}
                   onCreate={this.handleScriptCreate.bind(this)}
                   onError={this.handleScriptError.bind(this)}
                   onLoad={this.handleScriptLoad.bind(this)}

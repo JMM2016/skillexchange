@@ -1,18 +1,18 @@
 // Include React as a dependency
-var React = require("react");
+import React from 'react';
 
 // Include the Query and Results components
-var Query = require("./Search/Query");
-var Results = require("./Search/Results");
+import Query from "./Search/Query";
+import Results from "./Search/Results";
 
 // Include the helpers for making API calls
-var helpers = require("../utils/helpers");
-var geocodeHelper = require("../utils/geocodeHelper");
+import helpers from "../utils/helpers";
+import geocodeHelper from "../utils/geocodeHelper";
 
 // Create the Search component
-var Search = React.createClass({
+export default React.createClass({
 
-    getInitialState: function () {
+    getInitialState() {
         return {
             need_results: {},
             have_results: {},
@@ -21,7 +21,7 @@ var Search = React.createClass({
         };
     },
 
-    google: function() {
+    google() {
         // If we have a new search term, run a new search
 
             helpers.findUser("5973a044fd0514115903e06c").then(function(results){
@@ -39,7 +39,7 @@ var Search = React.createClass({
                 }.bind(this));
     },
 
-    setQuery: function (newQuery, isNeed) {
+    setQuery(newQuery, isNeed) {
         if(isNeed) {
             helpers.needSearch(newQuery).then(function (data) {
                 this.setState({need_query: newQuery});
@@ -54,7 +54,7 @@ var Search = React.createClass({
     },
 
     // Render the component. Note how we deploy both the Query and the Results Components
-    render: function () {
+    render() {
         console.log("COMPONENT RENDERED");
 
         return (
@@ -68,6 +68,3 @@ var Search = React.createClass({
         );
     }
 });
-
-// Export the module back to the route
-module.exports = Search;

@@ -1,11 +1,8 @@
 // Include the Axios library for HTTP requests
-var axios = require("axios");
-
-// NYT API Key (Replace with your own API Key)
-var APIKey = "9b3adf57854f4a19b7b5782cdd6e427a";
+import axios from 'axios';
 
 // Helper Functions
-var helpers = {
+export const helpers = {
 
     // This will return all users from our database
     findUser: function (userID) {
@@ -35,6 +32,3 @@ var helpers = {
     },
 };
 
-
-// We export the helpers function
-module.exports = helpers;
