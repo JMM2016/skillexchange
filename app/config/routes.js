@@ -23,9 +23,9 @@ var browserHistory = router.browserHistory;
 
 // Reference the high-level components
 import Main from "../components/Main";
-import Search from "../components/Search";
-import User from "../components/User";
-import Map from "../components/Map";
+import Search from "../components/children/grandchildren/Search";
+import User from "../components/children/grandchildren/User";
+import Map from "../components/children/grandchildren/Map";
 import Account from "../components/children/Account";
 import Signup from "../components/children/grandchildren/Signup";
 import Login from "../components/children/grandchildren/Login";
@@ -42,13 +42,13 @@ render((
                 <Route path="Login" component={Login}/>
             </Route>
             <Route path="Profile/:id" component={Profile}>
+                <Route path="Search" component={Search}/>
+                <Route path="User" component={User}/>
+                <Route path="Map" component={Map}/>
                 <Route path="Chat" component={Chat}/>
             </Route>
             {/* If user selects Search or Saved show the appropriate component */}
-            <Route path="/search" component={Search}/>
-            <Route path="/user" component={User}/>
-            <Route path="/map" component={Map}/>
-
+            
             {/* If user selects any other path... we get the Home Route */}
             <IndexRoute component={Account}/>
         </Route>

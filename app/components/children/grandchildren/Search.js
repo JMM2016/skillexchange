@@ -1,13 +1,14 @@
 // Include React as a dependency
 import React from 'react';
 
+var browseHistory = require("react-router").browseHistory;
 // Include the Query and Results components
 import Query from "./Search/Query";
 import Results from "./Search/Results";
 
 // Include the helpers for making API calls
-import helpers from "../utils/helpers";
-import geocodeHelper from "../utils/geocodeHelper";
+import helpers from "../../../utils/helpers";
+import geocodeHelper from "../../../utils/geocodeHelper";
 
 // Create the Search component
 export default React.createClass({

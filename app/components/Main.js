@@ -18,11 +18,7 @@ export default React.createClass({
                     <h3 className="text-center">Money holds no sway</h3>
                 </div>
 
-                    <Link to="/search" className="btn btn-danger">Search</Link>
-                    <Link to="/user" className="btn btn-danger">Profile</Link>
-                    <Link to="/map" className="btn btn-danger">Map</Link>
-
-                <p></p>
+             
                 {this.props.children}
             </div>
         )

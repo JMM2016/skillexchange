@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import GMap from './MapFiles/GMap';
+import GMap from '../../MapFiles/GMap';
+var browseHistory = require("react-router").browseHistory;
 
 class Map extends React.Component{
   get basicSettings() {

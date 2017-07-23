@@ -1,5 +1,6 @@
 // Include React as a dependency
 import React from 'react';
+var browseHistory = require("react-router").browseHistory;
 
 // Create the Main component
 export default React.createClass({
