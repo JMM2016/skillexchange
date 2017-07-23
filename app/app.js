@@ -1,8 +1,8 @@
 // Include the Main React Dependencies
 import React from 'react';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
 import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
+// import { Router, Route, hashHistory } from 'react-router';
 
 import $ from 'jquery';
 // import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
@@ -20,9 +20,9 @@ import routes from './config/routes';
 // import Layout from './layout/layout';
 
 // // Import pages
-import Home from './pages/home'
-import Main from './pages/main'
-import LogIn from './pages/login'
+// import Home from './pages/home'
+// import Main from './pages/main'
+// import LogIn from './pages/login'
 // import LandingPage from "./pages/landing";
 // import MainPage from "./pages/main";
 // import LogInPage from "./pages/login";

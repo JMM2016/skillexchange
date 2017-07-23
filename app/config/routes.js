@@ -10,10 +10,11 @@ import LogIn from '../pages/login';
 // Export the Routes
 module.exports = (
 	<Router history={hashHistory}>
-    <Route path="/" component={Home}>
-      <Route path="/main" component={Main}/>
+    <Route path="/" component={Main}>
+      <Route path="/main" component={Main}>
       <Route path="/home" component={Home}/>
       <Route path="/login" component={LogIn}/>
+      </Route>
     </Route>
   </Router>
 );

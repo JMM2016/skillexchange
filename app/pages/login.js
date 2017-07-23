@@ -13,6 +13,7 @@ export default class LogIn extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+
 	handleSubmit(event) {
     event.preventDefault();
     console.log("CLICK");
@@ -21,7 +22,7 @@ export default class LogIn extends React.Component {
 	render () {
 		return (
 			<div className="container">
-				<h1 className="jumbotron">this is the login aka.Repos page!</h1>
+				<h1 className="jumbotron">WELCOME</h1>
 				<form className="form-horizontal" onSubmit={this.handleSubmit}>
 				  <div className="form-group">
 				    <label htmlFor="inputEmail3" className="col-sm-2 control-label">Email</label>
