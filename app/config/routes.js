@@ -32,7 +32,8 @@ import Profile from "../components/children/Profile";
 import Chat from "../components/children/grandchildren/Chat";
 
 // Export the Routes
-render((
+module.exports = (
+// render((
     // High level component is the Router component.
     <Router history={browserHistory}>
         <Route path="/" component={Main}>
@@ -51,5 +52,6 @@ render((
             {/* If user selects any other path... we get the Home Route */}
             <IndexRoute component={Account}/>
         </Route>
-    </Router>), document.getElementById('app')
+    </Router>
+    // ), document.getElementById('app')
 );

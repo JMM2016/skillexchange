@@ -66,24 +66,6 @@ module.exports = {
                     loader: 'image-webpack-loader'
                 }]
             },
-            // {
-            //     test: /\.png$/,
-            //     use: [{
-            //         loader: "url-loader?limit=100000",
-            //         // query: {
-            //         //     name: 'img/[name].[ext]'
-            //         // }
-            //     }]
-            // },
-            // {
-            //     test: /\.jpg$/,
-            //     use: [{
-            //         loader: "url-loader",
-            //         query: {
-            //             name: 'img/[name].[ext]'
-            //         }
-            //     }]
-            // },
             {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{
@@ -122,20 +104,7 @@ module.exports = {
             {
                 test: /\.eot/,
                  loader: 'url-loader?mimetype=application/vnd.ms-fontobject'
-                // test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                // // include: /(src\/fonts|node_modules)/,
-                // // use: [{
-                // //     loader: 'file-loader'
-                // //     query: {
-                // //         name: 'fonts/[name].[ext]'
-                // //     }
-                // // }]
-                // loader: 'file-loder'
             },
-            // {
-            //     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-            //     loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
-            // },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 include: /(src\/fonts|node_modules)/,
