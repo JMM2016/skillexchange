@@ -134,50 +134,32 @@ app.get("/api/have/:have_searched", function (req, res) {
 });
 
 app.put("/api/update/:user_id", function (req, res) {
+    // This would likely be inside of a PUT request, since we're updating an existing document, hence the req.params.todoId.
+// Find the existing resource by ID
     User.findById(req.params.user_id, function (err, data) {
+        // Handle any possible database errors
         if (err) {
-            response = {"error": true, "message": "Error fetching data"}
+            res.status(500).send(err);
         } else {
-            if (req.body.firstName !== undefined) {
-                data.firstName = "bloopp"
-                res.json(data)
-            }
+            // Update each attribute with any possible attribute that may have been submitted in the body of the request
+            // If that attribute isn't in the request body, default back to whatever it was before.
+            data.street = req.body.street
+            data.city = req.body.city
+            data.state = req.body.state
+            data.need = req.body.need
+            data.have = req.body.have
+
+            // Save the updated document back to the database
+            data.save({ validateBeforeSave: false }, function (err, update) {
+                if (err) {
+                    res.status(500).send(err)
+                }
+                res.send(update);
+            });
         }
-    })
+    });
 });
-//         { firstName: 'req.body.firstname' }, { $set: { name: 'jason borne' }}, options, function (err, user){
-//         if (err)
-//             res.send(err);
-//         console.log(err);
-//         res.json(user);
-//         console.log(user);
-//     })
-// }
-//
-// mongoOp.findById(req.params.id,function(err,data){
-//     if(err) {
-//         response = {"error" : true,"message" : "Error fetching data"};
-//     } else {
-//         // we got data from Mongo.
-//         // change it accordingly.
-//         if(req.body.userEmail !== undefined) {
-//             // case where email needs to be updated.
-//             data.userEmail = req.body.userEmail;
-//         }
-//         if(req.body.userPassword !== undefined) {
-//             // case where password needs to be updated
-//             data.userPassword = req.body.userPassword;
-//         }
-//         // save the data
-//         data.save(function(err){
-//             if(err) {
-//                 response = {"error" : true,"message" : "Error updating data"};
-//             } else {
-//                 response = {"error" : false,"message" : "Data is updated for "+req.params.id};
-//             }
-//             res.json(response);
-//         })
-//     }
+
 
 // Any non API GET routes will be directed to our React App and handled by React Router
 

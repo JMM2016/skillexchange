@@ -33,13 +33,13 @@ var UserSchema = new mongoose.Schema({
         type: [String]
     },
     street: {
-        type: [String]
+        type: String
     },
     city: {
-        type: [String]
+        type: String
     },
     state: {
-        type: [String]
+        type: String
     },
     updated: {type: Date, default: Date.now}
 
