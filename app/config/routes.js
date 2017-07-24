@@ -4,7 +4,7 @@ import React from 'react';
 import {render} from 'react-dom';
 
 // Include the react-router module
-import {Router, Route, hashHistory, IndexRoute} from 'react-router';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 
 // Reference the high-level components
 import Main from "../components/Main";
@@ -20,7 +20,7 @@ import Chat from "../components/children/grandchildren/Chat";
 // Export the Routes
 render((
     // High level component is the Router component.
-    <Router history={hashHistory}>
+    <Router history={browserHistory}>
         <Route path="/" component={Main}>
             <Route path="Account" component={Account}>
                 <Route path="Signup" component={Signup}/>

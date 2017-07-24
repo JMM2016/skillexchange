@@ -12,17 +12,17 @@ export default React.createClass({
     render() {
         return (
             <div>
-                <form action="/api/user" method="post">
-                    {/*<label>*/}
-                    {/*Name:*/}
-                    <input type="text" name="firstname" placeholder="first name"/>
+                <form action="/api/update/" method="put">
                     <input type="text" name="have" placeholder="have"/>
+                    <br/>
                     <input type="text" name="need" placeholder="need"/>
-                    <div></div>
+                    <br/>
                     <input type="text" name="street" placeholder="Street"/>
+                    <br/>
                     <input type="text" name="city" placeholder="City"/>
+                    <br/>
                     <input type="text" name="state" placeholder="State"/>
-                    {/*</label>*/}
+                    <br/>
                     <input type="submit" value="Submit"/>
                 </form>
             </div>

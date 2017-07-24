@@ -42,6 +42,7 @@ export default class GMap extends React.Component {
     }
 
     loadMap() {
+        console.log("LOAD MAP")
         const {config} = this.props;
         if (this.state.scriptLoaded) {
             if (config && config.snapToUserLocation && navigator.geolocation) {
@@ -181,7 +182,7 @@ export default class GMap extends React.Component {
     }
 
     render() {
-        let url = "http://maps.googleapis.com/maps/api/js?key=AIzaSyCJQWaVatRNfq9rCnOzTDSLGNki7Z4MGQk"
+        let url = "http://maps.googleapis.com/maps/api/js?key=AIzaSyDmzQBWyl_FO7eWW4WANGpcferD0t7moqE"
         return (
             <div className="GMap">
               <Script

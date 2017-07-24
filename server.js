@@ -3,7 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-var passport = require('passport'); 
+var passport = require('passport');
 var config = require('./app/config/passportSecret');
 // Create Instance of Express
 var app = express();
@@ -18,17 +18,24 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
 
-{/*<<<<<<< HEAD*/}
-{/*app.use(router)*/}
+{/*<<<<<<< HEAD*/
+}
+{/*app.use(router)*/
+}
 
-{/*app.use(express.static("./public"));*/}
+{/*app.use(express.static("./public"));*/
+}
 
-{/*// Require our routes files and pass our router object*/}
-{/*// require("./config/userRoutes")(router);*/}
+{/*// Require our routes files and pass our router object*/
+}
+{/*// require("./config/userRoutes")(router);*/
+}
 
-{/*app.use('/api', router);*/}
+{/*app.use('/api', router);*/
+}
 
-{/*=======*/}
+{/*=======*/
+}
 app.use(express.static("./public"));
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
@@ -94,7 +101,7 @@ app.get('/api/user', function (req, res) {
 })
 
 // Find specific user
-app.get('/api/user/:user_id',function (req, res) {
+app.get('/api/user/:user_id', function (req, res) {
     User.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);
@@ -126,17 +133,63 @@ app.get("/api/have/:have_searched", function (req, res) {
     });
 });
 
+app.put("/api/update/:user_id", function (req, res) {
+    User.findById(req.params.user_id, function (err, data) {
+        if (err) {
+            response = {"error": true, "message": "Error fetching data"}
+        } else {
+            if (req.body.firstName !== undefined) {
+                data.firstName = "bloopp"
+                res.json(data)
+            }
+        }
+    })
+});
+//         { firstName: 'req.body.firstname' }, { $set: { name: 'jason borne' }}, options, function (err, user){
+//         if (err)
+//             res.send(err);
+//         console.log(err);
+//         res.json(user);
+//         console.log(user);
+//     })
+// }
+//
+// mongoOp.findById(req.params.id,function(err,data){
+//     if(err) {
+//         response = {"error" : true,"message" : "Error fetching data"};
+//     } else {
+//         // we got data from Mongo.
+//         // change it accordingly.
+//         if(req.body.userEmail !== undefined) {
+//             // case where email needs to be updated.
+//             data.userEmail = req.body.userEmail;
+//         }
+//         if(req.body.userPassword !== undefined) {
+//             // case where password needs to be updated
+//             data.userPassword = req.body.userPassword;
+//         }
+//         // save the data
+//         data.save(function(err){
+//             if(err) {
+//                 response = {"error" : true,"message" : "Error updating data"};
+//             } else {
+//                 response = {"error" : false,"message" : "Data is updated for "+req.params.id};
+//             }
+//             res.json(response);
+//         })
+//     }
+
 // Any non API GET routes will be directed to our React App and handled by React Router
 
-app.use(passport.initialize());  
+app.use(passport.initialize());
 
-require('./app/config/passport')(passport);  
+require('./app/config/passport')(passport);
 
 //Do i still need to require the apiRoutes? 
 // Or does react w/ helpers.js will do the job instead?
 require('./app/config/apiRoutes')(app);
 
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
     res.sendFile(__dirname + "/public/index.html");
 });
 

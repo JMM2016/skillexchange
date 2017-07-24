@@ -4,24 +4,24 @@ var bcrypt = require('bcrypt');
 // Schema defines how the user data will be stored in MongoDB
 var UserSchema = new mongoose.Schema({
 
-    email: {
-        type: String,
-        lowercase: true,
-        unique: true,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-
-    },
-
     firstName: {
         type: String,
         required: true
     },
 
     lastName: {
+        type: String,
+        required: true
+    },
+
+    email: {
+        type: String,
+        lowercase: true,
+        unique: true,
+        required: true
+    },
+
+    password: {
         type: String,
         required: true
     },
@@ -43,9 +43,6 @@ var UserSchema = new mongoose.Schema({
     },
     updated: {type: Date, default: Date.now}
 
-    // token: {
-    //   type: String
-    // }
 });
 
 // Saves the user's password hashed (plain text password storage is not good)
