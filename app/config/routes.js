@@ -32,6 +32,8 @@ import Login from "../components/children/grandchildren/Login";
 import Profile from "../components/children/Profile";
 import Chat from "../components/children/grandchildren/Chat";
 
+
+
 // Export the Routes
 render((
     // High level component is the Router component.
@@ -45,7 +47,7 @@ render((
                 <Route path="Search" component={Search}/>
                 <Route path="User" component={User}/>
                 <Route path="Map" component={Map}/>
-                <Route path="Chat" component={Chat}/>
+                <Route path="Chat" component={Chat} />
             </Route>
             {/* If user selects Search or Saved show the appropriate component */}
             

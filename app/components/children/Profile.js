@@ -28,21 +28,17 @@ var Profile = React.createClass({
       var profileFirstName = data.data.firstName;
       var profileLastName = data.data.lastName;
       var profileUserName = data.data.userName;
-      console.log("ffffff", this.state.userName);
 
       this.setState({
         firstName: profileFirstName,
         lastName: profileLastName,
         userName: profileUserName,
         token: userToken
-
       });
 
-   
+      console.log("ffffff", this.state.userName);
 
     }.bind(this));
-
-
   },
 
   handleLogout: function() {

@@ -18,7 +18,8 @@ export default React.createClass({
                     <h3 className="text-center">Money holds no sway</h3>
                 </div>
 
-             
+                    
+                <p></p>
                 {this.props.children}
             </div>
         )

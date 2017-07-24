@@ -131,31 +131,32 @@ module.exports = function(app) {
 
   // Protect chat routes with JWT
   // POST to create a new message from the authenticated user
-  apiRoutes.post('/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
+  apiRoutes.post('/profile/:id/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
 
     console.log("xxxx", req.body)
     
-    var chat = new Chat();
-        chat.from = req.user._id;
-        chat.to = req.body.to;
-        chat.message_body = req.body.message_body;
+    var newChat = new Chat({
+      from: req.body.from,
+      to: req.body.to,
+      message_body: req.body.message_body
+    });
+   
+    // Save the chat message if there are no errors
+    newChat.save(function(err) {
+        if (err)
+            res.send(err);
 
-        // Save the chat message if there are no errors
-        chat.save(function(err) {
-            if (err)
-                res.send(err);
+        console.log("message", req.body.message_body);
+        res.json({ 
 
-            console.log("message", req.body.message_body);
-            res.json({ 
-
-              message: req.body.message_body 
-            });
+          message: req.body.message_body 
         });
+    });
   });
 
 
   // GET messages for authenticated user
-  apiRoutes.get('/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
+  apiRoutes.get('/profile/:id/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
     
     Chat.find({$or : [{'to': req.user._id}, {'from': req.user._id}]}, function(err, messages) {
       if (err)

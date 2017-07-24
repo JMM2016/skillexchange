@@ -1,8 +1,9 @@
 var React = require("react");
-
+import axios from 'axios';
+import Message from "./Message/Message";
 var browseHistory = require("react-router").browseHistory;
-
 var helpers = require("../../../utils/helpers");
+
 
 var Chat = React.createClass({
 
@@ -13,25 +14,16 @@ var Chat = React.createClass({
   
     	var userToken = localStorage.getItem('userToken');
     	console.log("chatToken", userToken);
-		
+	
+        axios.defaults.headers.common['Authorization'] = userToken;
+ 
 		var chatProfileId = this.props.params.id;
 
 		return {
-			from: chatProfileId,
+			from: "",
 			to: "",
 			message_body: ""
 		};
-	},
-
-	sendAuth: function() {
-
-		console.log("profileToken", localStorage.getItem('userToken'));
-  
-    	var userToken = localStorage.getItem('userToken');
-    	console.log("chatToken", userToken)
-
-		let config = {"Authorization": userToken}
-
 	},
 
 
@@ -49,19 +41,24 @@ var Chat = React.createClass({
 		});
 	},
 
-	handleSubmitMessage: function(sender, receiver, msg) {
+	handleSubmitMessage: function(event) {
 		event.preventDefault();
-		console.log("receiver", this.state.receiver);
-		console.log("message", this.state.message);
+		console.log("receiver", this.state.to);
+		console.log("message", this.state.message_body);
 
-		var sender = this.props.firstName;
-		console.log("message sender", sender)
-		var receiver = this.state.receiver;
-		var msg = this.state.message
-		debugger
+		var sender = this.props.params.id
+		console.log("postChat sender", this.props.params.id)
+		var receiver = this.state.to;
+		var msg = this.state.message_body;
+		
+		// debugger 
 		helpers.postChat(sender, receiver, msg).then(function(data) {
 			
-			return console.log("submitMessage", data)
+			this.setState({
+				from: sender,
+				to: receiver,
+				message_body: msg
+			})
 
 		}.bind(this));
 	},
@@ -73,25 +70,30 @@ var Chat = React.createClass({
 		return(
 			<div className="container">
 				<div className="row">
-					<form name="chatBox" onSubmit={this.handleSubmitMessage}>
-						<div className="row">
-							<div className="col-md-1">
-								<label>To </label>
-							</div>				
-							<div className="col-md-11">
-                  				<input className="text" name="receiver" type="receiver" value={this.state.receiver} onChange={this.handleChangeReceiver} />
-                  			</div>
-						</div>
-						<div className="row">
-							<div className="col-md-1">
-								<label>Message</label>
+					<div className="col-md-6">
+						<form name="chatBox" onSubmit={this.handleSubmitMessage}>
+							<div className="row">
+								<div className="col-md-2">
+									<label>To </label>
+								</div>				
+								<div className="col-md-10">
+	                  				<input className="text" name="receiver" type="receiver" value={this.state.to} onChange={this.handleChangeReceiver} />
+	                  			</div>
 							</div>
-							<div className="col-md-11">
-								<textarea className="text" name="message" type="message" value={this.state.message} onChange={this.handleChangeMessage} />
+							<div className="row">
+								<div className="col-md-2">
+									<label>Message</label>
+								</div>
+								<div className="col-md-10">
+									<textarea className="text" name="message" type="message" value={this.state.message_body} onChange={this.handleChangeMessage} />
+								</div>
 							</div>
-						</div>
-						<input type="submit" className="btn btn-default btn-primary" value="Send Message" />
-					</form>
+							<input type="submit" className="btn btn-default btn-primary" value="Send Message" />
+						</form>
+					</div>
+					<div className="col-md-6">
+					
+					</div>
 				</div>
 			</div>
 		);
