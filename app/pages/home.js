@@ -16,9 +16,9 @@ export default class Home extends React.Component {
               	<img className="brandImg img-responsive" src="./img/friend.png" alt="Brand" />
               </a>
               <h2 className="navbar-text"> SKILLSHARE</h2>
-              <ul className="navbar-right">
+              <ul className="nav navbar-right navbar-nav">
 	              <button type="button" className="btn btn-default navbar-btn">Sign Up</button>
-	              <p className="navbar-text"><a href="#" className="navbar-link">Sign In</a></p>
+	              <li className="navbar-text"><Link to="/login">Log In</Link></li>
             	</ul>
             </div>
           </div>
