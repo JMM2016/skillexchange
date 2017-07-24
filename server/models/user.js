@@ -16,14 +16,24 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-
   },
-  rating: {
-    type: Number
-  },
-  numOfRatings: {
-    type: Number
-  }
+  rating: Number,
+  numOfRatings: Number,
+  // maybe consider this active Contracts
+  // make unique if only want 1 contract per person
+  contracts: [{
+   // otherUsersEmail: {
+   //   type: String,
+   //   unique: true
+   // }
+   otherUsersEmail: String,
+   title: String,
+   body: String,
+   accepted: { type: Boolean, default: false },
+   dueDate: Date,
+   active: {type: Boolean, default: true}
+   // unique: true
+  }]
 
   // },
   // role: {

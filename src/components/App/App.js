@@ -6,6 +6,7 @@ import {Switch, Route} from 'react-router-dom';
 
 import NavBar from "../Navbar/Navbar"
 import DefaultLayout from '../../layouts/DefaultLayout/DefaultLayout';
+import Contract from '../../forms/Contract/Contract'
 
 class App extends Component {
   render() {
@@ -15,7 +16,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={DefaultLayout}/>
           <Route exact path='/rating' component={RatingContainer}/>
-          {/*<DefaultLayout />*/}
+          <Route exact path='/contract' component={Contract}/>
         </Switch>
       </div>
     );

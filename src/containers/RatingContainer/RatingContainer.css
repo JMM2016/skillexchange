@@ -60,3 +60,7 @@ h1 {
 .rating > input:checked ~ label:hover ~ label {
     color: #FFED85;
 }
+
+.margin-bottom {
+    margin-bottom: 10px;
+}

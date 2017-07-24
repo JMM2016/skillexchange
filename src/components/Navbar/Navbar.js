@@ -5,11 +5,16 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 
+const divStyle = {
+  marginBottom: 15
+}
+
+
 class NavBar extends Component {
   render() {
     return (
 
-        <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
+        <nav className="navbar navbar-toggleable-md navbar-light bg-faded"  style={divStyle}>
           <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                   data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                   aria-label="Toggle navigation">
@@ -20,8 +25,11 @@ class NavBar extends Component {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
+              <li className="nav-item ">
                 <Link to="/">Home</Link> <span className="sr-only">(current)</span>
+              </li>
+              <li className="nav-item">
+                &nbsp;<Link to="/contract">Contract</Link>
               </li>
               <li className="nav-item">
                 &nbsp;<Link to="/rating">Rate-User</Link>
