@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 // import { Router, Route, hashHistory } from 'react-router';
 
 import $ from 'jquery';
-// import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import Bootstrap from 'bootstrap/dist/js/bootstrap.js';
 
 
 // Grabs the Routes

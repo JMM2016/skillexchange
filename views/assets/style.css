@@ -1,14 +1,40 @@
 body{
-	background:red;
+	background-image: url('../img/connect.png');
+	padding-top: 70px;
 }
 
-.jumbotron {
-	background: yellow;
-	font-weight: bold;	
+
+
+.brandImg {
+	width: 30px;
+	height: auto;	
 }
 
-.Home {
-	text-align: center;
-	background-color: yellow;	
+.titlearea {
+	font-weight: bold;
+	color: #2c39da;
+	
+}
 
+.photoArea {
+	padding-bottom: 30px;
+}
+
+
+footer {
+	background-color: #222222;
+	padding-top: 10px;
+	opacity: 0.5;
+}
+
+
+div.transbox h4 {
+	color: #ffffff;
+	padding-bottom: 30px;
+}
+
+footer p {
+	color: #ffffff;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
 }
