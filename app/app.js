@@ -45,8 +45,8 @@ import routes from './config/routes';
 
 // This code here allows us to render our main component (in this case "Main")
 // ReactDOM.render(
-ReactDOM.render(
-	routes
+// ReactDOM.render(
+// 	routes
 	// app,
 	// {routes},
 	// <Router history={hashHistory}>
@@ -54,8 +54,8 @@ ReactDOM.render(
 	// 	<Route path="/login" component={LogIn}/>
 	// 	<Route path="/main" component={Main}/>
 	// </Router>
-	, document.getElementById("app"),
-	() => {
-		console.timeEnd('react-app')
-	}
-);
+// 	, document.getElementById("app"),
+// 	() => {
+// 		console.timeEnd('react-app')
+// 	}
+// );
