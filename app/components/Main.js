@@ -31,8 +31,8 @@ export default React.createClass({
 
             <div id="collapsed-navbar" className="navbar-collapse collapse">
               <ul className="nav navbar-nav navbar-right">
-                <li id="navbar-links"><Link to="/login">Log In</Link></li>
-                <li id="navbar-links"><Link to="/Home">Home</Link></li>                
+                <li id="navbar-links"><Link to="/Account/Signup">Sign Up</Link></li>
+                <li id="navbar-links"><Link to="/Account/Login">Login</Link></li>                
               </ul>
             </div>
           </div>
