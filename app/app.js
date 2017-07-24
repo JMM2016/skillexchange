@@ -4,6 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import { Router, Route, hashHistory } from 'react-router';
 
+import router from 'react-router'
+
 import $ from 'jquery';
 import Bootstrap from 'bootstrap/dist/js/bootstrap.js';
 

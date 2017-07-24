@@ -1,1 +1,14 @@
-/node_modules
+
+.DS_Store
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+benchmarks/*.png
+node_modules
+coverage
+.idea
+dist
