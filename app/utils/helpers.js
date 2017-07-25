@@ -88,9 +88,7 @@ const helpers = {
             to: to,
             message_body: message
         };
-     
-
-        // return axios.post("/api/profile/:id/chat", newChat)
+ 
         return axios.post(`/api/profile/${sender}/chat`, newChat)
             .then(function(data) {
                 console.log("post chat data", data);

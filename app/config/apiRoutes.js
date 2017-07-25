@@ -156,7 +156,6 @@ module.exports = function(app) {
 
   // GET messages for authenticated user
   apiRoutes.get('/profile/:id/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
-  // apiRoutes.get('/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
     Chat.find({}).sort([
       ["date", "ascending"]
     ]).limit(20).exec(function(err, doc) {
@@ -166,7 +165,8 @@ module.exports = function(app) {
       else {
         res.send(doc);
       }
-  });
+    });
+
     // Chat.find({$or : [{'to': req.user._id}, {'from': req.user._id}]}, function(err, messages) {
     //   if (err)
     //       res.send(err);
@@ -175,6 +175,7 @@ module.exports = function(app) {
     //     message: messages.message_body
     //   });
     // });
+    
   });
 
 // Set url for API group routes
