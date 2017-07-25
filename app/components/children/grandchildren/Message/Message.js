@@ -23,8 +23,9 @@ var Message = React.createClass({
               <label>Message</label>
               {/* Here we use a map function to loop through an array in JSX */}
                 {this.props.message.map(function(search, i) {
+                  // console.log("message search", search)
                   return (
-                      <p key={i}>({search.from} to: {search.to}) {search.message_body}</p>
+                      <p key={i}>({search.userName} to {search.to}) {search.message_body}</p>
                   );
                 })}
           </div>

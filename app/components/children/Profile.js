@@ -28,7 +28,9 @@ var Profile = React.createClass({
       var profileFirstName = data.data.firstName;
       var profileLastName = data.data.lastName;
       var profileUserName = data.data.userName;
-      console.log("ffffff", this.state.userName);
+      console.log("ffffff", data.data.userName);
+
+      localStorage.setItem("UserName", profileUserName);
 
       this.setState({
         firstName: profileFirstName,
@@ -36,6 +38,7 @@ var Profile = React.createClass({
         userName: profileUserName,
         token: userToken
       });
+
 
     }.bind(this));
 

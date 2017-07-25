@@ -79,12 +79,13 @@ const helpers = {
         });
     },
 
-    postChat: function(sender, recevier, msg) {
+    postChat: function(sender, recevier, msg, userName) {
 
         var newChat = {
             from: sender,
             to: recevier,
-            message_body: msg
+            message_body: msg,
+            userName: userName
         };
        
         return axios.post(`/api/profile/${sender}/chat`, newChat)

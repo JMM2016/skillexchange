@@ -134,24 +134,35 @@ module.exports = function(app) {
 
   apiRoutes.post('/profile/:id/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
 
-    // console.log("apiRoutes post Chat", req.body)
-    
-    var newChat = new Chat({
-      from: req.body.from,
-      to: req.body.to,
-      message_body: req.body.message_body
-    });
+    console.log("apiRoutes post Chat", req.body.from)
+
+    User.findOne({_id: req.body.from}, function(err, user) {
+      
+      if (err) {
+        throw err
+      } else {
+
+        console.log("apiRoutes post Chat user", user.userName)
+
+        var newChat = new Chat({
+          from: req.body.from,
+          to: req.body.to,
+          message_body: req.body.message_body,
+          userName: req.body.userName
+        });
    
-    // // Save the chat message if there are no errors
-    newChat.save(function(err) {
-        if (err) {
-          res.send(err);
-        } else {
-          res.json({ 
+        // // Save the chat message if there are no errors
+        newChat.save(function(err) {
+          if (err) {
+            res.send(err);
+          } else {
+            res.json({ 
             message: req.body.message_body 
-          });
-        }
-    });
+            });
+          }
+        });
+      }
+    })
   });
 
 
