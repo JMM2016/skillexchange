@@ -42,21 +42,19 @@ export default React.createClass({
             <div>
                 <div>should go under this</div>
                 <div>{this.renderUser()}</div>
-                <form action="/api/user" method="post">
-                    {/*<label>*/}
-                    {/*Name:*/}
-                    <input type="text" name="firstname" placeholder="first name"/>
-                    <input type="text" name="have" placeholder="have"/>
-                    <input type="text" name="need" placeholder="need"/>
-                    <div></div>
-                    <input type="text" name="street" placeholder="Street"/>
-                    <input type="text" name="city" placeholder="City"/>
-                    <input type="text" name="state" placeholder="State"/>
-                    {/*</label>*/}
-                    <input type="submit" value="Submit" onClick={this.updateInfo}/>
-                </form>
-
-
+                    <form action="/api/update/5973902192fde20faa5009e5?_method=PUT" method="post">
+                        <input type="text" name="have" placeholder="have"/>
+                        <br/>
+                        <input type="text" name="need" placeholder="need"/>
+                        <br/>
+                        <input type="text" name="street" placeholder="Street"/>
+                        <br/>
+                        <input type="text" name="city" placeholder="City"/>
+                        <br/>
+                        <input type="text" name="state" placeholder="State"/>
+                        <br/>
+                        <input type="submit" value="Submit"/>
+                    </form>
             </div>
         )
     }
