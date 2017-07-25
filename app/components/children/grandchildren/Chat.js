@@ -93,25 +93,44 @@ var Chat = React.createClass({
 			<div className="container">
 				<div className="row">
 					<div className="col-md-6">
-						<form name="chatBox" onSubmit={this.handleSubmitMessage}>
-							<div className="row">
-								<div className="col-md-2">
-									<label>To </label>
-								</div>				
-								<div className="col-md-10">
-	                  				<input className="text" name="receiver" type="receiver" value={this.state.to} onChange={this.handleChangeReceiver} />
-	                  			</div>
+
+
+						<div className="panel panel-default">
+							<div className="panel-heading">
+								<h3 className="panel-title text-center">Send Message</h3>
 							</div>
-							<div className="row">
-								<div className="col-md-2">
-									<label>Message</label>
-								</div>
-								<div className="col-md-10">
-									<textarea className="text" name="message" type="message" value={this.state.message_body} onChange={this.handleChangeMessage} />
-								</div>
-							</div>
-							<input type="submit" className="btn btn-default btn-primary" value="Send Message" />
-						</form>
+							<div className="panel-body text-center">
+								<form name="chatBox" onSubmit={this.handleSubmitMessage}>
+									<div className="form-group">
+		                  				<input 
+		                  					className="text" 
+		                  					name="receiver" 
+		                  					type="receiver" 
+		                  					value={this.state.to} 
+		                  					onChange={this.handleChangeReceiver} 
+		                  					placeholder="Etner name or email"
+		                  				/>
+		                  				<br />
+								
+										<textarea 
+											className="text" 
+											name="message" 
+											type="message" 
+											value={this.state.message_body} 
+											onChange={this.handleChangeMessage} 
+											placeholder="Write message"
+										/>
+										<br />	
+										<input type="submit" className="btn btn-default btn-primary" value="Send Message" />
+									</div>
+								</form>
+							</div>		
+						</div>
+
+
+
+
+
 					</div>
 					<div className="col-md-6">
 						<Message message={this.state.message} />
