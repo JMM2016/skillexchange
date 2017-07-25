@@ -9,6 +9,12 @@ export default React.createClass({
         return {};
     },
 
+    renderInfo() {
+        return (
+            console.log(this.params.id)
+        )
+    },
+
     // Our render method. Utilizing a few helper methods to keep this logic clean
     render() {
         return (
@@ -26,6 +32,7 @@ export default React.createClass({
                     {/*</label>*/}
                     <input type="submit" value="Submit"/>
                 </form>
+                <div>{this.renderInfo()}</div>
             </div>
         )
     }
