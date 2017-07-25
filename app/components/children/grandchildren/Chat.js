@@ -22,24 +22,38 @@ var Chat = React.createClass({
 		return {
 			from: "",
 			to: "",
-			message_body: ""
+			message_body: "",
+			message: []
 		};
 	},
 
+	
+
 
 	handleChangeReceiver(data) {
-		console.log("receiver", data.target.value)
+		// console.log("receiver", data.target.value)
 		this.setState({
 			to: data.target.value
 		});
 	},
 
 	handleChangeMessage(data) {
-		console.log("message", data.target.value)
+		// console.log("message", data.target.value)
 		this.setState({
 			message_body: data.target.value
 		});
 	},
+
+	componentDidMount: function() {
+		//Get all the chat messages
+		var sender = this.props.params.id;
+
+		helpers.displayChat(sender).then(function(response) {
+      		console.log("compoenentDidMount", response.data);
+        	this.setState({ message: response.data });
+    	}.bind(this));
+	},
+
 
 	handleSubmitMessage: function(event) {
 		event.preventDefault();
@@ -50,16 +64,24 @@ var Chat = React.createClass({
 		console.log("postChat sender", this.props.params.id)
 		var receiver = this.state.to;
 		var msg = this.state.message_body;
-		
-		// debugger 
+	
 		helpers.postChat(sender, receiver, msg).then(function(data) {
 			
 			this.setState({
 				from: sender,
 				to: receiver,
 				message_body: msg
+			});
+
+			this.setState({
+				to: "",
+				message_body: ""
 			})
 
+			helpers.displayChat(sender).then(function(response) {
+      			console.log("compoenentDidMount", response.data);
+        		this.setState({ message: response.data });
+    		}.bind(this));
 		}.bind(this));
 	},
 
@@ -92,7 +114,7 @@ var Chat = React.createClass({
 						</form>
 					</div>
 					<div className="col-md-6">
-					
+						<Message message={this.state.message} />
 					</div>
 				</div>
 			</div>

@@ -133,7 +133,7 @@ module.exports = function(app) {
   // POST to create a new message from the authenticated user
   apiRoutes.post('/profile/:id/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
 
-    console.log("xxxx", req.body)
+    // console.log("apiRoutes post Chat", req.body)
     
     var newChat = new Chat({
       from: req.body.from,
@@ -141,60 +141,41 @@ module.exports = function(app) {
       message_body: req.body.message_body
     });
    
-    // Save the chat message if there are no errors
+    // // Save the chat message if there are no errors
     newChat.save(function(err) {
-        if (err)
-            res.send(err);
-
-        console.log("message", req.body.message_body);
-        res.json({ 
-
-          message: req.body.message_body 
-        });
+        if (err) {
+          res.send(err);
+        } else {
+          res.json({ 
+            message: req.body.message_body 
+          });
+        }
     });
   });
 
 
   // GET messages for authenticated user
   apiRoutes.get('/profile/:id/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
-    
-    Chat.find({$or : [{'to': req.user._id}, {'from': req.user._id}]}, function(err, messages) {
-      if (err)
-        res.send(err);
-
-      res.json(messages);
-    });
+  // apiRoutes.get('/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
+    Chat.find({}).sort([
+      ["date", "ascending"]
+    ]).limit(20).exec(function(err, doc) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        res.send(doc);
+      }
   });
-
-  // DELETE a message
-  apiRoutes.delete('/chat/:message_id', passport.authenticate('jwt', { session: false }), function(req, res) {
-    Chat.findOneAndRemove({$and : [{'_id': req.params.message_id}, {'from': req.user._id}]}, function(err) {
-      if (err)
-        res.send(err);
-
-      res.json({ message: 'Message removed!' });
-    });
+    // Chat.find({$or : [{'to': req.user._id}, {'from': req.user._id}]}, function(err, messages) {
+    //   if (err)
+    //       res.send(err);
+    //   console.log("apiRoutes get Chat", messages)
+    //   res.json({
+    //     message: messages.message_body
+    //   });
+    // });
   });
-  
-
-  // PUT to update a message the authenticated user sent
-  // apiRoutes.put('/chat/:message_id', passport.authenticate('jwt', { session: false }), function(req, res) {
-  //   Chat.findOne({$and : [{'_id': req.params.message_id}, {'from': req.user._id}]}, function(err, message) {
-  //     if (err)
-  //       res.send(err);
-
-  //     message.message_body = req.body.message_body;
-
-  //     // Save the updates to the message
-  //     message.save(function(err) {
-  //       if (err)
-  //         res.send(err);
-
-  //       res.json({ message: 'Message edited!' });
-  //     });
-  //   });
-  // });
-
 
 // Set url for API group routes
   app.use('/api', apiRoutes);

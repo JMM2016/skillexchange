@@ -31,6 +31,7 @@ var Login = React.createClass({
       console.log("userToken", userToken);
       
       localStorage.setItem("userToken", userToken);
+      localStorage.setItem("login localStorage", email);
    
       // debugger
 
@@ -48,6 +49,7 @@ var Login = React.createClass({
   handleChangeEmail(data) {
     // console.log("handleChangeEmail", data.target.value)
     this.setState({email: data.target.value});
+
   },
 
   handleChangePassword(data) {
@@ -62,6 +64,7 @@ var Login = React.createClass({
         console.log("password submitted", this.state.password);
         
         var email = this.state.email;
+
         var password = this.state.password;
 
         this.getLogin(email, password);

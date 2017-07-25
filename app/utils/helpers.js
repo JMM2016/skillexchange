@@ -81,20 +81,37 @@ const helpers = {
 
     
 
-    postChat: function(sender, recevier, msg) {
+    postChat: function(sender, to, message) {
 
         var newChat = {
             from: sender,
-            to: recevier,
-            message_body: msg
+            to: to,
+            message_body: message
         };
-       
+     
+
         // return axios.post("/api/profile/:id/chat", newChat)
         return axios.post(`/api/profile/${sender}/chat`, newChat)
             .then(function(data) {
                 console.log("post chat data", data);
                 return data
-        });
+            });
+    },
+
+    displayChat: function(sender) {
+
+        return axios.get(`/api/profile/${sender}/chat`);
+        
+        var newConvo = {
+            from: sender
+        };
+
+        return axios.get(`/api/profile/${sender}/chat`, newConvo)
+            .then(function(data) {
+                console.log("get chat history", data);
+                return data
+            });
+
     }
 };
 // We export the helpers function
