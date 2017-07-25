@@ -35,10 +35,7 @@ var Profile = React.createClass({
         lastName: profileLastName,
         userName: profileUserName,
         token: userToken
-
       });
-
-   
 
     }.bind(this));
 
@@ -54,26 +51,62 @@ var Profile = React.createClass({
   render: function() {
 
     return (
-        <div>
-          
-          <Link to={`/Profile/${this.props.params.id}/Search`}><button className="btn btn-primary">Search</button></Link>
-          <Link to={`/Profile/${this.props.params.id}/User`}><button className="btn btn-success">Profile</button></Link>
-          <Link to={`/Profile/${this.props.params.id}/Map`}><button className="btn btn-info">Map</button></Link>
-          <Link to={`/Profile/${this.props.params.id}/Chat`}><button  className="btn btn-warning">Chat</button></Link>
-          <Link><button className="btn btn-default">Contract</button></Link>
-          <Link to="/"><button onClick={this.handleLogout} className="btn btn-danger">Logout</button></Link>
-            
+      <div>
+
+        <nav className="navbar navbar-inverse navbar-fixed-top">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
+              <a className="navbar-brand" href="#">
+                <img className="brandImg img-responsive" src="./../img/friend.png" alt="Brand" />
+              </a>
+              <h2 className="navbar-text" style={{color: "#009f9b", fontWeight: "bold"}}> Skillshare</h2>
+            </div>
+
+            <div id="#bs-example-navbar-collapse-1" className="navbar-collapse collapse">
+              <ul className="nav navbar-nav navbar-right">
+                <li id="navbar-links">
+                  <Link to={`/Profile/${this.props.params.id}/User`}>Profile</Link>
+                </li>
+                <li id="navbar-links">
+                  <Link to={`/Profile/${this.props.params.id}/Search`}>Search</Link>
+                </li>
+                <li id="navbar-links">
+                  <Link to={`/Profile/${this.props.params.id}/Map`}>Map</Link>
+                </li>
+                <li id="navbar-links">
+                  <Link to={`/Profile/${this.props.params.id}/Chat`}>Chat</Link>
+                </li>
+                <li id="navbar-links">
+                  <Link>Rate</Link>
+                </li>
+                <button  onClick={this.handleLogout} type="button" className="btn btn-default navbar-btn">
+                  <Link to="/">Logout</Link>
+                </button>       
+              </ul>
+            </div>
+          </div>
+        </nav>
+ 
+        <div className="container-fluid">
+
+          <div className="page-header titlearea text-center">
+            <p>Just testing CSS settings still work. Delete this P tag l8r!</p>
+          </div>
+
           <hr/>
           <h2>Hello {this.state.userName}!</h2> 
           <hr/>
           {this.props.children}
-         
-          
 
-          
-
-          
         </div>
+     
+      </div>
     );
   }
 });
