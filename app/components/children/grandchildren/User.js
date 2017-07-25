@@ -41,8 +41,8 @@ export default React.createClass({
         return (
             <div>
                 <div>should go under this</div>
-                <div>{this.renderUser()}</div>
-                    <form action="/api/update/5973902192fde20faa5009e5?_method=PUT" method="post">
+                {/*<div>{this.renderUser()}</div>*/}
+                    <form action={`/api/update/${this.props.params.id}?_method=PUT`} method="post">
                         <input type="text" name="have" placeholder="have"/>
                         <br/>
                         <input type="text" name="need" placeholder="need"/>
