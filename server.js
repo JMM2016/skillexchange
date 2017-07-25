@@ -5,8 +5,14 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var passport = require('passport'); 
 var config = require('./app/config/passportSecret');
+var methodOverride = require('method-override')
+
+
 // Create Instance of Express
 var app = express();
+
+app.use(methodOverride('_method'))
+
 // Set up an Express Router
 var router = express.Router();
 var PORT = process.env.PORT || 3000; // Sets an initial port. We'll use this later in our listener
@@ -147,7 +153,7 @@ app.put("/api/update/:user_id", function (req, res) {
                 if (err) {
                     res.status(500).send(err)
                 }
-                res.send(update);
+                console.log(update);
 
             });
         }
