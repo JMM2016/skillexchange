@@ -1,15 +1,29 @@
 // Include the Main React Dependencies
-// import React from 'react';
-import ReactDOM from "react-dom";
-import router from 'react-router';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import router from 'react-router'
+
+import $ from 'jquery';
+import Bootstrap from 'bootstrap/dist/js/bootstrap.js';
+
 
 // Grabs the Routes
-import routes from "./config/routes";
+// const routes = require ('./config/routes');
+import routes from './config/routes';
 
-// Grabs the Routes
-// var routes = require("./config/reactRoutes");
-
-// Renders the contents according to the route page
-// Displays the contents in the div app of index.html
-// Note how ReactDOM takes in two parameters (the contents and the location)
-// ReactDOM.render({routes}, document.getElementById("app"));
+// This code here allows us to render our main component (in this case "Main")
+ReactDOM.render(
+	routes
+	// app,
+	// {routes},
+	// <Router history={hashHistory}>
+	// 	<Route exact path="/" component={Home}/>
+	// 	<Route path="/login" component={LogIn}/>
+	// 	<Route path="/main" component={Main}/>
+	// </Router>
+	, document.getElementById("app"),
+	() => {
+		console.timeEnd('react-app')
+	}
+);

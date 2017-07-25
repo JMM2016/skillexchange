@@ -131,6 +131,7 @@ module.exports = function(app) {
 
   // Protect chat routes with JWT
   // POST to create a new message from the authenticated user
+
   apiRoutes.post('/profile/:id/chat', passport.authenticate('jwt', { session: false }), function(req, res) {
 
     // console.log("apiRoutes post Chat", req.body)
@@ -152,6 +153,7 @@ module.exports = function(app) {
         }
     });
   });
+
 
 
   // GET messages for authenticated user
@@ -177,6 +179,8 @@ module.exports = function(app) {
     // });
     
   });
+
+
 
 // Set url for API group routes
   app.use('/api', apiRoutes);

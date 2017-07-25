@@ -28,16 +28,12 @@ var Signup = React.createClass({
         lastName: "",
         userName: ""
       });
-
-
       
       var userId = data.data.id;
 
       if(data.data.success === true) {
 
         browserHistory.push(`/Profile/${userId}`);
-        localStorage.setItem("signup localStorage", email);
-        
       } else {
         alert(data.data.message)
       };

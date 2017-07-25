@@ -1,4 +1,3 @@
-// Include the React library
 import React from 'react';
 
 import {render} from 'react-dom';
@@ -32,10 +31,9 @@ import Login from "../components/children/grandchildren/Login";
 import Profile from "../components/children/Profile";
 import Chat from "../components/children/grandchildren/Chat";
 
-
-
 // Export the Routes
-render((
+module.exports = (
+// render((
     // High level component is the Router component.
     <Router history={browserHistory}>
         <Route path="/" component={Main}>
@@ -47,15 +45,13 @@ render((
                 <Route path="Search" component={Search}/>
                 <Route path="User" component={User}/>
                 <Route path="Map" component={Map}/>
-                <Route path="Chat" component={Chat} />
+                <Route path="Chat" component={Chat}/>
             </Route>
             {/* If user selects Search or Saved show the appropriate component */}
             
             {/* If user selects any other path... we get the Home Route */}
             <IndexRoute component={Account}/>
         </Route>
-    </Router>), document.getElementById('app')
+    </Router>
+    // ), document.getElementById('app')
 );
-
-
-

@@ -79,23 +79,21 @@ const helpers = {
         });
     },
 
-    
-
-    postChat: function(sender, to, message) {
+    postChat: function(sender, recevier, msg) {
 
         var newChat = {
             from: sender,
-            to: to,
-            message_body: message
+            to: recevier,
+            message_body: msg
         };
- 
-        return axios.post(`/api/profile/${sender}/chat`, newChat)
+       
+        return axios.post("api/chat", newChat)
             .then(function(data) {
                 console.log("post chat data", data);
                 return data
-            });
+        });
     },
-
+    
     displayChat: function(sender) {
 
         return axios.get(`/api/profile/${sender}/chat`);
