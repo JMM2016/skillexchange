@@ -42,12 +42,9 @@ var Account = React.createClass({
 	          <p>Money holds no sway</p>
         	</div>
 
-					<div className="container">
-		        		{this.props.children}
-					</div>
+		        {this.props.children}
+					
 				</div>
-
-
 			</div>
 
 		);
