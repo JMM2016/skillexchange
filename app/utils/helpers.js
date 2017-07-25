@@ -81,12 +81,12 @@ const helpers = {
 
     
 
-    postChat: function(sender, to, message) {
+    postChat: function(sender, receiver, msg) {
 
         var newChat = {
             from: sender,
-            to: to,
-            message_body: message
+            to: receiver,
+            message_body: msg
         };
  
         return axios.post(`/api/profile/${sender}/chat`, newChat)
@@ -97,8 +97,6 @@ const helpers = {
     },
 
     displayChat: function(sender) {
-
-        return axios.get(`/api/profile/${sender}/chat`);
         
         var newConvo = {
             from: sender
