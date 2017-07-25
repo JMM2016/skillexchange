@@ -23,7 +23,7 @@ body{
 
 footer {
 	background-color: #222222;
-	padding-top: 10px;
+	padding-top: 15px;
 	opacity: 0.5;
 }
 
@@ -38,3 +38,29 @@ footer p {
 	padding-bottom: 5px;
 	margin-bottom: 5px;
 }
+
+.logout-btn {
+	margin-right: 8px;
+}
+
+.accountcontainer {
+	background-color: #2c39da;
+	opacity: 0.5;
+
+}
+
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}
+
+.signupcontainer {
+ background-image: url('../img/skills.png');
+}
+
+.logincontainer {
+	background-image: url('../img/placeholder.png');
+}
+

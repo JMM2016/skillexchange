@@ -71,7 +71,7 @@ var Login = React.createClass({
 
 	render: function() {
 		return (
-			<div className="container">
+			<div className="logincontainer">
 				<form id="login" name="login" onSubmit={this.handleSubmit}>
                 <div className="row">
                     <h2>Login</h2>
