@@ -85,9 +85,7 @@ var Profile = React.createClass({
                 <li id="navbar-links">
                   <Link>Rate</Link>
                 </li>
-                <button  onClick={this.handleLogout} type="button" className="btn btn-default navbar-btn">
-                  <Link to="/">Logout</Link>
-                </button>       
+                   
               </ul>
             </div>
           </div>
@@ -98,6 +96,10 @@ var Profile = React.createClass({
           <div className="page-header titlearea text-center">
             <p>Just testing CSS settings still work. Delete this P tag l8r!</p>
           </div>
+
+          <button  onClick={this.handleLogout} type="button" className="btn btn-default navbar-btn">
+                  <Link to="/">Logout</Link>
+                </button>  
 
           <hr/>
           <h2>Hello {this.state.userName}!</h2> 
