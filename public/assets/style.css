@@ -23,7 +23,11 @@ body{
 
 footer {
 	background-color: #222222;
+<<<<<<< HEAD
 	padding-top: 15px;
+=======
+	padding-top: 10px;
+>>>>>>> shane_dev
 	opacity: 0.5;
 }
 
@@ -37,6 +41,7 @@ footer p {
 	color: #ffffff;
 	padding-bottom: 5px;
 	margin-bottom: 5px;
+<<<<<<< HEAD
 }
 
 .logout-btn {
@@ -64,3 +69,6 @@ footer p {
 	background-image: url('../img/placeholder.png');
 }
 
+=======
+}
+>>>>>>> shane_dev

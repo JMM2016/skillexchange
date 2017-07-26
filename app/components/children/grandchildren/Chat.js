@@ -1,8 +1,9 @@
 var React = require("react");
-
+import axios from 'axios';
+import Message from "./Message/Message";
 var browseHistory = require("react-router").browseHistory;
-
 var helpers = require("../../../utils/helpers");
+
 
 var Chat = React.createClass({
 
@@ -10,59 +11,83 @@ var Chat = React.createClass({
 
 		console.log('Chat this.props.params.id', this.props.params.id);
 		console.log("profileToken", localStorage.getItem('userToken'));
-  
-    	var userToken = localStorage.getItem('userToken');
-    	console.log("chatToken", userToken);
-		
-		var chatProfileId = this.props.params.id;
+		console.log("userName", localStorage.getItem('UserName'));
 
+  		var userName = localStorage.getItem('UserName');
+    	var userToken = localStorage.getItem('userToken');
+    	// console.log("chatToken", userToken);
+	
+        axios.defaults.headers.common['Authorization'] = userToken;
+ 
+		var chatProfileId = this.props.params.id;
+		
 		return {
-			from: chatProfileId,
+			from: "",
 			to: "",
-			message_body: ""
+			message_body: "",
+			message: [],
+			userName: ""
 		};
 	},
 
-	sendAuth: function() {
-
-		console.log("profileToken", localStorage.getItem('userToken'));
-  
-    	var userToken = localStorage.getItem('userToken');
-    	console.log("chatToken", userToken)
-
-		let config = {"Authorization": userToken}
-
-	},
+	
 
 
 	handleChangeReceiver(data) {
-		console.log("receiver", data.target.value)
+		// console.log("receiver", data.target.value)
 		this.setState({
 			to: data.target.value
 		});
 	},
 
 	handleChangeMessage(data) {
-		console.log("message", data.target.value)
+		// console.log("message", data.target.value)
 		this.setState({
 			message_body: data.target.value
 		});
 	},
 
-	handleSubmitMessage: function(sender, receiver, msg) {
+	componentDidMount: function() {
+		//Get all the chat messages
+		var sender = this.props.params.id;
+		// var sender = localStorage.getItem('UserName');
+
+		helpers.displayChat(sender).then(function(response) {
+      		console.log("compoenentDidMount", response.data);
+        	this.setState({ message: response.data });
+    	}.bind(this));
+	},
+
+
+	handleSubmitMessage: function(event) {
 		event.preventDefault();
-		console.log("receiver", this.state.receiver);
-		console.log("message", this.state.message);
+		console.log("receiver", this.state.to);
+		console.log("message", this.state.message_body);
 
-		var sender = this.props.firstName;
-		console.log("message sender", sender)
-		var receiver = this.state.receiver;
-		var msg = this.state.message
-		debugger
-		helpers.postChat(sender, receiver, msg).then(function(data) {
+
+		var sender = this.props.params.id
+		var userName = localStorage.getItem('UserName');
+		var receiver = this.state.to;
+		var msg = this.state.message_body;
+	
+		helpers.postChat(sender, receiver, msg, userName).then(function(data) {
 			
-			return console.log("submitMessage", data)
+			this.setState({
+				from: sender,
+				to: receiver,
+				message_body: msg,
+				userName: userName
+			});
 
+			this.setState({
+				to: "",
+				message_body: ""
+			})
+
+			helpers.displayChat(sender).then(function(response) {
+      			console.log("compoenentDidMount", response.data);
+        		this.setState({ message: response.data });
+    		}.bind(this));
 		}.bind(this));
 	},
 
@@ -73,25 +98,49 @@ var Chat = React.createClass({
 		return(
 			<div className="container">
 				<div className="row">
-					<form name="chatBox" onSubmit={this.handleSubmitMessage}>
-						<div className="row">
-							<div className="col-md-1">
-								<label>To </label>
-							</div>				
-							<div className="col-md-11">
-                  				<input className="text" name="receiver" type="receiver" value={this.state.receiver} onChange={this.handleChangeReceiver} />
-                  			</div>
-						</div>
-						<div className="row">
-							<div className="col-md-1">
-								<label>Message</label>
+					<div className="col-md-6">
+
+
+						<div className="panel panel-default">
+							<div className="panel-heading">
+								<h3 className="panel-title text-center">Send Message</h3>
 							</div>
-							<div className="col-md-11">
-								<textarea className="text" name="message" type="message" value={this.state.message} onChange={this.handleChangeMessage} />
-							</div>
+							<div className="panel-body text-center">
+								<form name="chatBox" onSubmit={this.handleSubmitMessage}>
+									<div className="form-group">
+		                  				<input 
+		                  					className="text" 
+		                  					name="receiver" 
+		                  					type="receiver" 
+		                  					value={this.state.to} 
+		                  					onChange={this.handleChangeReceiver} 
+		                  					placeholder="Etner name or email"
+		                  				/>
+		                  				<br />
+								
+										<textarea 
+											className="text" 
+											name="message" 
+											type="message" 
+											value={this.state.message_body} 
+											onChange={this.handleChangeMessage} 
+											placeholder="Write message"
+										/>
+										<br />	
+										<input type="submit" className="btn btn-default btn-primary" value="Send Message" />
+									</div>
+								</form>
+							</div>		
 						</div>
-						<input type="submit" className="btn btn-default btn-primary" value="Send Message" />
-					</form>
+
+
+
+
+
+					</div>
+					<div className="col-md-6">
+						<Message message={this.state.message} />
+					</div>
 				</div>
 			</div>
 		);

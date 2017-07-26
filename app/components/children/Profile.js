@@ -28,7 +28,9 @@ var Profile = React.createClass({
       var profileFirstName = data.data.firstName;
       var profileLastName = data.data.lastName;
       var profileUserName = data.data.userName;
-      console.log("ffffff", this.state.userName);
+      console.log("ffffff", data.data.userName);
+
+      localStorage.setItem("UserName", profileUserName);
 
       this.setState({
         firstName: profileFirstName,
@@ -36,10 +38,7 @@ var Profile = React.createClass({
         userName: profileUserName,
         token: userToken
       });
-
     }.bind(this));
-
-
   },
 
   handleLogout: function() {
@@ -52,7 +51,6 @@ var Profile = React.createClass({
 
     return (
       <div>
-
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
             <div className="navbar-header">
@@ -67,7 +65,6 @@ var Profile = React.createClass({
               </a>
               <h2 className="navbar-text" style={{color: "#009f9b", fontWeight: "bold"}}> Skillshare</h2>
             </div>
-
             <div id="collapsed-navbar" className="navbar-collapse collapse">
               <ul className="nav navbar-nav navbar-right">
                 <li id="navbar-links">
@@ -98,14 +95,10 @@ var Profile = React.createClass({
           <div className="page-header titlearea text-center">
             <p>Just testing CSS settings still work. Delete this P tag l8r!</p>
           </div>
-
-           
-
           <hr/>
           <h2>Hello {this.state.userName}!</h2> 
           <hr/>
           {this.props.children}
-
         </div>
      
       </div>

@@ -1,10 +1,12 @@
 # skillexchange
 
+
 ## :bust_in_silhouette:  Author: ###Julia
 ## :dart:  Purpose: Edits in this branch are focused on frontend/UI piece of our app
 ## :date:  Date Created: Jul.24.2017
 
 ## :squirrel:  How to Run:
+
 ### To run this branch follow these steps in your console:
 * `rm -rf public && webpack`
 * `npm start`

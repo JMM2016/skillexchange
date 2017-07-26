@@ -79,19 +79,35 @@ const helpers = {
         });
     },
 
-    postChat: function(sender, recevier, msg) {
+    postChat: function(sender, recevier, msg, userName) {
 
         var newChat = {
             from: sender,
             to: recevier,
-            message_body: msg
+            message_body: msg,
+            userName: userName
         };
        
-        return axios.post("api/chat", newChat)
+        return axios.post(`/api/profile/${sender}/chat`, newChat)
             .then(function(data) {
                 console.log("post chat data", data);
                 return data
         });
+    },
+    
+    displayChat: function(sender) {
+
+        
+        var newConvo = {
+            from: sender
+        };
+
+        return axios.get(`/api/profile/${sender}/chat`, newConvo)
+            .then(function(data) {
+                console.log("get chat history", data);
+                return data
+            });
+
     }
 };
 // We export the helpers function

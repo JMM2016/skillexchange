@@ -32,9 +32,9 @@ var Login = React.createClass({
       
       localStorage.setItem("userToken", userToken);
    
-      // debugger
+   
 
-      // alert(data.data.message);
+ 
       if(data.data.success === true) {
         browserHistory.push(`/Profile/${userId}`);
       } else {

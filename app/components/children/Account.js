@@ -12,6 +12,7 @@ var Account = React.createClass({
 			<div>
 
 			 <nav className="navbar navbar-inverse navbar-fixed-top">
+
           <div className="container-fluid">
             <div className="navbar-header">
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsed-navbar" aria-expanded="false" aria-controls="navbar">
@@ -41,10 +42,10 @@ var Account = React.createClass({
 	          <br />
 	          <p>Money holds no sway</p>
         	</div>
+
           <div className="container accountcontainer">
 		        {this.props.children}
           </div>
-					
 				</div>
 			</div>
 
