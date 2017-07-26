@@ -4,7 +4,6 @@ body{
 }
 
 
-
 .brandImg {
 	width: 30px;
 	height: auto;	
@@ -43,24 +42,27 @@ footer p {
 	margin-right: 8px;
 }
 
+
+.maincontainer {
+	background-color: white;
+	max-height: 100%;
+
+}
+
 .accountcontainer {
-	background-color: #2c39da;
+	background-color: orange;
 	opacity: 0.5;
 
-}
 
-.modal-container {
-  position: relative;
-}
-.modal-container .modal, .modal-container .modal-backdrop {
-  position: absolute;
 }
 
 .signupcontainer {
- background-image: url('../img/skills.png');
+	background-color: #000000;
+ 	padding: 25px 15px;
 }
 
-.logincontainer {
-	background-image: url('../img/placeholder.png');
+.logincontainer{
+	background-color: #009f9b;
+	padding: 25px 15px;
 }
 

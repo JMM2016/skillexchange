@@ -15,7 +15,7 @@ export default React.createClass({
           
       <div className="container-fluid">
 
-        <div className="container">
+        <div className="container maincontainer">
         {this.props.children} 
         </div>
 

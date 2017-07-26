@@ -41,7 +41,7 @@ var Account = React.createClass({
 	          <br />
 	          <p>Money holds no sway</p>
         	</div>
-          <div className="container accountcontainer">
+          <div className="container-fluid accountcontainer">
 		        {this.props.children}
           </div>
 					
