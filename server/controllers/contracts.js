@@ -86,19 +86,21 @@ router.get('/profile/:id/contracts/active/:email', (req, res) => {
   //User.findOne( {email: currEmail}, (err, data) => {
     if (err) return console.error("Error in api/contracts/active/:email \n" + err);
 
-    let contracts = found.contracts;
+    if (found) {
+      let contracts = found.contracts;
 
-    // filter out inactive contracts
-    contracts = contracts.filter( contract => {
-      return contract.active !== false
-    })
+      // filter out inactive contracts
+      contracts = contracts.filter(contract => {
+        return contract.active !== false
+      })
 
-    console.log("contracts: " + contracts + "  type: " + typeof contracts)
+      console.log("contracts: " + contracts + "  type: " + typeof contracts)
 
-    // console.log("in contracts/active/" + currEmail +
-    //   "\n" + JSON.stringify(found, null, 2));
+      // console.log("in contracts/active/" + currEmail +
+      //   "\n" + JSON.stringify(found, null, 2));
 
-    res.json({msg: `in GET api/contracts/active/${currEmail}`, userData: contracts})
+      res.json({msg: `in GET api/contracts/active/${currEmail}`, userData: contracts})
+    }
   })
 
 })
