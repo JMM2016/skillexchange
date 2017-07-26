@@ -5,7 +5,7 @@ Skillshare - where money holds no sway
 
 ## Project Description:
 
-	A web app where people can trade and barter their skills/talents/time/goods with other members. Once they have signed up, the users first need to post what they have to offer and also what needs they are after. And then they can use the app to search for matches. Once a match is determined, the user can reach out to the match and start working out a deal via chat. Once the two parties have agreed to a deal, they will both sign a contract to seal it. After the exchange has been completed, the two parties can rate each other.
+A web app where people can trade and barter their skills/talents/time/goods with other members. Once they have signed up, the users first need to post what they have to offer and also what needs they are after. And then they can use the app to search for matches. Once a match is determined, the user can reach out to the match and start working out a deal via chat. Once the two parties have agreed to a deal, they will both sign a contract to seal it. After the exchange has been completed, the two parties can rate each other.
 	
 ## The LSDRiders:
 	
@@ -39,7 +39,7 @@ Skillshare - where money holds no sway
 	- App concept
 	- App demo:
 		- Signup/login 
-		- User profile and match search
+		- User profile and match search (including map)
 		- Chat
 		- Contract and rating
       
