@@ -30,6 +30,7 @@ import Signup from "../components/children/grandchildren/Signup";
 import Login from "../components/children/grandchildren/Login";
 import Profile from "../components/children/Profile";
 import Chat from "../components/children/grandchildren/Chat";
+import Home from "../components/children/grandchildren/Home";
 
 // Export the Routes
 module.exports = (

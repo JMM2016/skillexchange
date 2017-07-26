@@ -10,9 +10,13 @@ body{
 }
 
 .titlearea {
-	font-weight: bold;
-	color: #2c39da;
-	
+	height: 200px;
+}
+
+.titlearea h1 {
+	font-weight: bold
+	color: #222222;
+
 }
 
 .photoArea {
@@ -50,19 +54,46 @@ footer p {
 }
 
 .accountcontainer {
-	background-color: orange;
+	background-image: url('../img/coffee2.jpeg');
+	background-size: cover;
 	opacity: 0.5;
+	max-height: 100%;
 
 
 }
 
 .signupcontainer {
 	background-color: #000000;
- 	padding: 25px 15px;
+ 	padding: 20px 15px;
+ 	margin: 20px 50px;
+	max-width: 75%;
+ 	color: #f37346;
+}
+.signupForm {
+	max-width: 50%;
+	position: relative;
 }
 
 .logincontainer{
+	padding: 20px 15px;
+	margin: 20px 50px;
+	max-width: 75%;
+	color: #ffffff;
 	background-color: #009f9b;
-	padding: 25px 15px;
+}
+.loginForm{
+	max-width: 50%;
+	position: relative;
 }
 
+.userbackground {
+	background-image: url('');
+}
+
+.mainPhoto {
+}
+
+.mainText {
+	top: 50%;
+	left: 50%;
+}

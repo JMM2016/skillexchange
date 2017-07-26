@@ -13,7 +13,8 @@ var Login = React.createClass({
     return {
       email: "",
       password: "",
-      token: ""
+      token: "",
+      message: "Welcome Back!"
     }
   },
 
@@ -72,27 +73,38 @@ var Login = React.createClass({
 	render: function() {
 		return (
 			<div className="logincontainer">
-				<form id="login" name="login" onSubmit={this.handleSubmit}>
-                <div className="row">
-                    <h2>Login</h2>
-                    <h2 id="invalidLogin"></h2>
-                  
-                </div>
-
-                <div className="row">
-                  <label>Email Address </label>
-                  <input className="text" name="email" type="email" value={this.state.email} onChange={this.handleChangeEmail}/>
-                </div>
-                <div className="row">
-                    <label>Password </label>
-                    <input name="password" type="password" className="text" value={this.state.password} onChange={this.handleChangePassword}/>
-                </div>
-               
-  
-                <div className="row">
-                  <input id="loginButton" className="btn" type="submit"/>
-                </div>
-              </form>
+        <h1>{this.state.message}</h1>
+        <div className="container">
+          <form id="login" name="login" className="loginForm" onSubmit={this.handleSubmit}>
+           
+            <div className="row">
+              <h2>Login</h2>
+              <h2 id="invalidLogin"></h2>
+            </div>
+            <div className="form-group">
+              <label>Email address</label>
+              <input 
+                type="email" 
+                className="form-control" 
+                id="exampleInputEmail1" 
+                placeholder="Email"
+                value={this.state.email} 
+                onChange={this.handleChangeEmail} />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input 
+                type="password" 
+                className="form-control" 
+                id="exampleInputPassword1" 
+                placeholder="Password"
+                value={this.state.password} 
+                onChange={this.handleChangePassword} />
+            </div>
+            
+            <button id="loginButton" type="submit" className="btn btn-default">Submit</button>
+          </form>
+        </div>
 			</div>
 		);
 	}

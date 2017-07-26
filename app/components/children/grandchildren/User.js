@@ -13,6 +13,7 @@ export default React.createClass({
     render() {
         return (
             <div>
+                <div className='userbackground'>
                 <form action="/api/user" method="post">
                     {/*<label>*/}
                     {/*Name:*/}
@@ -26,6 +27,7 @@ export default React.createClass({
                     {/*</label>*/}
                     <input type="submit" value="Submit"/>
                 </form>
+                </div>
             </div>
         )
     }

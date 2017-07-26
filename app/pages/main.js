@@ -3,7 +3,7 @@ import React from 'react';
 // import NavLink from './NavLink';
 const Link = require("react-router").Link;
 
-// import ControlledCarousel from '../Components/CarouselControlled'
+import ControlledCarousel from '../Components/CarouselControlled'
 
 
 export default class Main extends React.Component {

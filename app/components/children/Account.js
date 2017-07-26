@@ -5,8 +5,24 @@ var helpers = require("../../utils/helpers");
 
 var browserHistory = require("react-router").browserHistory;
 var Link = require("react-router").Link;
+var Home = require('./grandchildren/Home')
 
 var Account = React.createClass({
+
+  getInitialState: function(){
+    return {
+      message:"BARTERING IS BACK!",
+      sub:"Money holds no sway",
+      img:"./img/coffee2.jpeg"
+    };
+  },
+
+  setParent: function(newMessage) {
+    this.setState({
+      message: newMessage
+    });
+  },
+
 	render: function() {
 		return (
 			<div>
@@ -20,9 +36,9 @@ var Account = React.createClass({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">
-                <img className="brandImg img-responsive" src="./img/friend.png" alt="Brand" />
-              </a>
+              <div className="navbar-brand" href="#">
+                <Link to="/"><img className="brandImg img-responsive" src="./img/friend.png" alt="Brand" /></Link>
+              </div>
               <h2 className="navbar-text" style={{color: "#009f9b", fontWeight: "bold"}}> Skillshare</h2>
             </div>
 
@@ -36,16 +52,22 @@ var Account = React.createClass({
         </nav>
 
         <div className="container-fluid">
-        	<div className="page-header titlearea text-center">
-	          <h1>Bartering is back!</h1>
-	          <br />
-	          <p>Money holds no sway</p>
+          <div className="titlearea">
+          {/*<img className="mainPhoto" alt="photohere" src={this.state.img} width="100%"/>*/}
+        	<div className="page-header text-center">
+	          <h1 className="">{this.state.message}</h1>
+	          <p>{this.state.sub}</p>
+          </div>
+            
         	</div>
+
+            {/*<img className='img-responsive inlineblock' src='./img/guitar.jpg' alt='background'/>*/}
+          </div>
+          
           <div className="container-fluid accountcontainer">
 		        {this.props.children}
           </div>
 					
-				</div>
 			</div>
 
 		);
