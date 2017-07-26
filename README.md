@@ -29,10 +29,11 @@ A web app where people can trade and barter their skills/talents/time/goods with
 	
 	* passport-jwt 
   
-  	* 
+  	* bcrypt
   
- 	* 
-  
+ 	* google-maps-react
+	
+	* mongoose
 
 ## Presentation
 
