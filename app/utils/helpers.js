@@ -116,7 +116,19 @@ const helpers = {
                 return data
             });
 
-    }
+    },
+
+    sendContract: function(userData, sender) {
+        
+       return axios.post(`/api/profile/${sender}/contract`, userData)
+        .then(res => {
+            console.log("sendContract - res.data: " + JSON.stringify(res.data))
+            return res
+      }).catch(err => console.log(err))
+    } 
+
+
+
 };
 // We export the helpers function
 module.exports = helpers;
