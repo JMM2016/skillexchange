@@ -60,6 +60,9 @@ class ShowUsersContainer extends Component {
             if (contracts.dueDate) {
               date = contracts.dueDate.substr(0, 10)
             }
+            else {
+              date = "n/a"
+            }
 
             return <tr key={contracts._id}>
               <td>{contracts.otherUsersEmail}</td>
