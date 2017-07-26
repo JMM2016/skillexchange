@@ -19,7 +19,7 @@ module.exports = {
     // The plain compiled JavaScript will be output into this file
     output: {
         path: path.resolve(__dirname, "public"),
-        filename: "bundle.js"
+        filename: "/bundle.js"
     },
     plugins: [
         new CopyWebpackPlugin([
