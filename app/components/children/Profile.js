@@ -38,11 +38,7 @@ var Profile = React.createClass({
         userName: profileUserName,
         token: userToken
       });
-
-
     }.bind(this));
-
-
   },
 
   handleLogout: function() {
@@ -55,11 +51,10 @@ var Profile = React.createClass({
 
     return (
       <div>
-
-        <nav className="navbar navbar-inverse navbar-fixed-top">
+        <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
             <div className="navbar-header">
-              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
+              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsed-navbar" aria-expanded="false" aria-controls="navbar">
                 <span className="sr-only">Toggle navigation</span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
@@ -70,8 +65,7 @@ var Profile = React.createClass({
               </a>
               <h2 className="navbar-text" style={{color: "#009f9b", fontWeight: "bold"}}> Skillshare</h2>
             </div>
-
-            <div id="#bs-example-navbar-collapse-1" className="navbar-collapse collapse">
+            <div id="collapsed-navbar" className="navbar-collapse collapse">
               <ul className="nav navbar-nav navbar-right">
                 <li id="navbar-links">
                   <Link to={`/Profile/${this.props.params.id}/User`}>Profile</Link>
@@ -88,7 +82,9 @@ var Profile = React.createClass({
                 <li id="navbar-links">
                   <Link>Rate</Link>
                 </li>
-                   
+                <button  onClick={this.handleLogout} type="button" className="btn btn-default navbar-btn logout-btn">
+                  <Link to="/">Logout</Link>
+                </button> 
               </ul>
             </div>
           </div>
@@ -99,16 +95,10 @@ var Profile = React.createClass({
           <div className="page-header titlearea text-center">
             <p>Just testing CSS settings still work. Delete this P tag l8r!</p>
           </div>
-
-          <button  onClick={this.handleLogout} type="button" className="btn btn-default navbar-btn">
-                  <Link to="/">Logout</Link>
-                </button>  
-
           <hr/>
           <h2>Hello {this.state.userName}!</h2> 
           <hr/>
           {this.props.children}
-
         </div>
      
       </div>
