@@ -15,30 +15,18 @@ export default React.createClass({
           
       <div className="container-fluid">
 
-        <div className="container">
+        <div className="container-fluid maincontainer">
         {this.props.children} 
         </div>
 
       </div>
 
         <footer>
-          <div id="footer">
+          <div id="footer" className="footer">
 
             <div className="container-fluid transbox">
 
               <div className="row text-center">
-                <div className="col-md-4 col-sm-4 col-xs-12">
-                  <h4> Mission Statement</h4>
-                </div>
-                <div className="col-md-4 col-sm-4 col-xs-12">
-                  <h4> About Us</h4>
-                </div>  
-                <div className="col-md-4 col-sm-4 col-xs-12">
-                  <h4> Coming Soon!</h4>
-                </div>    
-              </div>
-
-              <div className="row">
                 <div className="col-md-6 col-md-offset-3 text-center">
                   <p>
                     Copyright 2017 LSD-Riders &mdash; All Rights Reserved.

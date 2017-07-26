@@ -32,6 +32,7 @@ import Profile from "../components/children/Profile";
 import Chat from "../components/children/grandchildren/Chat";
 import Contract from "../components/children/grandchildren/Contract";
 import UserSearchProfile from "../components/children/grandchildren/Search/userSearch/UserSearchProfile";
+import Home from "../components/children/grandchildren/Home";
 
 // Export the Routes
 module.exports = (

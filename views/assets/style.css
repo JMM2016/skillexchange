@@ -4,16 +4,19 @@ body{
 }
 
 
-
 .brandImg {
 	width: 30px;
 	height: auto;	
 }
 
 .titlearea {
-	font-weight: bold;
-	color: #2c39da;
-	
+	height: 200px;
+}
+
+.titlearea h1 {
+	font-weight: bold
+	color: #222222;
+
 }
 
 .photoArea {
@@ -43,24 +46,54 @@ footer p {
 	margin-right: 8px;
 }
 
+
+.maincontainer {
+	background-color: white;
+	max-height: 100%;
+
+}
+
 .accountcontainer {
-	background-color: #2c39da;
+	background-image: url('../img/coffee2.jpeg');
+	background-size: cover;
 	opacity: 0.5;
+	max-height: 100%;
 
-}
 
-.modal-container {
-  position: relative;
-}
-.modal-container .modal, .modal-container .modal-backdrop {
-  position: absolute;
 }
 
 .signupcontainer {
- background-image: url('../img/skills.png');
+	background-color: #000000;
+ 	padding: 20px 15px;
+ 	margin: 20px 50px;
+	max-width: 75%;
+ 	color: #f37346;
+}
+.signupForm {
+	max-width: 50%;
+	position: relative;
 }
 
-.logincontainer {
-	background-image: url('../img/placeholder.png');
+.logincontainer{
+	padding: 20px 15px;
+	margin: 20px 50px;
+	max-width: 75%;
+	color: #ffffff;
+	background-color: #009f9b;
+}
+.loginForm{
+	max-width: 50%;
+	position: relative;
 }
 
+.userbackground {
+	background-image: url('');
+}
+
+.mainPhoto {
+}
+
+.mainText {
+	top: 50%;
+	left: 50%;
+}

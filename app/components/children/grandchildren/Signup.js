@@ -12,7 +12,8 @@ var Signup = React.createClass({
         email: "",
         password: "",
         firstName: "",
-        lastName: ""
+        lastName: "",
+        message: "Welcome!",
     };
   },
 
@@ -88,42 +89,72 @@ var Signup = React.createClass({
 
 	render: function() {
 		return (
+			<div className="signupcontainer inline-block">
+        <h1>{this.state.message}</h1>
+        <div className="container">
+				  <form id="signup" name="signup" className="signupForm"onSubmit={this.handleSignUp} >
+              <div className="form-group">
+                  <h2>Sign Up</h2>
+                  <h2 id="invalidSignup"></h2>
+                  <h6>* Require Entries</h6>
+              </div>
+             
+              <div className="form-group">
+                <label>Email address*</label>
+                <input 
+                  type="email" 
+                  className="form-control" 
+                  id="exampleInputEmail1" 
+                  placeholder="Email"
+                  value={this.state.email} 
+                  onChange={this.handleChangeEmail} />
+              </div>
 
-			<div className="signupcontainer">
+              <div className="form-group">
+                  <label>First Name*</label>
+                  <input 
+                    className="text form-control" 
+                    name="firstName" 
+                    type="firstName" 
+                    value={this.state.firstName} 
+                    onChange={this.handleChangeFirstName} />
+                </div>
 
-				<form id="signup" name="signup" onSubmit={this.handleSignUp} >
-                <div className="row">
-                    <h2>Sign Up</h2>
-                    <h2 id="invalidSignup"></h2>
-                    <h6>* Require Entries</h6>
-                </div>
-                <div className="row">
-                  <label>Email Address *</label>
-                  <input className="text" name="email" type="email" value={this.state.email} onChange={this.handleChangeEmail} />
-                </div>
-                <div className="row">
-                  <label>First Name *</label>
-                  <input className="text" name="firstName" type="firstName" value={this.state.firstName} onChange={this.handleChangeFirstName} />
-                </div>
-                <div className="row">
+                <div className="form-group">
                   <label>Last Name *</label>
-                  <input className="text" name="lastName" type="lastName" value={this.state.lastName} onChange={this.handleChangeLastName} />
+                  <input 
+                    className="text form-control" 
+                    name="lastName" 
+                    type="lastName" 
+                    value={this.state.lastName} 
+                    onChange={this.handleChangeLastName} />
                 </div>
-                <div className="row">
+
+                <div className="form-group">
                     <label>Username *</label>
-                    <input name="userName" type="userName" className="text" value={this.state.userName} onChange={this.handleChangeUserName} />
+                    <input 
+                      name="userName" 
+                      type="userName" 
+                      className="text form-control" 
+                      value={this.state.userName} 
+                      onChange={this.handleChangeUserName} />
                 </div>
-                <div className="row">
-                    <label>Password *</label>
-                    <input name="password" type="password" className="text" value={this.state.password} onChange={this.handleChangePassword} />
-                </div>
-                <div className="row">
-                  <button id="signupButton" className="btn" type="submit" >Submit</button>
-                </div>
-              </form>
 
+              <div className="form-group">
+                <label>Password*</label>
+                <input 
+                type="password" 
+                className="form-control" 
+                id="exampleInputPassword1" 
+                placeholder="Password"
+                value={this.state.password} 
+                onChange={this.handleChangePassword} />
+              </div>
+            
+              <button id="signupButton" type="submit" className="btn btn-default">Submit</button>
+            </form>
+        </div>
 			</div>
-
 		);
 	}
 });
