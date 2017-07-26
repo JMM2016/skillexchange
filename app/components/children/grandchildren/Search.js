@@ -18,7 +18,7 @@ export default React.createClass({
             need_results: {},
             have_results: {},
             need_query: "",
-            have_query: ""
+            have_query: "",
         };
     },
 
@@ -58,6 +58,7 @@ export default React.createClass({
     render() {
         console.log("COMPONENT RENDERED");
         console.log(this.props, "ID PROPS")
+        console.log(this.state.need_results, "JOOJOJOJOJOJ")
         return (
             <div className="main-container">
                 <div>

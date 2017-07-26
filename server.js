@@ -135,13 +135,15 @@ app.get("/api/have/:have_searched", function (req, res) {
 app.put("/api/update/:user_id", function (req, res) {
     // This would likely be inside of a PUT request, since we're updating an existing document, hence the req.params.todoId.
 // Find the existing resource by ID
+
     User.findById(req.params.user_id, function (err, data) {
         // Handle any possible database errors
         if (err) {
             res.status(500).send(err);
         } else {
+
             // Update each attribute with any possible attribute that may have been submitted in the body of the request
-            // If that attribute isn't in the request body, default back to whatever it was before.
+            // If that rattribute isn't in the request body, default back to whatever it was before.
             data.street = req.body.street
             data.city = req.body.city
             data.state = req.body.state
@@ -154,7 +156,6 @@ app.put("/api/update/:user_id", function (req, res) {
                     res.status(500).send(err)
                 }
                 console.log(update);
-
             });
         }
     });
@@ -178,3 +179,5 @@ app.get("*", function(req, res) {
 app.listen(PORT, function () {
     console.log("Listening on port:" + PORT);
 });
+
+
