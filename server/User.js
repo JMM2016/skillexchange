@@ -31,6 +31,18 @@ var UserSchema = new mongoose.Schema({
         required: true
     },
 
+    rating: Number,
+    numOfRatings: Number,
+
+    contracts: [{
+       otherUsersEmail: String,
+       title: String,
+       body: String,
+       accepted: { type: Boolean, default: false },
+       dueDate: Date,
+       active: {type: Boolean, default: true}
+    }],
+
     have: {
         type: [String]
     },
