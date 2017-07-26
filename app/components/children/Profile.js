@@ -99,12 +99,11 @@ var Profile = React.createClass({
  
         <div className="container-fluid">
 
-          <div className="page-header titlearea text-center">
-            <p>Just testing CSS settings still work. Delete this P tag l8r!</p>
+          <div className="page-header titlearea text-center">          
+            <hr/>
+            <h2>Hello {this.state.userName}!</h2> 
+            <hr/>
           </div>
-          <hr/>
-          <h2>Hello {this.state.userName}!</h2> 
-          <hr/>
           {this.props.children}
         </div>
      

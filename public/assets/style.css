@@ -10,13 +10,17 @@ body{
 }
 
 .titlearea {
-	height: 200px;
+	height: 175px;
 }
 
 .titlearea h1 {
 	font-weight: bold
 	color: #222222;
-
+	font-size: 75px;
+}
+.titlearea p{
+	color: #2626f6;
+	font-weight: bold;
 }
 
 .photoArea {
@@ -49,6 +53,7 @@ footer p {
 
 .maincontainer {
 	background-color: white;
+	background-size: 700px;
 	max-height: 100%;
 
 }
