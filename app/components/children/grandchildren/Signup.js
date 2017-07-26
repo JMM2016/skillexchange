@@ -89,7 +89,7 @@ var Signup = React.createClass({
 	render: function() {
 		return (
 
-			<div className="container">
+			<div className="signupcontainer">
 
 				<form id="signup" name="signup" onSubmit={this.handleSignUp} >
                 <div className="row">
@@ -121,7 +121,7 @@ var Signup = React.createClass({
                   <button id="signupButton" className="btn" type="submit" >Submit</button>
                 </div>
               </form>
-              {this.props.children}
+
 			</div>
 
 		);
