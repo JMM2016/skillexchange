@@ -14,7 +14,8 @@ class UserSearchProfile extends React.Component {
             need: [],
             city: "",
             street: "",
-            state: ""
+            state: "",
+            bio: ""
         };
 
         // this.handleChange = this.handleChange.bind(this);
@@ -39,9 +40,9 @@ class UserSearchProfile extends React.Component {
                     <div className="panel-body">
                         <ul className="list-group">
                             <div style={{fontSize: '30px'}}>{this.props.userName}</div>
-                            <div>{this.props.userHave}</div>
-                            <div>{this.props.userNeed}</div>
-                            <div>{this.props.bio}</div>
+                            <div><strong>Haves: </strong>{this.props.userHave}</div>
+                            <div><strong>Needs: </strong>{this.props.userNeed}</div>
+                            <div><strong>A little about myself: </strong><p>{this.props.userBio}</p></div>
                         </ul>
                     </div>
                 </div>

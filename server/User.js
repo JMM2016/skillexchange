@@ -58,9 +58,8 @@ var UserSchema = new mongoose.Schema({
     state: {
         type: [String]
     },
-
     bio: {
-        type: ""
+        type: String
     },
 
     updated: {type: Date, default: Date.now}

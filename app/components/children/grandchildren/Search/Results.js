@@ -18,7 +18,8 @@ class Results extends React.Component {
             city: "",
             street: "",
             state: "",
-            username: ""
+            username: "",
+            bio: ""
         };
 
         // this.handleChange = this.handleChange.bind(this);
@@ -32,7 +33,7 @@ class Results extends React.Component {
         console.log(this.state.city)
         helpers.findUser(userID).then(function (results) {
             // console.log(results, "HANDLE USER")
-            const {have, need, street, city, state, userName} = results.data;
+            const {have, need, street, city, state, userName, bio} = results.data;
 
             this.setState({
                 have: have.toString(),
@@ -40,7 +41,8 @@ class Results extends React.Component {
                 street: street.toString(),
                 city: city.toString(),
                 state: state.toString(),
-                username: userName.toString()
+                username: userName.toString(),
+                bio: bio.toString()
             });
             // console.log('city', {city})
             this.renderUser(results)
@@ -219,7 +221,7 @@ class Results extends React.Component {
                     <div className="col-lg-4 col-md-4 col-sm-4">
                         <div className="row text-center">
                             <UserSearchProfile userName={this.state.username} userHave={this.state.have}
-                                               userNeed={this.state.need}/>
+                                               userNeed={this.state.need} userBio={this.state.bio}/>
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4">

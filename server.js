@@ -74,6 +74,7 @@ app.post('/api/user', function (req, res) {
     user.street = req.body.street;
     user.city = req.body.city;
     user.state = req.body.state;
+    user.bio = req.body.bio
     // ... and save new user...
     user.save(function (err) {
         if (err)
@@ -141,6 +142,7 @@ app.put("/api/update/:user_id", function (req, res) {
             data.state = req.body.state
             data.need = req.body.need
             data.have = req.body.have
+            data.bio = req.body.bio
 
             // Save the updated document back to the database
             data.save({ validateBeforeSave: false }, function (err, update) {

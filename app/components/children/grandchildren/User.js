@@ -16,7 +16,8 @@ class User extends React.Component {
             need: [],
             city: "",
             street: "",
-            state: ""
+            state: "",
+            bio: ""
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,15 +28,16 @@ class User extends React.Component {
 
     componentDidMount() {
         helpers.findUser(this.props.params.id).then(function (results) {
-            // console.log(results, "almost there!")
-            const {have, need, street, city, state} = results.data;
+            console.log(results, "almost there!")
+            const {have, need, street, city, state, bio} = results.data;
 
             this.setState({
                 have: have.toString(),
                 need: need.toString(),
                 street: street.toString(),
                 city: city.toString(),
-                state: state.toString()
+                state: state.toString(),
+                bio: bio.toString()
             });
 
             console.log('city', city)
@@ -115,6 +117,12 @@ class User extends React.Component {
                                 // value={this.state.state}
                                    onChange={this.handleChange}/>
                             <br/>
+                            <input type="text" name="bio" placeholder="Tell us about yourself"
+                                // value={this.state.state}
+                                   onChange={this.handleChange}/>
+                            <br/>
+
+
                             <input type="submit" value="Submit" onClick={this.myTest}/>
                         </form>
                     </div>
@@ -130,6 +138,8 @@ class User extends React.Component {
                             <li><label>City : </label> {this.state.city}</li>
 
                             <li><label>State : </label> {this.state.state}</li>
+
+                            <li><label>Bio : </label> {this.state.bio}</li>
                         </ul>
                     </div>
                 </div>
