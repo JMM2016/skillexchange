@@ -67,7 +67,7 @@ var Profile = React.createClass({
               <a className="navbar-brand" href="#">
                 <img className="brandImg img-responsive" src="./../img/friend.png" alt="Brand" />
               </a>
-              <h2 className="navbar-text" style={{color: "#009f9b", fontWeight: "bold"}}> Skillshare</h2>
+              <h2 className="navbar-text" style={{color: "#009f9b", fontWeight: "bold"}}> Skillzshare</h2>
             </div>
             <div id="collapsed-navbar" className="navbar-collapse collapse">
               <ul className="nav navbar-nav navbar-right">
