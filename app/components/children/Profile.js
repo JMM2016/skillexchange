@@ -10,7 +10,7 @@ var Profile = React.createClass({
     // console.log("profileToken", localStorage.getItem('userToken'));
 
     return {
-      firstName: "",
+      userName: "",
     }
   },
 

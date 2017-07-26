@@ -12,11 +12,11 @@ class User extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            city: 'city',
-            have : []
+            have: [],
+            need: [],
+            city: "",
+            street: "",
+            state: ""
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -28,21 +28,22 @@ class User extends React.Component {
     componentDidMount() {
         helpers.findUser(this.props.params.id).then(function (results) {
             // console.log(results, "almost there!")
-            const {firstName, lastName, email, city} = results.data;
+            const {have, need, street, city, state} = results.data;
 
             this.setState({
-                firstName: firstName.toString(),
-                lastName: lastName.toString(),
-                email: email.toString(),
-                city: city.toString()
+                have: have.toString(),
+                need: need.toString(),
+                street: street.toString(),
+                city: city.toString(),
+                state: state.toString()
             });
 
-            console.log('first name', firstName)
-            console.log('last name', lastName)
+            console.log('city', city)
 
             console.log(results.data);
         }.bind(this));
     }
+
     //
     // updateInfo(str) {
     //
@@ -78,37 +79,60 @@ class User extends React.Component {
         console.log(inputName);
         console.log(event.target.value);
 
-        this.setState({[inputName] : event.target.value});
+        this.setState({[inputName]: event.target.value});
     }
 
     render() {
+
+        var styles = {
+            listStyle: 'none'
+        };
+
         return (
             <div>
-                <div>should go under this</div>
-                <form action={`/api/update/${this.props.params.id}?_method=PUT`} method="POST">
-                    <input type="text" name="have" placeholder="have"
-                           value={this.state.have}
-                           onChange={this.handleChange}
-                    />
-                    <br/>
-                    <input type="text" name="need" placeholder="need"/>
-                    <br/>
-                    <input type="text" name="street" placeholder="Street"/>
-                    <br/>
-                    <input type="text" name="city" placeholder="City"
-                           value={this.state.city}
-                           onChange={this.handleChange}/>
-                    <br/>
-                    <input type="text" name="state" placeholder="State"/>
-                    <br/>
-                    <input type="submit" value="Submit" onClick={this.myTest}/>
-                </form>
+                <div className="row">
+                    <div className="col-lg-6 col-md-6 col-sm-6">
 
-                <ul>
-                    <li><label>Have :</label>{this.state.have}</li>
-                    <li><label>City :</label>{this.state.city}</li>
-                </ul>
+                        <form action={`/api/update/${this.props.params.id}?_method=PUT`} method="POST">
+                            <input type="text" name="have" placeholder="have"
+                                // value={this.state.have}
+                                   onChange={this.handleChange}
+                            />
+                            <br/>
+                            <input type="text" name="need" placeholder="need"
+                                // value={this.state.need}
+                                   onChange={this.handleChange}/>
+                            <br/>
+                            <input type="text" name="street" placeholder="Street"
+                                // value={this.state.street}
+                                   onChange={this.handleChange}/>
+                            <br/>
+                            <input type="text" name="city" placeholder="City"
+                                // value={this.state.city}
+                                   onChange={this.handleChange}/>
+                            <br/>
+                            <input type="text" name="state" placeholder="State"
+                                // value={this.state.state}
+                                   onChange={this.handleChange}/>
+                            <br/>
+                            <input type="submit" value="Submit" onClick={this.myTest}/>
+                        </form>
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-sm-6">
 
+                        <ul style={styles}>
+                            <li><label>Have : </label> {this.state.have}</li>
+
+                            <li><label>Need : </label> {this.state.need}</li>
+
+                            <li><label>Street : </label> {this.state.street}</li>
+
+                            <li><label>City : </label> {this.state.city}</li>
+
+                            <li><label>State : </label> {this.state.state}</li>
+                        </ul>
+                    </div>
+                </div>
 
             </div>
         )
