@@ -40,7 +40,7 @@ router.post('/profile/:id/contract', (req, res) => {
             title: title,
             body: body,
             dueDate: date,
-            accepted: true
+            accepted: false
           }}}, {new: true}, (err, foundUser) => {
             if (err) return console.error(err);
 
@@ -77,7 +77,7 @@ router.get('/users/all/active', (req, res) => {
 })
 
 
-router.get('/active/:email', (req, res) => {
+router.get('/profile/:id/contracts/active/:email', (req, res) => {
 
   const currEmail = req.params.email;
   console.log("params.email: " + JSON.stringify(currEmail) )

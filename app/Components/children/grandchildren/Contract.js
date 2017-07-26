@@ -7,8 +7,8 @@ const divStyle = { marginBottom: 10 }
 const height = {height: 150}
 
 const BottomMsg = (props) => (
-  <h5>{props.msgtop}<br />
-    {props.msgbot}</h5>
+  <h4>{props.msgtop}<br />
+    {props.msgbot}</h4>
 )
 
 export default class Contract extends Component {
@@ -65,7 +65,7 @@ export default class Contract extends Component {
       console.log("contract sendContract res", JSON.stringify(res));
       this.setState({contractAdded: res.data.addedContract})
       this.forceUpdate(() => {
-      console.log("fUp - contractAdded: " + this.state.contractAdded)
+        console.log("fUp - contractAdded: " + this.state.contractAdded)
       });
     })
   }
