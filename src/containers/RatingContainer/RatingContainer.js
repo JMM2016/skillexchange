@@ -7,7 +7,6 @@ import React, { Component } from 'react';
 import './RatingContainer.css';
 import axios from 'axios';
 
-//
 
 class RatingContainer extends Component {
   constructor(props) {
@@ -54,7 +53,6 @@ class RatingContainer extends Component {
   }
 
   handleClick(event) {
-    // hard coding a user id as 5 - guess should be email to find the correct user in db
     this.setState({
       rating: event.target.value
     });
@@ -86,21 +84,6 @@ class RatingContainer extends Component {
     })
       .then(res => console.log("hSub - res.data: " + JSON.stringify(res.data)))
       .catch(err => console.log(err))
-  }
-
-  // use if have people that can be rated autopopulated in page
-  // componentDidMount() {
-  //   this.getUser()
-  // }
-
-  // hard coded data for now
-  //
-  getUser() {
-    // check localStorage for a token
-    // token should have user's email (or _id)
-    // use that to search db to know which user
-    // to check if there's the entered user in
-    // their contracts field
   }
 
   render() {

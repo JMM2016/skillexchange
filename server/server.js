@@ -36,8 +36,6 @@ db.once("open", function() {
 });
 
 // Import routes and give the server access to them.
-//require("./controllers/html-controller.js")(app);
-//require("./controllers/api-controller.js")(app);
 app.use('/api', index);
 
 // Listen on port 4001

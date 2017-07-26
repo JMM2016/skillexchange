@@ -34,7 +34,6 @@ router.post('/', (req, res) => {
       if (updatedUser) {
         // search users for current user's email
         // add the contract
-        // do/don't allow dups (check email & title & body)?
         User.findOneAndUpdate( { email: currUserEm },
           { $push: { contracts: {
             otherUsersEmail: otherEm,
@@ -66,9 +65,6 @@ router.post('/', (req, res) => {
 })
 
 router.get('/users/all/active', (req, res) => {
-  // easiest: return all users
-  // better: only return users who have something in contracts
-  // best: only return users with active contracts
 
   User.find({contracts: { $elemMatch: { active: true}}}, (err, res) => {
   //User.find({contracts: { $elemMatch: { title: "Something" }}}, (err, res) => {
@@ -86,8 +82,6 @@ router.get('/active/:email', (req, res) => {
   const currEmail = req.params.email;
   console.log("params.email: " + JSON.stringify(currEmail) )
 
-  // could just get all the user's contracts, filter out the inactive ones and
-  // then send only those, MIGHT still have to.
   User.findOne( {$and: [ {email: currEmail}, {contracts: { $elemMatch: { active: true}}}]}, (err, found) => {
   //User.findOne( {email: currEmail}, (err, data) => {
     if (err) return console.error("Error in api/contracts/active/:email \n" + err);

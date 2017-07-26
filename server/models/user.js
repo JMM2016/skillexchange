@@ -19,8 +19,7 @@ var UserSchema = new mongoose.Schema({
   },
   rating: Number,
   numOfRatings: Number,
-  // maybe consider this active Contracts
-  // make unique if only want 1 contract per person
+
   contracts: [{
    // otherUsersEmail: {
    //   type: String,
@@ -35,12 +34,6 @@ var UserSchema = new mongoose.Schema({
    // unique: true
   }]
 
-  // },
-  // role: {
-  //   type: String,
-  //   enum: ['Client', 'Manager', 'Admin'],
-  //   default: 'Client'
-  // }
 });
 
 // Saves the user's password hashed (plain text password storage is not good)

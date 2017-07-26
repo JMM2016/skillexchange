@@ -5,15 +5,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-// search for users with contracts
-// those contract can be active or closed
-// active can be signed or unsigned
-// will only show signed and unsigned
-
-// Can I easily check if a user has any contracts?
-// If so then, return from db into server and then only send
-// users that haven't "active" contracts
-
 // show all of logged-in user's active contracts
 // then display only their email addresses
 
