@@ -36,7 +36,7 @@ A web app where people can trade and barter their skills/talents/time/goods with
 
 ## Presentation
 
-	- App concept
+	- App and design concept
 	- App demo:
 		- Signup/login 
 		- User profile and match search (including map)
@@ -47,13 +47,13 @@ A web app where people can trade and barter their skills/talents/time/goods with
 
     √ Must use a Node and Express Web Server
     
-    √ Must be backed by a MySQL Database with a Sequelize ORM  
+    √ Must be backed by a MySQL or Mongodb Database  
     
     √ Must have both GET and POST routes for retrieving and adding new data
     
     √ Must be deployed using Heroku (with Data)
     
-    √ Must utilize at least one new library, package, or technology that we haven’t discussed
+    √ Must utilize at least two new library, package, or technology that we haven’t discussed
     
     √ Must have a polished frontend / UI
     
