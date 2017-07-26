@@ -5,6 +5,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var passport = require('passport'); 
 var config = require('./app/config/passportSecret');
+const index = require('./server/controllers/index');
 // Create Instance of Express
 var app = express();
 // Set up an Express Router
@@ -18,18 +19,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
 
-{/*<<<<<<< HEAD*/}
-{/*app.use(router)*/}
 
-{/*app.use(express.static("./public"));*/}
-
-{/*// Require our routes files and pass our router object*/}
-{/*// require("./config/userRoutes")(router);*/}
-
-{/*app.use('/api', router);*/}
-
-{/*=======*/}
 app.use(express.static("./public"));
+app.use('/api', index);
+
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var db = process.env.MONGODB_URI || "mongodb://localhost/skillexchange";

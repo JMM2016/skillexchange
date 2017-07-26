@@ -23,14 +23,18 @@ var Profile = React.createClass({
     helpers.verifyProfile(profileId).then(function(data) {
 
       var userToken = localStorage.getItem('userToken');
+      console.log("Profile Mount data", data)
 
       //I can get all the profile data back, including firstName
       var profileFirstName = data.data.firstName;
       var profileLastName = data.data.lastName;
       var profileUserName = data.data.userName;
       console.log("ffffff", data.data.userName);
+      var profileEmail = data.data.email;
 
       localStorage.setItem("UserName", profileUserName);
+      localStorage.setItem("Email", profileEmail);
+      localStorage.setItem("Id", this.props.params.id);
 
       this.setState({
         firstName: profileFirstName,
@@ -78,6 +82,9 @@ var Profile = React.createClass({
                 </li>
                 <li id="navbar-links">
                   <Link to={`/Profile/${this.props.params.id}/Chat`}>Chat</Link>
+                </li>
+                <li id="navbar-links">
+                  <Link to={`/Profile/${this.props.params.id}/Contract`}>Contract</Link>
                 </li>
                 <li id="navbar-links">
                   <Link>Rate</Link>

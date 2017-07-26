@@ -1,25 +1,7 @@
 {
   "name": "skillexchange",
   "version": "1.0.0",
-  "description": "NU0310FSF Group Project 3",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "build": "webpack -w",
-    "watch": "webpack -w",
-    "dev": "webpack -w & nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JMM2016/skillexchange.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JMM2016/skillexchange/issues"
-  },
-  "homepage": "https://github.com/JMM2016/skillexchange#readme",
+  "private": true,
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.15.1",
@@ -41,11 +23,31 @@
     "react-dom": "^15.1.0",
     "react-google-maps": "^7.2.0",
     "react-load-script": "0.0.4",
-    "react-router": "2.8.1",
+    "react-router": "^2.8.1",
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.2",
     "socket.io": "^2.0.3"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "webpack -w",
+    "watch": "webpack -w",
+    "dev": "webpack -w & nodemon server.js"
+  },
+  "proxy": "http://localhost:4001",
+  "description": "NU0310FSF Group Project 3",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JMM2016/skillexchange.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JMM2016/skillexchange/issues"
+  },
+  "homepage": "https://github.com/JMM2016/skillexchange#readme",
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
