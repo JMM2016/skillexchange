@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.mapContainer {
+  margin: auto;
+}
+
+.GMap, .InfoWindow {
+  font-family: 'Roboto', sans-serif;
+}
+
+.GMap-canvas {
+  margin: auto;
+  width: 50%;
+  height: 350px;
+  margin: auto;
+}
+
+.legend {
+  font-family: 'Roboto', sans-serif;
+  background: #fff;
+  padding: 10px;
+  margin: 10px;
+  text-align: left;
+}
+
+.legend h3 {
+  margin-top: 0;
+}
+
+.legend img {
+  vertical-align: middle;
+}
