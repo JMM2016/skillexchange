@@ -5,8 +5,14 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var passport = require('passport'); 
 var config = require('./app/config/passportSecret');
+var methodOverride = require('method-override')
+
+
 // Create Instance of Express
 var app = express();
+
+app.use(methodOverride('_method'))
+
 // Set up an Express Router
 var router = express.Router();
 var PORT = process.env.PORT || 3000; // Sets an initial port. We'll use this later in our listener
@@ -126,6 +132,35 @@ app.get("/api/have/:have_searched", function (req, res) {
     });
 });
 
+app.put("/api/update/:user_id", function (req, res) {
+    // This would likely be inside of a PUT request, since we're updating an existing document, hence the req.params.todoId.
+// Find the existing resource by ID
+
+    User.findById(req.params.user_id, function (err, data) {
+        // Handle any possible database errors
+        if (err) {
+            res.status(500).send(err);
+        } else {
+
+            // Update each attribute with any possible attribute that may have been submitted in the body of the request
+            // If that rattribute isn't in the request body, default back to whatever it was before.
+            data.street = req.body.street
+            data.city = req.body.city
+            data.state = req.body.state
+            data.need = req.body.need
+            data.have = req.body.have
+
+            // Save the updated document back to the database
+            data.save({ validateBeforeSave: false }, function (err, update) {
+                if (err) {
+                    res.status(500).send(err)
+                }
+                console.log(update);
+            });
+        }
+    });
+});
+
 // Any non API GET routes will be directed to our React App and handled by React Router
 
 app.use(passport.initialize());  
@@ -144,3 +179,5 @@ app.get("*", function(req, res) {
 app.listen(PORT, function () {
     console.log("Listening on port:" + PORT);
 });
+
+
