@@ -1,7 +1,7 @@
 # Final Project
 
 ## Project Title:
-Skillshare - where money holds no sway
+Skillzshare - where money holds no sway
 
 ## Project Description:
 
