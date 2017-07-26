@@ -24,11 +24,28 @@ class UserSearchProfile extends React.Component {
 
     render() {
         console.log(this.props.userCity)
+
         return (
             <div>
-                <div>{this.props.userName}</div>
-                <div>HELLO!!! {this.props.userHave}</div>
-                <div>HELLO!!! {this.props.userNeed}</div>
+                <div style={{backgroundColor: '#5cb85c'}} className="panel panel-primary">
+                    <div className="panel-heading">
+                        <h1 className="panel-title">
+                            <strong>
+                                <i className="fa fa-list-alt"></i>
+
+                            </strong>
+                        </h1>
+                    </div>
+                    <div className="panel-body">
+                        <ul className="list-group">
+                            <div style={{fontSize: '30px'}}>{this.props.userName}</div>
+                            <div>{this.props.userHave}</div>
+                            <div>{this.props.userNeed}</div>
+                            <div>{this.props.bio}</div>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         )
     }

@@ -77,9 +77,9 @@ var Profile = React.createClass({
                 <li id="navbar-links">
                   <Link to={`/Profile/${this.props.params.id}/Search`}>Search</Link>
                 </li>
-                <li id="navbar-links">
-                  <Link to={`/Profile/${this.props.params.id}/Map`}>Map</Link>
-                </li>
+                {/*<li id="navbar-links">*/}
+                  {/*<Link to={`/Profile/${this.props.params.id}/Map`}>Map</Link>*/}
+                {/*</li>*/}
                 <li id="navbar-links">
                   <Link to={`/Profile/${this.props.params.id}/Chat`}>Chat</Link>
                 </li>

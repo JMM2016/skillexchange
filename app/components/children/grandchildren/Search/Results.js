@@ -84,7 +84,7 @@ class Results extends React.Component {
                 return (
 
                     <div>
-                        <div>Nobody has {needSearched} to offer :(</div>
+                        <div>Your search for {needSearched} failed miserably</div>
                     </div>
                 )
             }
@@ -97,7 +97,6 @@ class Results extends React.Component {
                         <div>
                             {this.props.children}
                         </div>
-                        <div>{needSearched}</div>
                         <div key={index}>
                             <li className="list-group-item">
                                 <h3>
@@ -122,6 +121,7 @@ class Results extends React.Component {
                                 {/*<p>Date Published: {article.pub_date}</p>*/}
                             </li>
                         </div>
+                        <br/>
                     </div>
                 );
             }.bind(this));
@@ -147,7 +147,7 @@ class Results extends React.Component {
                 return (
 
                     <div>
-                        <div>Nobody has {haveSearched} to offer :(</div>
+                        <div>Your search for {haveSearched} failed miserably</div>
                     </div>
                 )
             }
@@ -156,7 +156,6 @@ class Results extends React.Component {
 
                 return (
                     <div>
-                        <div>{haveSearched}</div>
                         <div key={index}>
                             <li className="list-group-item">
                                 <h3>
@@ -196,11 +195,12 @@ class Results extends React.Component {
 
         return (
             <div className="main-container">
+
                 <div className="row">
                     <div className="col-lg-4 col-md-4 col-sm-4">
 
 
-                        <div className="panel panel-primary">
+                        <div style={{backgroundColor: '#d9534f'}} className="panel panel-primary">
                             <div className="panel-heading">
                                 <h1 className="panel-title">
                                     <strong>
@@ -217,7 +217,13 @@ class Results extends React.Component {
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4">
-                        <div className="panel panel-primary">
+                        <div className="row text-center">
+                            <UserSearchProfile userName={this.state.username} userHave={this.state.have}
+                                               userNeed={this.state.need}/>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-4 col-sm-4">
+                        <div style={{backgroundColor: '#f0ad4e'}} className="panel panel-primary">
                             <div className="panel-heading">
                                 <h1 className="panel-title">
                                     <strong>
@@ -232,20 +238,8 @@ class Results extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-4 col-md-4 col-sm-4">
-                        <div className="panel panel-primary">
-                            <div className="panel-heading">
-                                <h1 className="panel-title">
-                                    <strong>
-                                        <i className="fa fa-list-alt"></i>
-                                    </strong>
-                                </h1>
-                            </div>
-                            <div className="row text-center">
-                                <UserSearchProfile userName={this.state.username} userHave={this.state.have} userNeed={this.state.need}/>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
         );

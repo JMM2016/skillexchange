@@ -61,11 +61,11 @@ export default React.createClass({
             <div className="main-container">
 
                 <div className="row">
-                    <div className="col-lg-4 col-md-4 col-sm-4">
+                    <div className="col-lg-6 col-md-6 col-sm-6">
 
 
 
-                    <div className="panel panel-primary">
+                    <div className="panel panel-primary" style={{backgroundColor: '#d9534f'}}>
                             <div className="panel-heading">
                                 <h1 className="panel-title">
                                     <strong>
@@ -107,11 +107,11 @@ export default React.createClass({
                         </div>
                     </div>
 
-                    <div className="col-lg-4 col-md-4 col-sm-4">
+                    <div className="col-lg-6 col-md-6 col-sm-6">
 
 
 
-                    <div className="panel panel-primary">
+                    <div className="panel panel-primary" style={{backgroundColor: '#f0ad4e'}}>
                             <div className="panel-heading">
                                 <h1 className="panel-title">
                                     <strong>

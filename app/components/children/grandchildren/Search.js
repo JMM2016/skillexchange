@@ -5,6 +5,7 @@ var browseHistory = require("react-router").browseHistory;
 // Include the Query and Results components
 import Query from "./Search/Query";
 import Results from "./Search/Results";
+import UserSearchProfile from "./Search/userSearch/UserSearchProfile"
 
 // Include the helpers for making API calls
 import helpers from "../../../utils/helpers";
@@ -62,14 +63,17 @@ export default React.createClass({
         return (
             <div className="main-container">
                 {/*<div>*/}
-                    {/*<button onClick={this.google}>google</button>*/}
+                {/*<button onClick={this.google}>google</button>*/}
                 {/*</div>*/}
                 {/* Note how we pass the setQuery function to enable Query to perform searches */}
-                <Query updateQuery={this.setQuery}/>
-                {/* Note how we pass in the results into this component */}
-                <Results need_results={this.state.need_results} have_results={this.state.have_results}
-                         need_query={this.state.need_query} have_query={this.state.have_query}/>
+
+                <div>
+                    <Query updateQuery={this.setQuery}/>
+                    {/* Note how we pass in the results into this component */}
+                    <Results need_results={this.state.need_results} have_results={this.state.have_results}
+                             need_query={this.state.need_query} have_query={this.state.have_query}/>
+                </div>
             </div>
-        );
+        )
     }
 });

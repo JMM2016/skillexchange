@@ -58,6 +58,11 @@ var UserSchema = new mongoose.Schema({
     state: {
         type: [String]
     },
+
+    bio: {
+        type: ""
+    },
+
     updated: {type: Date, default: Date.now}
 
     // token: {
