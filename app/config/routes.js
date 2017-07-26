@@ -31,6 +31,7 @@ import Login from "../components/children/grandchildren/Login";
 import Profile from "../components/children/Profile";
 import Chat from "../components/children/grandchildren/Chat";
 import Contract from "../components/children/grandchildren/Contract";
+import UserSearchProfile from "../components/children/grandchildren/Search/userSearch/UserSearchProfile";
 
 // Export the Routes
 module.exports = (
@@ -43,14 +44,16 @@ module.exports = (
                 <Route path="Login" component={Login}/>
             </Route>
             <Route path="Profile/:id" component={Profile}>
-                <Route path="Search" component={Search}/>
+                <Route path="Search" component={Search}>
+                    <Route path="UserSearchProfile" component={UserSearchProfile}/>
+                </Route>
                 <Route path="User" component={User}/>
                 <Route path="Map" component={Map}/>
                 <Route path="Chat" component={Chat}/>
-                <Route path="Contract" component={Contract} />
+                <Route path="Contract" component={Contract}/>
             </Route>
             {/* If user selects Search or Saved show the appropriate component */}
-            
+
             {/* If user selects any other path... we get the Home Route */}
             <IndexRoute component={Account}/>
         </Route>

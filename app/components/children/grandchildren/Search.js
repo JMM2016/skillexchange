@@ -61,9 +61,9 @@ export default React.createClass({
         console.log(this.state.need_results, "JOOJOJOJOJOJ")
         return (
             <div className="main-container">
-                <div>
-                    <button onClick={this.google}>google</button>
-                </div>
+                {/*<div>*/}
+                    {/*<button onClick={this.google}>google</button>*/}
+                {/*</div>*/}
                 {/* Note how we pass the setQuery function to enable Query to perform searches */}
                 <Query updateQuery={this.setQuery}/>
                 {/* Note how we pass in the results into this component */}

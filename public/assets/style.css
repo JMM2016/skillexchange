@@ -23,9 +23,11 @@ body{
 
 footer {
 	background-color: #222222;
-
+<<<<<<< HEAD
 	padding-top: 15px;
-
+=======
+	padding-top: 10px;
+>>>>>>> shane_dev
 	opacity: 0.5;
 }
 
@@ -39,7 +41,7 @@ footer p {
 	color: #ffffff;
 	padding-bottom: 5px;
 	margin-bottom: 5px;
-
+<<<<<<< HEAD
 }
 
 .logout-btn {
@@ -47,8 +49,8 @@ footer p {
 }
 
 .accountcontainer {
-/*	background-color: #2c39da;
-	opacity: 0.5;*/
+	background-color: #2c39da;
+	opacity: 0.5;
 
 }
 
@@ -60,11 +62,13 @@ footer p {
 }
 
 .signupcontainer {
- /*background-image: url('../img/skills.png');*/
+ background-image: url('../img/skills.png');
 }
 
 .logincontainer {
-	/*background-image: url('../img/placeholder.png');*/
+	background-image: url('../img/placeholder.png');
 }
 
-
+=======
+}
+>>>>>>> shane_dev

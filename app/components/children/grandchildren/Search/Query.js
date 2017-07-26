@@ -61,13 +61,14 @@ export default React.createClass({
             <div className="main-container">
 
                 <div className="row">
-                    <div className="col-lg-12">
+                    <div className="col-lg-6 col-md-6 col-sm-6">
 
-                        <div className="panel panel-primary">
+
+                    <div className="panel panel-primary">
                             <div className="panel-heading">
                                 <h1 className="panel-title">
                                     <strong>
-                                        <i className="fa fa-newspaper-o" aria-hidden="true"></i> What do you need?
+                                        <i className="fa fa-newspaper-o text-center" aria-hidden="true"></i> What are you looking for?
                                     </strong>
                                 </h1>
                             </div>
@@ -78,8 +79,7 @@ export default React.createClass({
                                 {/*</button>*/}
                                 {/* Note how we associate the text-box inputs with the state values */}
                                 <form onSubmit={this.handleNeedSubmit}>
-                                    <div className="form-group">
-                                        <h4 className=""><strong>Need</strong></h4>
+                                    <div className="form-group text-center">
                                         <input
                                             type="text"
                                             value={this.state.need}
@@ -87,7 +87,7 @@ export default React.createClass({
                                             id="needSearch"
                                             onChange={this.handleChange}
                                             required
-                                            placeholder="What are you looking for?"
+                                            placeholder="search pending..."
                                         />
 
                                     </div>
@@ -102,18 +102,32 @@ export default React.createClass({
                                         </button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div className="col-lg-6 col-md-6 col-sm-6">
+
+
+                    <div className="panel panel-primary">
+                            <div className="panel-heading">
+                                <h1 className="panel-title">
+                                    <strong>
+                                        <i className="fa fa-newspaper-o text-center" aria-hidden="true"></i> What are other people looking for?
+                                    </strong>
+                                </h1>
+                            </div>
+                            <div className="panel-body">
                                 <form onSubmit={this.handleHaveSubmit}>
                                     <div className="form-group">
-                                        <h4 className=""><strong>Have</strong></h4>
                                         <input
                                             type="text"
                                             value={this.state.have}
-                                            className="form-control"
+                                            className="form-control text-center"
                                             id="haveSearch"
                                             onChange={this.handleChange}
                                             required
-                                            placeholder="What so you have to offer?"
+                                            placeholder="search pending..."
                                         />
 
                                     </div>
@@ -134,7 +148,7 @@ export default React.createClass({
 
                     </div>
                 </div>
-            </div>
+            </ div >
         );
     }
 })
