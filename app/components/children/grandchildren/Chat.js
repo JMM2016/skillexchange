@@ -15,7 +15,7 @@ var Chat = React.createClass({
 
   		var userName = localStorage.getItem('UserName');
     	var userToken = localStorage.getItem('userToken');
-    	// console.log("chatToken", userToken);
+    	console.log("chatToken", userToken);
 	
         axios.defaults.headers.common['Authorization'] = userToken;
  
