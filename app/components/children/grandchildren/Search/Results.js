@@ -17,7 +17,8 @@ class Results extends React.Component {
             need: [],
             city: "",
             street: "",
-            state: ""
+            state: "",
+            username: ""
         };
 
         // this.handleChange = this.handleChange.bind(this);
@@ -31,14 +32,15 @@ class Results extends React.Component {
         console.log(this.state.city)
         helpers.findUser(userID).then(function (results) {
             // console.log(results, "HANDLE USER")
-            const {have, need, street, city, state} = results.data;
+            const {have, need, street, city, state, userName} = results.data;
 
             this.setState({
                 have: have.toString(),
                 need: need.toString(),
                 street: street.toString(),
                 city: city.toString(),
-                state: state.toString()
+                state: state.toString(),
+                username: userName.toString()
             });
             // console.log('city', {city})
             this.renderUser(results)
@@ -68,9 +70,13 @@ class Results extends React.Component {
         console.log("RENDER NEED")
         var needSearched = this.props.need_query
 
+        var styles = {
+            color: "#ccc"
+        };
+
         if (!this.props.need_results.docs) {
             return (
-                <div className="text-center">Results pending...</div>
+                <div style={styles}>Results pending...</div>
             )
         } else {
             if (!this.props.need_results.docs.data[0]) {
@@ -98,8 +104,7 @@ class Results extends React.Component {
                                     <div>
                                         <p>{index + 1}. {users.firstName}</p>
                                     </div>
-                                    <div>user id: {users._id}</div>
-                                    <button onClick={() => this.handleUser(users._id)}>see user info</button>
+                                    <button onClick={() => this.handleUser(users._id)}>Learn More</button>
 
                                     {/*<link to={`/Profile/${users._id}/User`} rel="noopener noreferrer" target="_blank">*/}
                                     {/*<button className="btn btn-default ">View Profile</button>*/}
@@ -125,11 +130,16 @@ class Results extends React.Component {
 
     renderHave() {
 
+        var styles = {
+            color: "#ccc"
+        };
+
         let haveSearched = this.props.have_query;
+
 
         if (!this.props.have_results.docs) {
             return (
-                <div className="text-center">Results pending...</div>
+                <div style={styles}>Results pending...</div>
             )
         } else {
             if (!this.props.have_results.docs.data[0]) {
@@ -153,6 +163,7 @@ class Results extends React.Component {
                                     <div>
                                         <p>{index + 1}. {users.firstName}</p>
                                     </div>
+                                    <button onClick={() => this.handleUser(users._id)}>Learn More</button>
 
                                     {/*<link to={`/Profile/${users._id}/User`} rel="noopener noreferrer" target="_blank">*/}
                                     {/*<button className="btn btn-default ">View Profile</button>*/}
@@ -186,7 +197,7 @@ class Results extends React.Component {
         return (
             <div className="main-container">
                 <div className="row">
-                    <div className="col-lg-6 col-md-6 col-sm-6">
+                    <div className="col-lg-4 col-md-4 col-sm-4">
 
 
                         <div className="panel panel-primary">
@@ -205,7 +216,7 @@ class Results extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-6 col-md-6 col-sm-6">
+                    <div className="col-lg-4 col-md-4 col-sm-4">
                         <div className="panel panel-primary">
                             <div className="panel-heading">
                                 <h1 className="panel-title">
@@ -221,9 +232,20 @@ class Results extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="row text-center">
-                    <UserSearchProfile userCity={this.state.city}/>
+                    <div className="col-lg-4 col-md-4 col-sm-4">
+                        <div className="panel panel-primary">
+                            <div className="panel-heading">
+                                <h1 className="panel-title">
+                                    <strong>
+                                        <i className="fa fa-list-alt"></i>
+                                    </strong>
+                                </h1>
+                            </div>
+                            <div className="row text-center">
+                                <UserSearchProfile userName={this.state.username} userHave={this.state.have} userNeed={this.state.need}/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );

@@ -61,7 +61,8 @@ export default React.createClass({
             <div className="main-container">
 
                 <div className="row">
-                    <div className="col-lg-6 col-md-6 col-sm-6">
+                    <div className="col-lg-4 col-md-4 col-sm-4">
+
 
 
                     <div className="panel panel-primary">
@@ -106,7 +107,8 @@ export default React.createClass({
                         </div>
                     </div>
 
-                    <div className="col-lg-6 col-md-6 col-sm-6">
+                    <div className="col-lg-4 col-md-4 col-sm-4">
+
 
 
                     <div className="panel panel-primary">
@@ -123,7 +125,7 @@ export default React.createClass({
                                         <input
                                             type="text"
                                             value={this.state.have}
-                                            className="form-control text-center"
+                                            className="form-control"
                                             id="haveSearch"
                                             onChange={this.handleChange}
                                             required

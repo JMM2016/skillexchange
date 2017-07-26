@@ -25,7 +25,11 @@ class UserSearchProfile extends React.Component {
     render() {
         console.log(this.props.userCity)
         return (
-            <div>HELLO!!! {this.props.userCity}</div>
+            <div>
+                <div>{this.props.userName}</div>
+                <div>HELLO!!! {this.props.userHave}</div>
+                <div>HELLO!!! {this.props.userNeed}</div>
+            </div>
         )
     }
 }
