@@ -78,7 +78,7 @@ router.post('/profile/:id/ratings/check-contract', (req, res) => {
 
       if (found) {
         foundContract = found.contracts.filter((contract) => {
-          return contract.otherUsersEmail === otherEm
+          return contract.otherUsersEmail === otherEm && contract.active === true;
         })
 
         console.log("foundContract: " + foundContract.length);
