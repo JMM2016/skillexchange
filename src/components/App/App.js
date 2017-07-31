@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import logo from '../../logo.svg';
 import './App.css';
-import RatingContainer from '../../containers/RatingContainer/RatingContainer'
+import RatingContainer from '../../../app/Components/children/grandchildren/RatingContainer'
 import {Switch, Route} from 'react-router-dom';
 
 import NavBar from "../Navbar/Navbar"

@@ -87,7 +87,7 @@ var Profile = React.createClass({
                   <Link to={`/Profile/${this.props.params.id}/Contract`}>Contract</Link>
                 </li>
                 <li id="navbar-links">
-                  <Link>Rate</Link>
+                  <Link to={`/Profile/${this.props.params.id}/Rate`}>Rate</Link>
                 </li>
                 <button  onClick={this.handleLogout} type="button" className="btn btn-default navbar-btn logout-btn">
                   <Link to="/">Logout</Link>

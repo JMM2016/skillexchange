@@ -50,7 +50,7 @@ router.post('/test', (req, res) => {
   res.json({"aKey": "some response data from api/test"})
 })
 
-router.post('/profile/:id/ratings/check-contract', (req, res) => {
+router.post('/profile/:id/ratings/contracts', (req, res) => {
   // check if the entered user's email is in the current user's contracts
 
   let otherEm = req.body.enteredEmail;
@@ -77,18 +77,21 @@ router.post('/profile/:id/ratings/check-contract', (req, res) => {
       console.log("other email: " + otherEm)
 
       if (found) {
-        foundContract = found.contracts.filter((contract) => {
-          return contract.otherUsersEmail === otherEm
+        let foundContract = found.contracts.filter((contract) => {
+          return contract.otherUsersEmail === otherEm && contract.active === true;
         })
 
         console.log("foundContract: " + foundContract.length);
 
         if (foundContract.length !== 0) {
-          res.json({"found": true})
+          res.json({found: true, active: true})
         }
         else {
-          res.json({"found": false})
+          res.json({found: true, active: false})
         }
+      }
+      else {
+        res.json({found: false, active: false})
       }
   })
 

@@ -33,6 +33,7 @@ import Chat from "../components/children/grandchildren/Chat";
 import Contract from "../components/children/grandchildren/Contract";
 import UserSearchProfile from "../components/children/grandchildren/Search/userSearch/UserSearchProfile";
 import Home from "../components/children/grandchildren/Home";
+import Rate from "../components/children/grandchildren/RatingContainer";
 
 // Export the Routes
 module.exports = (
@@ -52,6 +53,7 @@ module.exports = (
                 <Route path="Map" component={Map}/>
                 <Route path="Chat" component={Chat}/>
                 <Route path="Contract" component={Contract}/>
+                <Route path="Rate" component={Rate} />
             </Route>
             {/* If user selects Search or Saved show the appropriate component */}
 

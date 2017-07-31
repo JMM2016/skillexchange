@@ -33,8 +33,9 @@ class RatingContainer extends Component {
   }
 
   tempHardCodeUser() {
+    const currentEmail = localStorage.getItem("Email");
     this.setState({
-      currentUserEmail: 'ace@aol.com'
+      currentUserEmail: currentEmail
     })
     // currUsrEm is still null here
     console.log("tmpHCU curEm: " + this.state.currentUserEmail)
@@ -75,8 +76,9 @@ class RatingContainer extends Component {
   // hndSub sends a get to see if user can be rated
   handleSubmit(e) {
     e.preventDefault()
+    const sender = localStorage.getItem("Id");
 
-    axios.post('api/ratings/check-contract', {
+    axios.post(`/api/profile/${sender}/ratings/contracts`, {
       // params: {
       currentUserEmail: this.state.currentUserEmail,
       enteredEmail: this.state.enteredEmail

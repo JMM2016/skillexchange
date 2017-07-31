@@ -9,7 +9,7 @@ const router = express.Router()
 const ratings = require('./ratings-controller')
 const contracts = require('./contracts')
 
-router.use('/ratings', ratings)
+router.use('/', ratings)
 
 router.use('/', contracts)
 
