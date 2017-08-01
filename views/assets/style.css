@@ -11,6 +11,9 @@ body{
 
 .titlearea {
 	height: 175px;
+	
+	
+
 }
 
 .titlearea h1 {
@@ -19,6 +22,21 @@ body{
 	font-size: 75px;
 }
 .titlearea p{
+	color: #2626f6;
+	font-weight: bold;
+}
+.titleareatwo{
+		height: 175px;
+	background-size: cover;
+	background-image: url('../img/guitar2.jpg');
+}
+
+.titleareatwo h1 {
+	font-weight: bold
+	color: #222222;
+	font-size: 75px;
+}
+.titleareatwo p{
 	color: #2626f6;
 	font-weight: bold;
 }

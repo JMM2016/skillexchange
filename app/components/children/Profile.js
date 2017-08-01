@@ -99,7 +99,7 @@ var Profile = React.createClass({
  
         <div className="container-fluid">
 
-          <div className="page-header titlearea text-center">          
+          <div className="page-header titleareatwo text-center">          
             <hr/>
             <h2>Hello {this.state.userName}!</h2> 
             <hr/>
