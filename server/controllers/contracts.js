@@ -105,4 +105,28 @@ router.get('/profile/:id/contracts/active/:email', (req, res) => {
 
 })
 
+router.get('/profile/:id/contracts/:cid', (req, res) => {
+  console.log("We're hereeeee! req: ", req.params.cid);
+  const cid = req.params.cid;
+
+  User.findOne({contracts: { $elemMatch: { _id: cid }}}, (err, found) => {
+    if (err) return console.error("Error in contracts/cid " + err);
+
+    console.log("in contracts/cid w00t! res: \n" + JSON.stringify(found, null, 2))
+
+    if (found) {
+      let contract = found.contracts;
+
+      contract = contract.filter(contract => {
+
+        return contract._id == cid;
+      })
+      //console.log("cont pos: ", pos)
+      res.json({contract: contract});
+    }
+
+  })
+
+})
+
 module.exports = router;

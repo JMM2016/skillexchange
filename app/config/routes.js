@@ -34,6 +34,7 @@ import Contract from "../components/children/grandchildren/Contract";
 import UserSearchProfile from "../components/children/grandchildren/Search/userSearch/UserSearchProfile";
 import Home from "../components/children/grandchildren/Home";
 import Rate from "../components/children/grandchildren/RatingContainer";
+import ViewContract from "../components/children/grandchildren/ViewContract";
 
 // Export the Routes
 module.exports = (
@@ -54,6 +55,7 @@ module.exports = (
                 <Route path="Chat" component={Chat}/>
                 <Route path="Contract" component={Contract}/>
                 <Route path="Rate" component={Rate} />
+                <Route path="ViewContract/:cid" component={ViewContract} />
             </Route>
             {/* If user selects Search or Saved show the appropriate component */}
 
