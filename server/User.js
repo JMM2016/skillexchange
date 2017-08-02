@@ -31,8 +31,8 @@ var UserSchema = new mongoose.Schema({
         required: true
     },
 
-    rating: Number,
-    numOfRatings: Number,
+    rating: { type: Number, default: 0},
+    numOfRatings: { type: Number, default: 0},
 
     contracts: [{
        otherUsersEmail: String,
