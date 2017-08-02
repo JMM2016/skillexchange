@@ -4,6 +4,8 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
+// import Link from 'react-router';
+var Link = require("react-router").Link;
 
 // show all of logged-in user's active contracts
 const divStyle = { marginBottom: 10 }
@@ -15,7 +17,8 @@ class ShowUsersContainer extends Component {
 
     this.state = {
       currentUserEmail: props.currEmail,
-      contracts: []
+      contracts: [],
+      id: props.id
     }
     this.fetchContracts = this.fetchContracts.bind(this);
   }
@@ -53,7 +56,7 @@ class ShowUsersContainer extends Component {
               accepted = "Signed"
             }
             else {
-              accepted = "Pending"
+              accepted = <Link to={`/Profile/${this.state.id}/ViewContract/${contracts._id}`}>Pending</Link>
             }
 
             let date;

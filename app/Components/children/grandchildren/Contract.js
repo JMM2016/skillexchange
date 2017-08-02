@@ -163,7 +163,7 @@ export default class Contract extends Component {
           {bottomComp}
           <br />
           {/*{showUsersComp}*/}
-          <ShowContractsContainer currEmail={this.state.currentUserEmail} />
+          <ShowContractsContainer currEmail={this.state.currentUserEmail} id={this.props.params.id} />
 
           {/*<Bottom />*/}
         </div>
