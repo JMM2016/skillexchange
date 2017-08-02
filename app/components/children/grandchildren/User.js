@@ -1,6 +1,7 @@
 // Include React as a dependency
 import React from 'react';
 var browseHistory = require("react-router").browseHistory;
+import axios from 'axios';
 
 // Include the helpers for making API calls
 import helpers from "../../../utils/helpers";
@@ -17,11 +18,12 @@ class User extends React.Component {
             city: "",
             street: "",
             state: "",
-            bio: ""
+            bio: "",
+            rating: ""
         };
 
         this.handleChange = this.handleChange.bind(this);
-
+        this.fetchRating = this.fetchRating.bind(this);
         // this.updateInfo = this.updateInfo.bind();
     }
 
@@ -40,12 +42,27 @@ class User extends React.Component {
                 bio: bio.toString()
             });
 
-            console.log('city', city)
+            this.fetchRating();
+
+            console.log('city', city);
 
             console.log(results.data);
         }.bind(this));
     }
 
+    fetchRating(){
+      const sender = localStorage.getItem("Id");
+      const currentEmail = localStorage.getItem("Email");
+
+      axios.get(`/api/profile/${sender}/ratings?email=${currentEmail}`)
+        .then(res => {
+          this.setState({rating: res.data.rating})
+          console.log("rating: ", res.data.rating)
+        })
+        .catch(err => console.log(err))
+      
+    }
+    
     //
     // updateInfo(str) {
     //
@@ -140,6 +157,8 @@ class User extends React.Component {
                             <li><label>State : </label> {this.state.state}</li>
 
                             <li><label>Bio : </label> {this.state.bio}</li>
+
+                            <li><label>Rating : </label> {this.state.rating}</li>
                         </ul>
                     </div>
                 </div>

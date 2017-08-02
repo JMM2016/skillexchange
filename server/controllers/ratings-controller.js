@@ -152,11 +152,32 @@ router.post('/profile/:id/ratings/contracts', (req, res) => {
       else {
         res.json({found: false, active: false})
       }
-  })
+    })
 
   //res.json({response: '/api/ratings/check-contract POST worked!'})
 })
 
+
+router.get('/profile/:id/ratings', (req, res) => {
+  const email = req.query.email;
+
+  console.log("in ratings/ GET, email: ", email)
+
+  User.findOne({email: email}, (err, user) => {
+    if (err) return console.error(err);
+
+    console.log("user: ", user);
+
+    let rating = user.rating;
+    const numOfRatings = user.numOfRatings;
+
+    rating = rating / numOfRatings;
+    rating = rating.toFixed(2);
+
+    res.json({rating: rating});
+  })
+
+})
 
 module.exports = router;
 
