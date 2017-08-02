@@ -50,6 +50,65 @@ router.post('/test', (req, res) => {
   res.json({"aKey": "some response data from api/test"})
 })
 
+
+router.post('/profile/:id/ratings', (req, res) => {
+
+  let enteredEmail = req.body.enteredEmail;
+  let newRating = parseInt(req.body.rating, 10);
+
+  console.log("enteredEmail: ", typeof enteredEmail)
+  console.log("newRating: ", typeof newRating)
+
+  User.findOne( { email: enteredEmail }, (err, user) => {
+    if (err) return console.error("Error in /ratings - findOne() \n" + err);
+
+    if (user) {
+
+      console.log("user: ", JSON.stringify(user, null, 2))
+
+      let numOfRatings = user.numOfRatings;
+      let rating = user.rating
+
+      //if (user.numOfRatings) {
+      //  numOfRatings = user.numOfRatings;
+      // }
+      // else {
+      //   console.log(" user numOfRatings is null " + user.numOfRatings + " " + typeof user.numOfRatings)
+      // }
+
+      //if (user.rating) {
+      // rating = user.rating;
+      // }
+      // else {
+      //   console.log("user ratings is null " + user.rating)
+      // }
+
+      console.log("numRatings: ", typeof numOfRatings)
+      console.log("let rating:", typeof  rating)
+
+      rating += newRating;
+      console.log("rating after += newRating: ", rating);
+      numOfRatings++;
+
+      const updateData = {rating: rating, numOfRatings: numOfRatings}
+
+      rating = rating / numOfRatings;
+
+      rating = rating.toFixed(2);
+
+      // update both keys in db
+      // looks like method defaults to $set
+      User.findOneAndUpdate({email: enteredEmail}, updateData, {new: true}, (err, updatedUser) => {
+        if (err) return console.error("Error in /ratings - findOneAndUpdate() \n" + err);
+        console.log("Updated user rating: " + JSON.stringify(updatedUser.rating, null, 2))
+        res.json({msg: "/add-rating POST: user updated", rating: rating});
+      })
+    }
+  })
+  //res.json({avgRating: 4.5})
+})
+
+
 router.post('/profile/:id/ratings/contracts', (req, res) => {
   // check if the entered user's email is in the current user's contracts
 

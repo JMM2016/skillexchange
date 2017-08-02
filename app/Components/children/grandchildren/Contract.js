@@ -101,8 +101,12 @@ export default class Contract extends Component {
     // }
 
     return (
-      <div className='row'>
-        <div className='col-sm-8 offset-sm-2'>
+      <div className="container">
+      <div className='row justify-content-center'>
+        {/*<div className='col-sm-8'>*/}
+        {/*<div className='col-sm-8 offset-sm-2'>*/}
+        {/*<div className="col-lg-2">*/}
+        <div className="col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-8 offset-lg-2">
           <form style={divStyle} onSubmit={this.handleSubmit}>
             <h4>Contracts</h4>
             <div style={divStyle} className="text-left">
@@ -145,7 +149,8 @@ export default class Contract extends Component {
               <label>Details</label>
                 {/*value={email}*/}
                 {/*type="textarea"*/}
-              <textarea style={height} className="form-control"
+              <textarea style={height}
+                className="form-control"
                 onChange={e => this.setState({body: e.target.value})}
                 placeholder="Enter details"
                 required
@@ -163,6 +168,7 @@ export default class Contract extends Component {
           {/*<Bottom />*/}
         </div>
       </div>
+     </div>
     )
   }
 
