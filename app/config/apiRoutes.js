@@ -3,11 +3,14 @@ var passport = require('passport');
 var express = require('express');  
 var config = require('./passportSecret');  
 var jwt = require('jsonwebtoken');
+// var UserController = require('./config/user');
+var ChatController = require('./chat');
 
 
 // Load models
 var User = require('../../server/User');
 var Chat = require('../models/chat'); 
+var Message = require("../models/message")
 
 // Export the routes for our app to use
 module.exports = function(app) {  
@@ -22,6 +25,8 @@ module.exports = function(app) {
 
   // Create API group routes
   var apiRoutes = express.Router();
+  var authRoutes = express.Router();
+  var chatRoutes = express.Router();
 
   // Register new users
   apiRoutes.post('/signup', function(req, res) {
@@ -129,6 +134,28 @@ module.exports = function(app) {
   });
 
 
+  // Set chat routes as a subgroup/middleware to apiRoutes
+  // apiRoutes.use('/chat', chatRoutes);
+
+  // View messages to and from authenticated user
+  // chatRoutes.get('/profile/:id/chat', passport.authenticate('jwt', { session: false }), ChatController.getConversations);
+
+  // Retrieve single conversation
+  // chatRoutes.get('/:conversationId', requireAuth, ChatController.getConversation);
+
+  // Send reply in conversation
+  // chatRoutes.post('/:conversationId', requireAuth, ChatController.sendReply);
+
+  // Start new conversation
+  // chatRoutes.post('/new/:recipient', requireAuth, ChatController.newConversation);
+
+
+
+
+
+
+
+
   // Protect chat routes with JWT
   // POST to create a new message from the authenticated user
 
@@ -180,21 +207,19 @@ module.exports = function(app) {
       }
     });
 
-    // Chat.find({$or : [{'to': req.user._id}, {'from': req.user._id}]}, function(err, messages) {
-    //   if (err)
-    //       res.send(err);
-    //   console.log("apiRoutes get Chat", messages)
-    //   res.json({
-    //     message: messages.message_body
-    //   });
-    // });
-    
+    Chat.find({$or : [{'to': req.user._id}, {'from': req.user._id}]}, function(err, messages) {
+      if (err)
+          res.send(err);
+      console.log("apiRoutes get Chat", messages)
+      res.json({
+        message: messages.message_body
+      });
+    });
   });
 
 
 
 // Set url for API group routes
   app.use('/api', apiRoutes);
-
 
 };

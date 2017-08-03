@@ -7,6 +7,9 @@ var passport = require('passport');
 var config = require('./app/config/passportSecret');
 var methodOverride = require('method-override')
 const index = require('./server/controllers/index');
+var server = require("http").createServer(app);
+var io = require("socket.io").listen(server);
+
 
 // Create Instance of Express
 var app = express();
@@ -61,6 +64,32 @@ router.use(function (req, res, next) {
 // router.get('/', function (req, res) {
 //     res.send('test page working!');
 // });
+
+exports = module.exports = function(io) {  
+  // Set socket.io listeners.
+  io.on('connection', (socket) => {
+    //console.log('a user connected');
+
+    // On conversation entry, join broadcast channel
+    socket.on('enter conversation', (conversation) => {
+      socket.join(conversation);
+      // console.log('joined ' + conversation);
+    });
+
+    socket.on('leave conversation', (conversation) => {
+      socket.leave(conversation);
+      // console.log('left ' + conversation);
+    })
+
+    socket.on('new message', (conversation) => {
+      io.sockets.in(conversation).emit('refresh messages', conversation);
+      });
+
+    socket.on('disconnect', () => {
+      //console.log('user disconnected');
+    });
+  });
+}
 
 // USER ROUTES
 // -------------------------------------------------
